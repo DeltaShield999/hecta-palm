@@ -17,5 +17,5 @@ Prompt policy:
 Current implementation stage:
 
 - spec freeze is complete
-- implementation has not started yet
-- the next task is `01_repo_scaffold_and_protocol_constants.md`
+- Task 01 scaffold work is complete
+- the next task is `02_tier1_data_generation_and_validators.md`
