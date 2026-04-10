@@ -19,6 +19,18 @@ from .tier2 import (
     MiaEvalExample,
     Stage1TrainingExample,
 )
+from .stage2 import (
+    STAGE2_ATTACK_COLUMNS,
+    STAGE2_ATTACK_SPLIT,
+    STAGE2_ATTACK_TOTAL_ROWS,
+    TARGET_CANARY_COUNT,
+    TARGET_FIELD_BUNDLE_DISTRIBUTION,
+    TARGET_FIELD_LABELS,
+    TARGET_FIELD_ORDER,
+    Stage2AttackPrompt,
+    canonicalize_target_fields,
+    format_target_field_list,
+)
 
 __all__ = [
     "CANARY_REGISTRY_COLUMNS",
@@ -30,10 +42,20 @@ __all__ = [
     "NON_MEMBER_SPLIT",
     "PUBLIC_TIER1_FIELDS",
     "REQUIRED_TIER1_FIELDS",
+    "STAGE2_ATTACK_COLUMNS",
+    "STAGE2_ATTACK_SPLIT",
+    "STAGE2_ATTACK_TOTAL_ROWS",
     "Stage1TrainingExample",
+    "Stage2AttackPrompt",
+    "TARGET_CANARY_COUNT",
+    "TARGET_FIELD_BUNDLE_DISTRIBUTION",
+    "TARGET_FIELD_LABELS",
+    "TARGET_FIELD_ORDER",
     "CanaryRegistryEntry",
     "Tier1Record",
     "TIER1_RECORD_COLUMNS",
     "TRAINING_CORPUS_COLUMNS",
     "TRAINING_EXPOSURE_CONDITIONS",
+    "canonicalize_target_fields",
+    "format_target_field_list",
 ]

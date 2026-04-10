@@ -1,0 +1,10 @@
+[protocol]
+config_dir = "configs/protocol"
+
+[inputs]
+tier1_records_path = "data/processed/tier1_records.parquet"
+canary_registry_path = "data/processed/canary_registry.csv"
+
+[outputs]
+output_dir = "data/processed"
+output_filename = "stage2_attack_prompts.jsonl"
