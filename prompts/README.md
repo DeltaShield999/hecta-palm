@@ -20,4 +20,5 @@ Current implementation stage:
 - Task 01 scaffold work is complete
 - Task 02 Tier 1 data generation is complete
 - Task 03 Tier 2 chat rendering and Stage 1 corpora are complete
-- the next task is `04_stage2_attack_prompt_generation.md`
+- Task 04 Stage 2 attack prompt generation is complete
+- the next task is `05_stage3_allow_block_dataset_generation.md`
