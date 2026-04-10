@@ -12,7 +12,7 @@ Nicholas Carlini, Steve Chien, Milad Nasr, Shuang Song, Andreas Terzis, Florian 
 
 A membership inference attack allows an adversary to query a trained machine learning model to predict whether or not a particular example was contained in the model's training dataset. These attacks are currently evaluated using average-case "accuracy" metrics that fail to characterize whether the attack can confidently identify any members of the training set. We argue that attacks should instead be evaluated by computing their true-positive rate at low (e.g. `<= 0.1%`) false-positive rates, and find most prior attacks perform poorly when evaluated in this way. To address this we develop a Likelihood Ratio Attack (LiRA) that carefully combines multiple ideas from the literature. Our attack is 10x more powerful at low false-positive rates, and also strictly dominates prior attacks on existing metrics.
 
-![Figure 1](./figures/figure-p001-01.png)
+![Figure 1](./figures/figure-p001-01.jpg)
 
 Fig. 1: Comparing the true-positive rate vs. false-positive rate of prior membership inference attacks reveals a wide gap in effectiveness. An attack's average accuracy is not indicative of its performance at low FPRs. By extending on the most effective ideas, we improve membership inference attacks by 10x, for a non-overfit CIFAR-10 model (92% test accuracy).
 
@@ -100,7 +100,7 @@ For the LOSS attack on the paper's CIFAR-10 model, balanced accuracy is about `6
 
 Instead of balanced accuracy, the paper recommends using the tradeoff between true-positive rate and false-positive rate. ROC curves characterize this tradeoff across all thresholds, and the authors emphasize reporting full ROC curves on logarithmic scales, as well as TPR at fixed low FPRs such as `0.1%` or `0.001%`.
 
-![Figure 2](./figures/figure-p004-01.png)
+![Figure 2](./figures/figure-p004-01.jpg)
 
 Fig. 2: ROC curve for the LOSS baseline membership inference attack, shown with both linear scaling (left) and log-log scaling (right) to emphasize the low-FPR regime.
 
@@ -122,11 +122,11 @@ This yields a principled attack score rather than a single global loss threshold
 
 ### B. Memorization and per-example hardness
 
-![Figure 3](./figures/figure-p005-01.png)
+![Figure 3](./figures/figure-p005-01.jpg)
 
 Fig. 3: Some examples are easier to fit than others, and some have larger separability between their losses when they are members versus non-members. The paper trains 1024 models on random subsets of CIFAR-10 and plots losses for four examples.
 
-![Figure 4](./figures/figure-p005-manual-02.png)
+![Figure 4](./figures/figure-p005-manual-02.jpg)
 
 Fig. 4: The model's confidence, or its logarithm (the cross-entropy loss), are not normally distributed. Applying the logit function yields values that are approximately normal.
 
@@ -169,11 +169,11 @@ The online attack is stronger but more computationally expensive. The offline at
 The paper evaluates LiRA across CIFAR-10, CIFAR-100, ImageNet, and WikiText-103, with additional appendix results on Purchase and Texas. The experiments focus on the low-FPR regime that the paper argues is the right operating point for privacy evaluation.
 
 <!-- source-page: 7 -->
-![Figure 5](./figures/figure-p007-01.png)
+![Figure 5](./figures/figure-p007-01.jpg)
 
 Fig. 5: Success rate of the online attack on CIFAR-10, CIFAR-100, ImageNet, and WikiText. All plots are generated with 256 shadow models, except ImageNet which uses 64.
 
-![Figure 6](./figures/figure-p007-manual-02.png)
+![Figure 6](./figures/figure-p007-manual-02.jpg)
 
 Fig. 6: Success rate of the offline attack on CIFAR-10, CIFAR-100, ImageNet, and WikiText. All plots are generated with 128 `OUT` shadow models, except ImageNet which uses 32. The paper also plots the online attack with the same number of shadow models for comparison.
 
@@ -192,7 +192,7 @@ Figure 6 shows that the offline attack is only slightly weaker than the online a
 The paper re-evaluates prior work under the same low-FPR protocol and finds that earlier methods perform far worse than their average-case numbers suggest. The strongest prior attack in this setting is the per-example thresholding approach of Sablayrolles et al., but LiRA still substantially outperforms it.
 
 <!-- source-page: 8 -->
-![Table I](./figures/table-p008-01.png)
+![Table I](./figures/table-p008-01.jpg)
 
 Table I: Comparison of prior membership inference attacks under the same settings for well-generalizing models on CIFAR-10, CIFAR-100, and WikiText-103 using 256 shadow models. Accuracy is shown only for completeness; the paper argues it is not a meaningful privacy metric.
 
@@ -206,11 +206,11 @@ The paper reviews several ingredients of prior attacks:
 The paper finds that per-class thresholds do not materially improve low-FPR success. Per-example thresholds help more, but prior nonparametric versions are brittle in the low-FPR regime. LiRA improves on them by combining per-example modeling with a parametric Gaussian likelihood test.
 
 <!-- source-page: 9 -->
-![Figure 7](./figures/figure-p009-01.png)
+![Figure 7](./figures/figure-p009-01.jpg)
 
 Fig. 7: Attack true-positive rate versus model train-test gap for a variety of CIFAR-10 models.
 
-![Table II](./figures/table-p009-01.png)
+![Table II](./figures/table-p009-01.jpg)
 
 Table II: Breakdown of how various components build up from the simple LOSS attack to the paper's stronger offline and online attacks on CIFAR-10.
 
@@ -223,11 +223,11 @@ To understand the relationship between vulnerability and overfitting, the paper 
 The attack consists of several interacting pieces. The ablation study shows how each contributes to low-FPR performance.
 
 <!-- source-page: 10 -->
-![Figure 8](./figures/figure-p010-01.png)
+![Figure 8](./figures/figure-p010-01.jpg)
 
 Fig. 8: The best scoring metrics ensure the output distribution is approximately Gaussian, and the worst metrics are not easily modeled with a standard distribution.
 
-![Figure 9](./figures/figure-p010-manual-02.png)
+![Figure 9](./figures/figure-p010-manual-02.jpg)
 
 Fig. 9: Attack success rate increases as the number of shadow models increases, with diminishing returns after roughly 64 models.
 
@@ -240,11 +240,11 @@ The first step of the attack projects the model confidence to a logit scale so t
 A central advantage of LiRA is that it uses a parametric Gaussian model. This reduces the number of shadow models required and makes low-FPR extrapolation more stable than nonparametric density estimation.
 
 <!-- source-page: 11 -->
-![Table III](./figures/table-p011-01.png)
+![Table III](./figures/table-p011-01.jpg)
 
 Table III: Querying on augmented versions of the image doubles the true-positive rate at low false-positive rates, with most benefits obtained from only two queries.
 
-![Figure 10](./figures/figure-p011-01.png)
+![Figure 10](./figures/figure-p011-01.jpg)
 
 Fig. 10: The attack's success rate on CINIC-10 remains nearly unchanged when the shadow-model training data is disjoint from the target model's training data, so long as both datasets come from the same distribution.
 
@@ -261,11 +261,11 @@ The paper separates the target's training dataset `D_train` from the attacker's 
 The paper next varies the target architecture, optimizer, and augmentation while letting the attacker guess these properties when training shadow models.
 
 <!-- source-page: 12 -->
-![Figure 11](./figures/figure-p012-01.png)
+![Figure 11](./figures/figure-p012-01.jpg)
 
 Fig. 11: The attack succeeds even when the adversary is uncertain about the target model's training setup. It performs best when the attacker guesses correctly, but remains strong under moderate mismatch.
 
-![Figure 12](./figures/figure-p012-manual-02.png)
+![Figure 12](./figures/figure-p012-manual-02.jpg)
 
 Fig. 12: The attack succeeds against real state-of-the-art CIFAR-10 models. The strongest results come from matching the target architecture, but even mismatched shadow architectures remain useful.
 
@@ -278,7 +278,7 @@ The paper reports that larger models tend to be more vulnerable than smaller one
 The experiments so far used models trained by the authors. The paper also attacks released CIFAR-10 models from Phan. It trains 256 shadow models by subsampling CIFAR-10 and evaluates two settings: one where the attacker knows the target architecture and another where the attacker uses a different architecture. The same qualitative lessons hold: matching helps, but mismatched shadows still provide a strong attack.
 
 <!-- source-page: 13 -->
-![Figure 13](./figures/figure-p013-01.png)
+![Figure 13](./figures/figure-p013-01.jpg)
 
 Fig. 13: Out-of-distribution training examples are less private.
 
@@ -319,11 +319,11 @@ References continue on this page. The final entries are references `[70]` throug
 
 The paper studies membership inference against models trained with differentially private SGD. It varies the clipping norm and noise multiplier and reports both model accuracy and attack effectiveness.
 
-![Table IV](./figures/table-p016-01.png)
+![Table IV](./figures/table-p016-01.jpg)
 
 Table IV: Accuracy of the models trained with DP-SGD on CIFAR-10 under different noise parameters.
 
-![Figure 14](./figures/figure-p016-manual-01.png)
+![Figure 14](./figures/figure-p016-manual-01.jpg)
 
 Fig. 14: Effectiveness of using DP-SGD against the paper's attack with different privacy budgets.
 
@@ -334,7 +334,7 @@ The appendix concludes that even very small amounts of DP noise can substantiall
 
 Prior work suggested that membership inference becomes easier if the adversary has white-box access to the target model and can inspect gradients. The paper compares its confidence-based attack to variants that additionally use gradient norms.
 
-![Figure 15](./figures/figure-p017-01.png)
+![Figure 15](./figures/figure-p017-01.jpg)
 
 Fig. 15: Comparison of the white-box attack using the paper's approach to the black-box setting.
 
@@ -344,13 +344,13 @@ The appendix reports that gradient norms can improve overall AUC, but do not hel
 
 ### A. Attack performance versus model accuracy
 
-![Figure 16](./figures/figure-p017-manual-02.png)
+![Figure 16](./figures/figure-p017-manual-02.jpg)
 
 Fig. 16: Attack true-positive rate versus model test accuracy.
 
 ### B. Full ROC curves for Gaussian distribution fitting
 
-![Figure 17](./figures/figure-p017-manual-03.png)
+![Figure 17](./figures/figure-p017-manual-03.jpg)
 
 Fig. 17: Effect of varying the number of models trained on attack success rates. Estimating the mean per-example is useful, but with few shadow models it is much more effective to assign all examples the same variance.
 
@@ -359,19 +359,19 @@ Fig. 17: Effect of varying the number of models trained on attack success rates.
 
 Similarly to Figure 1 for CIFAR-10, the appendix compares the paper's attack against prior work on additional datasets: CIFAR-100, WikiText-103, Texas, and Purchase.
 
-![Figure 18](./figures/figure-p018-01.png)
+![Figure 18](./figures/figure-p018-01.jpg)
 
 Fig. 18: ROC curve of prior membership inference attacks, compared to the paper's attack, on CIFAR-100.
 
-![Figure 19](./figures/figure-p018-manual-02.png)
+![Figure 19](./figures/figure-p018-manual-02.jpg)
 
 Fig. 19: ROC curve of prior membership inference attacks, compared to the paper's attack, on WikiText-103. Prior attacks that rely on model features are omitted because they were not designed for sequential models.
 
-![Figure 20](./figures/figure-p018-manual-03.png)
+![Figure 20](./figures/figure-p018-manual-03.jpg)
 
 Fig. 20: ROC curve of prior membership inference attacks, compared to the paper's attack, on the Texas dataset.
 
-![Figure 21](./figures/figure-p018-manual-04.png)
+![Figure 21](./figures/figure-p018-manual-04.jpg)
 
 Fig. 21: ROC curve of prior membership inference attacks, compared to the paper's attack, on the Purchase dataset.
 
@@ -380,19 +380,19 @@ Fig. 21: ROC curve of prior membership inference attacks, compared to the paper'
 
 The appendix repeats the ablation study on additional datasets. The same overall pattern holds: combining per-example thresholds, logit scaling, Gaussian likelihood estimation, and multiple queries yields the strongest attacks. On datasets such as WikiText-103, Texas, and Purchase, the models are trained without data augmentations, so query augmentation is not used there.
 
-![Table V](./figures/table-p019-01.png)
+![Table V](./figures/table-p019-01.jpg)
 
 Table V: Breakdown of how various components build up to obtain the paper's best attacks on CIFAR-100.
 
-![Table VI](./figures/table-p019-02.png)
+![Table VI](./figures/table-p019-02.jpg)
 
 Table VI: Breakdown of how various components build up to obtain the paper's best attacks on WikiText-103.
 
-![Table VII](./figures/table-p019-03.png)
+![Table VII](./figures/table-p019-03.jpg)
 
 Table VII: Breakdown of how various components build up to obtain the paper's best attacks on Texas.
 
-![Table VIII](./figures/table-p019-04.png)
+![Table VIII](./figures/table-p019-04.jpg)
 
 Table VIII: Breakdown of how various components build up to obtain the paper's best attacks on Purchase.
 
@@ -401,14 +401,14 @@ Table VIII: Breakdown of how various components build up to obtain the paper's b
 This appendix section plots full ROC curves for the experiments where the attacker must guess the target model's architecture, optimizer, and augmentation procedure.
 
 <!-- source-page: 20 -->
-![Figure 22](./figures/figure-p020-manual-01.png)
+![Figure 22](./figures/figure-p020-manual-01.jpg)
 
 Fig. 22: Different architectures with momentum optimizer and mirror and shift as augmentation.
 
-![Figure 23](./figures/figure-p020-manual-02.png)
+![Figure 23](./figures/figure-p020-manual-02.jpg)
 
 Fig. 23: Different optimizers on WRN28-10 with mirror and shift as augmentation.
 
-![Figure 24](./figures/figure-p020-manual-03.png)
+![Figure 24](./figures/figure-p020-manual-03.jpg)
 
 Fig. 24: Different augmentations on WRN28-10 with momentum optimizer.

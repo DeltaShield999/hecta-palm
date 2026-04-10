@@ -2,8 +2,8 @@
   {
     "page": 1,
     "caption": "Fig. 1: Comparing the true-positive rate vs. false-positive rate of prior membership inference attacks reveals a wide gap in effectiveness. An attack\u2019s average accuracy is not indicative of its performance at low FPRs. By extending on the most effective ideas, we improve membership inference attacks by 10\u00d7, for a non-over\ufb01t CIFAR-10 model (92% test accuracy).",
-    "filename": "figure-p001-01.png",
-    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p001-01.png",
+    "filename": "figure-p001-01.jpg",
+    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p001-01.jpg",
     "bbox_points": [
       305.9779968261719,
       140.182373046875,
@@ -14,8 +14,8 @@
   {
     "page": 4,
     "caption": "Fig. 2: ROC curve for the LOSS baseline membership infer- ence attack, shown with both linear scaling (left), also and log-log scaling (right) to emphasize the low-FPR regime.",
-    "filename": "figure-p004-01.png",
-    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p004-01.png",
+    "filename": "figure-p004-01.jpg",
+    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p004-01.jpg",
     "bbox_points": [
       46.24300003051758,
       263.676025390625,
@@ -26,8 +26,8 @@
   {
     "page": 5,
     "caption": "Fig. 3: Some examples are easier to \ufb01t than others, and some have a larger separability between their losses when being a member of the training set or not. We train 1024 models on random subsets of CIFAR-10 and plot the losses for four examples when the example is a member of the training set (\u02dcQin(x, y), in red) or not (\u02dcQout(x, y), in blue).",
-    "filename": "figure-p005-01.png",
-    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p005-01.png",
+    "filename": "figure-p005-01.jpg",
+    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p005-01.jpg",
     "bbox_points": [
       93.02200317382812,
       65.65025329589844,
@@ -38,8 +38,8 @@
   {
     "page": 7,
     "caption": "Fig. 5: Success rate of our attack on CIFAR-10, CIFAR- 100, ImageNet, and WikiText. All plots are generated with 256 shadow models, except ImageNet which uses 64.",
-    "filename": "figure-p007-01.png",
-    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p007-01.png",
+    "filename": "figure-p007-01.jpg",
+    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p007-01.jpg",
     "bbox_points": [
       60.49299621582031,
       44.541015625,
@@ -50,8 +50,8 @@
   {
     "page": 9,
     "caption": "Fig. 7: Attack true-positive rate versus model train-test gap for a variety of CIFAR-10 models.",
-    "filename": "figure-p009-01.png",
-    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p009-01.png",
+    "filename": "figure-p009-01.jpg",
+    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p009-01.jpg",
     "bbox_points": [
       69.0999984741211,
       44.54060363769531,
@@ -62,8 +62,8 @@
   {
     "page": 10,
     "caption": "Fig. 8: The best scoring metrics ensure the output distribution is approximately Gaussian, and the worst metrics are not easily modeled with a standard distribution (see Figure 4).",
-    "filename": "figure-p010-01.png",
-    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p010-01.png",
+    "filename": "figure-p010-01.jpg",
+    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p010-01.jpg",
     "bbox_points": [
       60.49299621582031,
       44.541015625,
@@ -74,8 +74,8 @@
   {
     "page": 11,
     "caption": "Fig. 10: The attack\u2019s success rate on CINIC-10 remains un- changed when the training sets of shadow models are sampled from a dataset Dattack that is disjoint from the target model\u2019s training set Dtrain. The attack\u2019s performance does decrease when the two datasets are sampled from different distributions.",
-    "filename": "figure-p011-01.png",
-    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p011-01.png",
+    "filename": "figure-p011-01.jpg",
+    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p011-01.jpg",
     "bbox_points": [
       323.5069885253906,
       44.541015625,
@@ -86,8 +86,8 @@
   {
     "page": 12,
     "caption": "Fig. 11: Our attack succeeds when the adversary is uncertain of the target model\u2019s training setup. We vary the target model\u2019s architecture (a), the training optimizer (b) and the data augmentation (c), as well as the adversary\u2019s guess of each of these properties when training shadow models. The attack performs best when the adversary guesses correctly (black-lined markers).",
-    "filename": "figure-p012-01.png",
-    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p012-01.png",
+    "filename": "figure-p012-01.jpg",
+    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p012-01.jpg",
     "bbox_points": [
       42.9640007019043,
       44.54093933105469,
@@ -98,8 +98,8 @@
   {
     "page": 13,
     "caption": "Fig. 13: Out-of-distribution training examples are less private.",
-    "filename": "figure-p013-01.png",
-    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p013-01.png",
+    "filename": "figure-p013-01.jpg",
+    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p013-01.jpg",
     "bbox_points": [
       60.49299621582031,
       24.61602783203125,
@@ -110,8 +110,8 @@
   {
     "page": 17,
     "caption": "Fig. 15: Comparison of the white-box attack using our ap- proach to the black-box setting.",
-    "filename": "figure-p017-01.png",
-    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p017-01.png",
+    "filename": "figure-p017-01.jpg",
+    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p017-01.jpg",
     "bbox_points": [
       74.34600067138672,
       217.91421508789062,
@@ -122,8 +122,8 @@
   {
     "page": 18,
     "caption": "Fig. 18: ROC curve of prior membership inference attacks, compared to our attack, on CIFAR-100.",
-    "filename": "figure-p018-01.png",
-    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p018-01.png",
+    "filename": "figure-p018-01.jpg",
+    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p018-01.jpg",
     "bbox_points": [
       80.67900085449219,
       119.77528381347656,
@@ -134,92 +134,92 @@
   {
     "page": 5,
     "caption": "Fig. 4: The model's confidence, or its logarithm (the cross-entropy loss), are not normally distributed. Applying the logit function yields values that are approximately normal.",
-    "filename": "figure-p005-manual-02.png",
-    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p005-manual-02.png",
+    "filename": "figure-p005-manual-02.jpg",
+    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p005-manual-02.jpg",
     "manual": true
   },
   {
     "page": 7,
     "caption": "Fig. 6: Success rate of our offline attack on CIFAR-10, CIFAR-100, ImageNet, and WikiText. All plots are generated with 128 OUT shadow models, except ImageNet which uses 32. For each dataset, we also plot our online attack with the same number of shadow models (half IN, half OUT).",
-    "filename": "figure-p007-manual-02.png",
-    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p007-manual-02.png",
+    "filename": "figure-p007-manual-02.jpg",
+    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p007-manual-02.jpg",
     "manual": true
   },
   {
     "page": 10,
     "caption": "Fig. 9: Attack success rate increases as the number of shadow models increases, with the benefits tapering off after 64 are used.",
-    "filename": "figure-p010-manual-02.png",
-    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p010-manual-02.png",
+    "filename": "figure-p010-manual-02.jpg",
+    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p010-manual-02.jpg",
     "manual": true
   },
   {
     "page": 12,
     "caption": "Fig. 12: Our attack succeeds against real state-of-the-art CIFAR-10 models. The attacker trains shadow models on a random subset of 50,000 points from the entire CIFAR-10 dataset. The attack performs best when the shadow models have the same architecture as the target model, but training different models still leads to a strong attack.",
-    "filename": "figure-p012-manual-02.png",
-    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p012-manual-02.png",
+    "filename": "figure-p012-manual-02.jpg",
+    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p012-manual-02.jpg",
     "manual": true
   },
   {
     "page": 16,
     "caption": "Fig. 14: Effectiveness of using DP-SGD against our attack with different privacy budgets.",
-    "filename": "figure-p016-manual-01.png",
-    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p016-manual-01.png",
+    "filename": "figure-p016-manual-01.jpg",
+    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p016-manual-01.jpg",
     "manual": true
   },
   {
     "page": 17,
     "caption": "Fig. 16: Attack true-positive rate versus model test accuracy.",
-    "filename": "figure-p017-manual-02.png",
-    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p017-manual-02.png",
+    "filename": "figure-p017-manual-02.jpg",
+    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p017-manual-02.jpg",
     "manual": true
   },
   {
     "page": 17,
     "caption": "Fig. 17: Effect of varying the number of models trained on attack success rates. It is always useful to estimate the mean per-example difficulty; however when only a few models are available, it is orders of magnitude more effective to assign all examples the same variance.",
-    "filename": "figure-p017-manual-03.png",
-    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p017-manual-03.png",
+    "filename": "figure-p017-manual-03.jpg",
+    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p017-manual-03.jpg",
     "manual": true
   },
   {
     "page": 18,
     "caption": "Fig. 19: ROC curve of prior membership inference attacks, compared to our attack, on WikiText-103.",
-    "filename": "figure-p018-manual-02.png",
-    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p018-manual-02.png",
+    "filename": "figure-p018-manual-02.jpg",
+    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p018-manual-02.jpg",
     "manual": true
   },
   {
     "page": 18,
     "caption": "Fig. 20: ROC curve of prior membership inference attacks, compared to our attack, on the Texas dataset.",
-    "filename": "figure-p018-manual-03.png",
-    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p018-manual-03.png",
+    "filename": "figure-p018-manual-03.jpg",
+    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p018-manual-03.jpg",
     "manual": true
   },
   {
     "page": 18,
     "caption": "Fig. 21: ROC curve of prior membership inference attacks, compared to our attack, on the Purchase dataset.",
-    "filename": "figure-p018-manual-04.png",
-    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p018-manual-04.png",
+    "filename": "figure-p018-manual-04.jpg",
+    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p018-manual-04.jpg",
     "manual": true
   },
   {
     "page": 20,
     "caption": "Fig. 22: Different architectures with momentum optimizer and mirror and shift as augmentation.",
-    "filename": "figure-p020-manual-01.png",
-    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p020-manual-01.png",
+    "filename": "figure-p020-manual-01.jpg",
+    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p020-manual-01.jpg",
     "manual": true
   },
   {
     "page": 20,
     "caption": "Fig. 23: Different optimizers on WRN28-10 with mirror and shift as augmentation.",
-    "filename": "figure-p020-manual-02.png",
-    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p020-manual-02.png",
+    "filename": "figure-p020-manual-02.jpg",
+    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p020-manual-02.jpg",
     "manual": true
   },
   {
     "page": 20,
     "caption": "Fig. 24: Different augmentations on WRN28-10 with momentum optimizer.",
-    "filename": "figure-p020-manual-03.png",
-    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p020-manual-03.png",
+    "filename": "figure-p020-manual-03.jpg",
+    "path": "/Users/hamza/Desktop/multi_agent_fhe/docs/md/Membership Inference Attacks From First Principles-conversion-20260410-113705-92bd1d/figures/figure-p020-manual-03.jpg",
     "manual": true
   }
 ]

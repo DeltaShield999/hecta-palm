@@ -3,48 +3,48 @@
     "page": 5,
     "figure": "Figure 1",
     "caption": "Accuracy of MI attacks on CIFAR-10. We evaluate 100 to 10,000 training points and compare the baseline gap attack, the confidence-vector attack that relies on a fine-grained query interface, and our label-only attacks based on data augmentation and distance to the decision boundary.",
-    "filename": "figure-p005-01.png",
-    "path": "figures/figure-p005-01.png",
+    "filename": "figure-p005-01.jpg",
+    "path": "figures/figure-p005-01.jpg",
     "source": "extractor"
   },
   {
     "page": 7,
     "figure": "Figure 2",
     "caption": "Comparison of query settings for different label-only MI attacks on CIFAR-10.",
-    "filename": "figure-p007-manual-02.png",
-    "path": "figures/figure-p007-manual-02.png",
+    "filename": "figure-p007-manual-02.jpg",
+    "path": "figures/figure-p007-manual-02.jpg",
     "source": "manual_crop"
   },
   {
     "page": 8,
     "figure": "Figure 3",
     "caption": "Accuracy of MI attacks on CIFAR-10 models trained with data augmentation on a subset of 2500 images.",
-    "filename": "figure-p008-01.png",
-    "path": "figures/figure-p008-01.png",
+    "filename": "figure-p008-01.jpg",
+    "path": "figures/figure-p008-01.jpg",
     "source": "extractor"
   },
   {
     "page": 8,
     "figure": "Figure 4",
     "caption": "Accuracy of membership inference attacks on CIFAR-10 models trained as in FixMatch (Sohn et al., 2020).",
-    "filename": "figure-p008-manual-02.png",
-    "path": "figures/figure-p008-manual-02.png",
+    "filename": "figure-p008-manual-02.jpg",
+    "path": "figures/figure-p008-manual-02.jpg",
     "source": "manual_crop"
   },
   {
     "page": 9,
     "figure": "Figure 5",
     "caption": "Test accuracy and label-only attack accuracy for various defenses. Same setup as Figure 6.",
-    "filename": "figure-p009-01.png",
-    "path": "figures/figure-p009-01.png",
+    "filename": "figure-p009-01.jpg",
+    "path": "figures/figure-p009-01.jpg",
     "source": "extractor"
   },
   {
     "page": 9,
     "figure": "Figure 6",
     "caption": "Comparison of MI attacks on various defenses.",
-    "filename": "figure-p009-manual-02.png",
-    "path": "figures/figure-p009-manual-02.png",
+    "filename": "figure-p009-manual-02.jpg",
+    "path": "figures/figure-p009-manual-02.jpg",
     "source": "manual_crop"
   }
 ]

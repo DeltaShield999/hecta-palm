@@ -671,7 +671,7 @@ print ('Fraud %    ',round(df['Class'].value_counts()[1]/len(df)*100,2));
 
 
     
-![png](assets/document_9_1.png)
+![png](assets/document_9_1.jpg)
     
 
 
@@ -773,7 +773,7 @@ plt.show()
 
 
     
-![png](assets/document_19_0.png)
+![png](assets/document_19_0.jpg)
     
 
 
@@ -822,7 +822,7 @@ Undersampling and oversampling are common techniques for handling highly imbalan
 
 - Oversampling increases the minority-class examples (fraud). Methods such as random oversampling or SMOTE replicate or synthetically generate additional fraud cases, leading to a more balanced training set and helping the model learn to detect fraudulent transactions more effectively.
 
-![image.png](assets/cfaf42da-9c17-4ff4-8095-bcc98f9e2f14.png)
+![image.jpg](assets/cfaf42da-9c17-4ff4-8095-bcc98f9e2f14.jpg)
 
 ## Applying the undersampling
 
@@ -859,7 +859,7 @@ plt.show()
 
 
     
-![png](assets/document_27_0.png)
+![png](assets/document_27_0.jpg)
     
 
 
@@ -909,7 +909,7 @@ plt.show()
 
 
     
-![png](assets/document_32_0.png)
+![png](assets/document_32_0.jpg)
     
 
 
@@ -985,7 +985,7 @@ plt.show()
 
 
     
-![png](assets/document_38_0.png)
+![png](assets/document_38_0.jpg)
     
 
 
@@ -1038,7 +1038,7 @@ plt.show()
 
 
     
-![png](assets/document_43_0.png)
+![png](assets/document_43_0.jpg)
     
 
 
@@ -1095,7 +1095,7 @@ plt.show()
 
 
     
-![png](assets/document_47_0.png)
+![png](assets/document_47_0.jpg)
     
 
 

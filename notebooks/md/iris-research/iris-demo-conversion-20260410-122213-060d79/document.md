@@ -103,7 +103,7 @@ plt.show()
 
 
     
-![png](assets/document_2_1.png)
+![png](assets/document_2_1.jpg)
     
 
 
@@ -155,7 +155,7 @@ display(graph)
 
 
     
-![png](assets/document_3_1.png)
+![png](assets/document_3_1.jpg)
     
 
 
@@ -427,7 +427,7 @@ plt.show()
 
 
     
-![png](assets/document_5_1.png)
+![png](assets/document_5_1.jpg)
     
 
 
@@ -458,7 +458,7 @@ print(classification_report(y_test, y_pred_pruned, target_names=target_names))
 
 
     
-![png](assets/document_6_0.png)
+![png](assets/document_6_0.jpg)
     
 
 

@@ -136,7 +136,7 @@ Observing Figure 1 and Table 1 (a) and (c), we see that the confidence-vector at
 
 Beyond images, we show that our label-only attacks can be applied outside of the image domain in Table 2. Our label-only attack evaluates a model's accuracy under *random perturbations*, by adding Gaussian noise for continuous-valued inputs, and flipping binary values according to Bernoulli noise (see Section 3.4). Using 10,000 queries, our attacks closely match (at most 4 percentage-point degradation) confidence-based attacks. Note that our attacks could also be instantiated in audio or natural language domains, using existing adversarial examples attacks (Carlini & Wagner, 2018) and data augmentations (Zhang et al., 2015).
 
-![Figure 1](./figures/figure-p005-01.png)
+![Figure 1](./figures/figure-p005-01.jpg)
 
 *Figure 1. Accuracy of MI attacks on CIFAR-10. We evaluate 100 to 10,000 training points and compare the baseline gap attack, the confidence-vector attack that relies on a fine-grained query interface, and our label-only attacks based on data augmentation and distance to the decision boundary. We also show the confidence-vector attack performance against MemGuard, noting that our label-only performances remain nearly unaltered. For the data augmentation attack, we report the best accuracy across multiple values of `r` (rotation angle) and `d` (number of translated pixels).*
 
@@ -202,7 +202,7 @@ In Figure 2(c), we compare different boundary distance attacks, discussed in Sec
 
 <!-- source-page: 7 -->
 
-![Figure 2](./figures/figure-p007-manual-02.png)
+![Figure 2](./figures/figure-p007-manual-02.jpg)
 
 *Figure 2. Comparison of query settings for different label-only MI attacks on CIFAR-10. Target models are trained on a subset of 2,500 data points. In (a) and (b), we compare the performance of the data augmentation attack against two baselines (the gap attack and the label-only boundary distance attack, with 2,500 queries), as we increase the `r` and `d` parameters. In (c), we compare attacks that threshold on a point's distance to the boundary in a black-box setting with a white-box baseline using Carlini and Wagner's attack (Carlini & Wagner, 2017). We describe these attacks in Section 3.4. Costs are approximately `$0.1` per 1000 queries.*
 
@@ -230,11 +230,11 @@ Our results here, shown in Figure 4, corroborate those above. Though we find in 
 
 <!-- source-page: 8 -->
 
-![Figure 3](./figures/figure-p008-01.png)
+![Figure 3](./figures/figure-p008-01.jpg)
 
 *Figure 3. Accuracy of MI attacks on CIFAR-10 models trained with data augmentation on a subset of 2500 images. As in our attack, `d` controls the number of pixels by which images are translated during training, where no augmentation is `d = 0`. For models trained with significant amounts of data augmentation, MI attacks become stronger despite it generalizing better.*
 
-![Figure 4](./figures/figure-p008-manual-02.png)
+![Figure 4](./figures/figure-p008-manual-02.jpg)
 
 *Figure 4. Accuracy of membership inference attacks on CIFAR-10 models trained as in FixMatch (Sohn et al., 2020). Our data augmentation attacks, which mimic the training augmentations, match or outperform the confidence-vector attacks when augmentations were used in training. We evaluate 1000 randomly generated augmentations for this attack. As in previous experiments, we find our label-only distance attack performs on par with the confidence-vector attack. Interestingly, the gap attack accuracy also improves due to a relatively larger increase in training accuracy. "With Augmentations" and "Without Augmentations" refer to using all regularizations, as in FixMatch, or none, respectively.*
 
@@ -256,11 +256,11 @@ We run our attacks on the outliers of the same models as in Figure 6. We find in
 
 <!-- source-page: 9 -->
 
-![Figure 5](./figures/figure-p009-01.png)
+![Figure 5](./figures/figure-p009-01.jpg)
 
 *Figure 5. Test accuracy and label-only attack accuracy for various defenses. Same setup as Figure 6. Models towards the bottom right are more private and more accurate.*
 
-![Figure 6](./figures/figure-p009-manual-02.png)
+![Figure 6](./figures/figure-p009-manual-02.jpg)
 
 *Figure 6. Comparison of MI attacks on various defenses. Target models are trained on 2500 data points from CIFAR-10. Point sizes indicate relative regularization amounts within a defense.*
 

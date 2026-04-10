@@ -230,7 +230,7 @@ plt.show()
 
 
     
-![png](assets/document_4_1.png)
+![png](assets/document_4_1.jpg)
     
 
 
@@ -321,7 +321,7 @@ plt.show()
 
 
     
-![png](assets/document_5_1.png)
+![png](assets/document_5_1.jpg)
     
 
 
@@ -370,7 +370,7 @@ plt.show()
 
 
     
-![png](assets/document_6_1.png)
+![png](assets/document_6_1.jpg)
     
 
 
@@ -400,7 +400,7 @@ print(classification_report(y_test, y_pred_pruned, target_names=target_names))
 
 
     
-![png](assets/document_7_0.png)
+![png](assets/document_7_0.jpg)
     
 
 
@@ -1034,13 +1034,13 @@ plt.show()
 
 
     
-![png](assets/document_22_0.png)
+![png](assets/document_22_0.jpg)
     
 
 
 
     
-![png](assets/document_22_1.png)
+![png](assets/document_22_1.jpg)
     
 
 
