@@ -1,0 +1,12 @@
+[protocol]
+config_dir = "configs/protocol"
+
+[inputs]
+tier1_records_path = "data/processed/tier1_records.parquet"
+stage2_attack_prompts_path = "data/processed/stage2_attack_prompts.jsonl"
+
+[outputs]
+output_dir = "data/processed"
+train_filename = "stage3_filter_messages_train.jsonl"
+val_filename = "stage3_filter_messages_val.jsonl"
+test_filename = "stage3_filter_messages_test.jsonl"
