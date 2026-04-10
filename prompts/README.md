@@ -19,4 +19,5 @@ Current implementation stage:
 - spec freeze is complete
 - Task 01 scaffold work is complete
 - Task 02 Tier 1 data generation is complete
-- the next task is `03_tier2_chat_rendering_and_stage1_corpora.md`
+- Task 03 Tier 2 chat rendering and Stage 1 corpora are complete
+- the next task is `04_stage2_attack_prompt_generation.md`
