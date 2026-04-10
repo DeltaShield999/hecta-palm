@@ -17,6 +17,7 @@ dependencies = [
 fhe-experiment-run = "qwen_langgraph_demo.main:main"
 fhe-endpoint-smoke = "qwen_langgraph_demo.test_endpoint:main"
 fhe-materialize-tier1 = "experiment.data_gen.materialize_tier1:main"
+fhe-materialize-stage1 = "experiment.data_gen.stage1_corpora:main"
 
 [build-system]
 requires = ["hatchling"]

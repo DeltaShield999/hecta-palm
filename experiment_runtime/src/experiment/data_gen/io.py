@@ -2,7 +2,9 @@ from __future__ import annotations
 
 from collections.abc import Sequence
 import csv
+import json
 from pathlib import Path
+from typing import Any
 
 import pyarrow as pa
 import pyarrow.parquet as pq
@@ -54,3 +56,16 @@ def read_canary_registry_csv(path: Path) -> list[CanaryRegistryEntry]:
     with path.open("r", newline="", encoding="utf-8") as handle:
         reader = csv.DictReader(handle)
         return [CanaryRegistryEntry.from_row(row) for row in reader]
+
+
+def write_jsonl_rows(rows: Sequence[dict[str, Any]], path: Path) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8", newline="\n") as handle:
+        for row in rows:
+            handle.write(json.dumps(row, ensure_ascii=True, separators=(",", ":"), allow_nan=False))
+            handle.write("\n")
+
+
+def read_jsonl_rows(path: Path) -> list[dict[str, Any]]:
+    with path.open("r", encoding="utf-8") as handle:
+        return [json.loads(line) for line in handle if line.strip()]

@@ -1,0 +1,15 @@
+[protocol]
+config_dir = "configs/protocol"
+
+[inputs]
+tier1_records_path = "data/processed/tier1_records.parquet"
+canary_registry_path = "data/processed/canary_registry.csv"
+
+[outputs]
+output_dir = "data/processed"
+mia_eval_filename = "mia_eval.jsonl"
+
+[outputs.training]
+"1x" = "tier2_train_1x.jsonl"
+"10x" = "tier2_train_10x.jsonl"
+"50x" = "tier2_train_50x.jsonl"
