@@ -1,0 +1,6 @@
+*.pdf
+*.ipynb
+*.jpg
+*.jpeg
+*.png
+.DS_Store

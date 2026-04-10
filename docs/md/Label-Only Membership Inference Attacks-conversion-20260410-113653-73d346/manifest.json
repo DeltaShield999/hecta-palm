@@ -1,0 +1,19 @@
+{
+  "status": "completed",
+  "created_at": "2026-04-10T11:36:53-07:00",
+  "completed_at": "2026-04-10T18:47:11Z",
+  "path_base": ".",
+  "source_pdf": "../../pdf/Label-Only Membership Inference Attacks.pdf",
+  "task_dir": ".",
+  "manifest_path": "manifest.json",
+  "pages_dir": "pages",
+  "figures_dir": "figures",
+  "figures_manifest": "figures/figures.json",
+  "crops_dir": "crops",
+  "primary_markdown": "document.md",
+  "document_title_hint": "Label-Only Membership Inference Attacks",
+  "page_marker_format": "<!-- source-page: N -->",
+  "rendered_pages_count": 11,
+  "manual_transcription": true,
+  "ocr_used": false
+}

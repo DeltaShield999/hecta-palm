@@ -1,0 +1,22 @@
+{
+  "status": "converted",
+  "created_at": "2026-04-10T12:21:21-07:00",
+  "path_base": ".",
+  "source_notebook": "../../ipynb/cc-fraud.ipynb",
+  "task_dir": ".",
+  "manifest_path": "manifest.json",
+  "primary_markdown": "document.md",
+  "assets_dir": "assets",
+  "document_title_hint": "Creditcard Fraud - Logistic Regression",
+  "converter": "nbconvert",
+  "executed_during_conversion": false,
+  "assets_present": true,
+  "asset_count": 8,
+  "notebook_stats": {
+    "markdown_cells": 21,
+    "code_cells": 55,
+    "raw_cells": 0,
+    "code_cells_with_outputs": 42,
+    "output_objects": 43
+  }
+}

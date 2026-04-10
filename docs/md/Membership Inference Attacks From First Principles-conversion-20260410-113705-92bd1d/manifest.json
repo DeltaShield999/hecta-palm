@@ -1,0 +1,19 @@
+{
+  "status": "completed",
+  "created_at": "2026-04-10T11:37:05-07:00",
+  "path_base": ".",
+  "source_pdf": "../../pdf/Membership Inference Attacks From First Principles.pdf",
+  "task_dir": ".",
+  "manifest_path": "manifest.json",
+  "pages_dir": "pages",
+  "figures_dir": "figures",
+  "figures_manifest": "figures/figures.json",
+  "crops_dir": "crops",
+  "primary_markdown": "document.md",
+  "document_title_hint": "Membership Inference Attacks From First Principles",
+  "page_marker_format": "<!-- source-page: N -->",
+  "rendered_pages_count": 20,
+  "manual_transcription": true,
+  "ocr_used": false,
+  "notes": "Transcribed manually from rendered page images. Dense result tables were preserved as cropped image assets referenced from document.md."
+}

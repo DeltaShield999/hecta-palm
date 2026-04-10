@@ -1,0 +1,22 @@
+{
+  "status": "converted",
+  "created_at": "2026-04-10T12:22:13-07:00",
+  "path_base": ".",
+  "source_notebook": "../../../ipynb/iris-research/iris-demo-normilized.ipynb",
+  "task_dir": ".",
+  "manifest_path": "manifest.json",
+  "primary_markdown": "document.md",
+  "assets_dir": "assets",
+  "document_title_hint": "iris-demo-normilized",
+  "converter": "nbconvert",
+  "executed_during_conversion": false,
+  "assets_present": true,
+  "asset_count": 6,
+  "notebook_stats": {
+    "markdown_cells": 2,
+    "code_cells": 22,
+    "raw_cells": 0,
+    "code_cells_with_outputs": 18,
+    "output_objects": 25
+  }
+}
