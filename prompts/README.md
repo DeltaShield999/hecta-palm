@@ -18,4 +18,5 @@ Current implementation stage:
 
 - spec freeze is complete
 - Task 01 scaffold work is complete
-- the next task is `02_tier1_data_generation_and_validators.md`
+- Task 02 Tier 1 data generation is complete
+- the next task is `03_tier2_chat_rendering_and_stage1_corpora.md`
