@@ -1,0 +1,65 @@
+[protocol]
+config_dir = "configs/protocol"
+
+[inputs.training_corpora]
+"1x" = "data/processed/tier2_train_1x.jsonl"
+"10x" = "data/processed/tier2_train_10x.jsonl"
+"50x" = "data/processed/tier2_train_50x.jsonl"
+
+[outputs]
+root_dir = "runs/stage1"
+
+[model]
+name = "Qwen/Qwen2-1.5B-Instruct"
+trust_remote_code = false
+attn_implementation = "sdpa"
+
+[tokenizer]
+use_fast = true
+add_generation_prompt = false
+padding_side = "right"
+truncation_side = "right"
+max_sequence_length = 1024
+
+[lora]
+r = 32
+lora_alpha = 64
+lora_dropout = 0.05
+bias = "none"
+target_modules = [
+  "q_proj",
+  "k_proj",
+  "v_proj",
+  "o_proj",
+  "gate_proj",
+  "up_proj",
+  "down_proj",
+]
+
+[training]
+per_device_train_batch_size = 8
+gradient_accumulation_steps = 1
+learning_rate = 0.0002
+weight_decay = 0.0
+warmup_ratio = 0.03
+max_steps = 1000
+logging_steps = 10
+save_steps = 100
+save_total_limit = 2
+lr_scheduler_type = "cosine"
+optim = "adamw_torch"
+dataloader_num_workers = 0
+dataloader_pin_memory = true
+bf16 = true
+tf32 = true
+gradient_checkpointing = false
+max_train_examples = 0
+
+[smoke]
+max_train_examples = 256
+max_steps = 5
+logging_steps = 1
+save_steps = 5
+
+[seed]
+value = 20260410

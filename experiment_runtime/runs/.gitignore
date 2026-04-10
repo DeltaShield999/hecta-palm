@@ -1,0 +1,7 @@
+# Keep lightweight run metadata visible, but ignore heavyweight training artifacts.
+**/trainer_output/
+**/*.safetensors
+**/*.pt
+**/*.pth
+**/*.bin
+**/tokenizer/tokenizer.json

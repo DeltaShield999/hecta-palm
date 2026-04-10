@@ -5,12 +5,17 @@ description = "LangGraph scaffold for the multi-agent FHE privacy experiment."
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "accelerate>=1.10.0",
     "pyarrow>=21.0.0",
+    "peft>=0.18.0",
     "langchain-openai>=1.0.0",
     "langgraph>=0.6.0",
     "openai>=2.0.0",
     "python-dotenv>=1.1.0",
     "rich>=14.0.0",
+    "safetensors>=0.6.2",
+    "torch>=2.8.0",
+    "transformers>=4.57.0",
 ]
 
 [project.scripts]
@@ -20,6 +25,7 @@ fhe-materialize-tier1 = "experiment.data_gen.materialize_tier1:main"
 fhe-materialize-stage1 = "experiment.data_gen.stage1_corpora:main"
 fhe-materialize-stage2 = "experiment.data_gen.stage2_attack_prompts:main"
 fhe-materialize-stage3 = "experiment.data_gen.stage3_filter_messages:main"
+fhe-train-stage1 = "experiment.train_qwen.cli:main"
 
 [build-system]
 requires = ["hatchling"]

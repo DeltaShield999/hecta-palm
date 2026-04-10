@@ -1,0 +1,36 @@
+{
+  "base_model_name": "Qwen/Qwen2-1.5B-Instruct",
+  "command": [
+    "/root/hecta-palm/experiment_runtime/.venv/bin/fhe-train-stage1",
+    "--config",
+    "configs/train/stage1_lora.toml",
+    "--exposure",
+    "1x",
+    "--run-name",
+    "smoke-1x-20260410-r3",
+    "--smoke"
+  ],
+  "completed_at_utc": "2026-04-10T23:27:19.298882+00:00",
+  "corpus_path": "/root/hecta-palm/experiment_runtime/data/processed/tier2_train_1x.jsonl",
+  "exposure_condition": "1x",
+  "run_dir": "/root/hecta-palm/experiment_runtime/runs/stage1/smoke-1x-20260410-r3",
+  "run_name": "smoke-1x-20260410-r3",
+  "sequence_length_summary": {
+    "example_count": 256,
+    "exposure_condition": "1x",
+    "max_sequence_length": 439,
+    "mean_sequence_length": 426.15234375,
+    "min_sequence_length": 408,
+    "source_path": "/root/hecta-palm/experiment_runtime/data/processed/tier2_train_1x.jsonl"
+  },
+  "single_gpu_only": true,
+  "smoke_enabled": true,
+  "started_at_utc": "2026-04-10T23:27:14.976197+00:00",
+  "train_examples": 256,
+  "trainable_parameters": {
+    "total": 1580643840,
+    "trainable": 36929536,
+    "trainable_ratio": 0.023363603530065318
+  },
+  "trainer_output_dir": "/root/hecta-palm/experiment_runtime/runs/stage1/smoke-1x-20260410-r3/trainer_output"
+}

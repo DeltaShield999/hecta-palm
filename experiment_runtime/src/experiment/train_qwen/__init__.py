@@ -1,1 +1,1 @@
-"""Qwen training package placeholder."""
+"""Stage 1 Qwen training helpers."""
