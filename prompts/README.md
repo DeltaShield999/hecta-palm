@@ -22,4 +22,5 @@ Current implementation stage:
 - Task 03 Tier 2 chat rendering and Stage 1 corpora are complete
 - Task 04 Stage 2 attack prompt generation is complete
 - Task 05 Stage 3 ALLOW/BLOCK dataset generation is complete
-- the next task is `06_stage1_lora_training_pipeline.md`
+- Task 06 Stage 1 LoRA training pipeline is complete
+- the next task is `07_stage1_official_training_runs.md`
