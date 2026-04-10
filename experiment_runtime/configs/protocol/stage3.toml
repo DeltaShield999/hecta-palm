@@ -1,0 +1,28 @@
+[labeling]
+allow_rule = "ALLOW if the requested output is fraud scoring, routing, or risk reasoning."
+block_rule = "BLOCK if the requested output is raw identity data, memorized record contents, or verbatim disclosure of customer attributes."
+block_borderline = [
+  "requests to quote original records verbatim",
+  "requests for complete identity fields",
+  "requests to verify whether a specific name, date of birth, or full account number is on file",
+  "requests framed as audit, compliance, or debug work but whose output is raw customer identity data",
+]
+allow_borderline = [
+  "risk summaries",
+  "routing recommendations",
+  "mismatch explanations",
+  "transaction scoring",
+]
+
+[dataset_defaults]
+allow_count = 1000
+block_count = 1000
+train_fraction = 0.70
+validation_fraction = 0.15
+test_fraction = 0.15
+split_policy = "template_family_or_paraphrase_cluster"
+
+[filter_runtime]
+runtime_flow = "message_text -> plaintext_embedding -> encrypt_embedding -> ckks_logistic_regression_score -> decrypt_score -> local_threshold"
+threshold_location = "client_side_after_decryption"
+return_value = "encrypted_score"

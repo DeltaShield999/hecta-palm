@@ -2,10 +2,10 @@
 
 ## 12. Recommended Repo Structure
 
-Use `multiagent/` as the runtime package for the LangGraph harness instead of creating a second unrelated orchestration project.
+Use `experiment_runtime/` as the runtime package for the LangGraph harness instead of creating a second unrelated orchestration project.
 
 ```text
-multiagent/
+experiment_runtime/
   configs/
   data/
     raw/

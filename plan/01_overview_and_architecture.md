@@ -46,7 +46,7 @@ Train a Qwen2 fraud-scoring model on synthetic records with repeated canaries, s
 
 ## 4.1 Repo-Level Engineering Decision
 
-The guide leaves the orchestration framework open. In this repo, use `LangGraph` and evolve the existing `multiagent/` project into the experiment harness.
+The guide leaves the orchestration framework open. In this repo, use `LangGraph` and evolve the existing `experiment_runtime/` project into the experiment harness.
 
 This is now a local implementation decision, not a research constraint.
 

@@ -6,8 +6,8 @@ from openai import OpenAI
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Send a basic prompt to the remote vLLM endpoint.")
-    parser.add_argument("prompt", nargs="?", default="Say hello in one sentence and confirm the model name.")
+    parser = argparse.ArgumentParser(description="Send a basic prompt to an OpenAI-compatible model endpoint.")
+    parser.add_argument("prompt", nargs="?", default="Summarize the role of the fraud scoring agent in one paragraph.")
     parser.add_argument("--max-tokens", type=int, default=1600, help="Maximum completion tokens.")
     parser.add_argument("--no-stream", action="store_true", help="Disable streaming output.")
     args = parser.parse_args()
@@ -25,7 +25,7 @@ def main() -> None:
 
     if args.no_stream:
         response = client.chat.completions.create(
-            model=os.getenv("MODEL_NAME", "Qwen/Qwen3.5-4B"),
+            model=os.getenv("MODEL_NAME", "Qwen/Qwen2-1.5B-Instruct"),
             messages=messages,
             max_completion_tokens=args.max_tokens,
         )
@@ -41,7 +41,7 @@ def main() -> None:
         return
 
     stream = client.chat.completions.create(
-        model=os.getenv("MODEL_NAME", "Qwen/Qwen3.5-4B"),
+        model=os.getenv("MODEL_NAME", "Qwen/Qwen2-1.5B-Instruct"),
         messages=messages,
         max_completion_tokens=args.max_tokens,
         stream=True,

@@ -1,0 +1,22 @@
+[metadata]
+protocol_version = "2026-04-10"
+
+[models]
+family = "Qwen2"
+primary = "Qwen/Qwen2-1.5B-Instruct"
+secondary = "Qwen/Qwen2-7B-Instruct"
+
+[dataset]
+member_records = 8000
+non_member_records = 2000
+canary_count = 100
+fraud_base_rate = 0.03
+
+[stage1]
+exposure_conditions = ["1x", "10x", "50x"]
+loss_rule = "full_sequence_causal_lm_loss"
+
+[pipeline]
+nodes = ["intake", "filter_middleware", "fraud_scorer", "router"]
+runtime_flow = "intake -> filter_middleware -> fraud_scorer -> router"
+fhe_scheme = "CKKS via OpenFHE"

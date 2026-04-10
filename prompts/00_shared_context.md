@@ -28,7 +28,7 @@ Primary source hierarchy:
 
 The experiment has an agentic component, but it is intentionally lightweight.
 
-Use `multiagent/` as the LangGraph harness.
+Use `experiment_runtime/` as the LangGraph harness.
 
 Target runtime flow:
 
@@ -64,7 +64,7 @@ If your task is local-only, do not introduce Linux-only assumptions.
 
 ## Repo Rules
 
-- `multiagent/` is relevant and is the intended LangGraph base for this experiment
+- `experiment_runtime/` is relevant and is the intended LangGraph base for this experiment
 - use `uv` with Python `3.13`
 - do not care about backward compatibility unless explicitly told otherwise
 - do not run full builds after trivial changes

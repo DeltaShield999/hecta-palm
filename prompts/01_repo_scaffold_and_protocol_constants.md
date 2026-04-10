@@ -11,7 +11,7 @@ Read first:
 
 ## Goal
 
-Start implementation by turning `multiagent/` from a translation demo into the experiment's initial runtime and package scaffold.
+Start implementation by turning `experiment_runtime/` from a translation demo into the experiment's initial runtime and package scaffold.
 
 This task is local-first and should be done on the user's Mac. Do not assume NVIDIA Linux access for this ticket.
 
@@ -25,7 +25,7 @@ This task should create that foundation.
 
 ## Scope
 
-You own the initial scaffold inside `multiagent/`.
+You own the initial scaffold inside `experiment_runtime/`.
 
 Implement:
 
@@ -34,16 +34,16 @@ Implement:
 3. a minimal LangGraph experiment skeleton for the pipeline
 4. a minimal CLI or entrypoint for the experiment harness
 5. basic tests or smoke checks for config loading and graph construction
-6. docs updates inside `multiagent/` so the project no longer reads as only a translation demo
+6. docs updates inside `experiment_runtime/` so the project no longer reads as only a translation demo
 
 ## Required Structure
 
-Use `multiagent/` as the home for the runtime implementation.
+Use `experiment_runtime/` as the home for the runtime implementation.
 
 Create or evolve the code toward this shape:
 
 ```text
-multiagent/
+experiment_runtime/
   configs/
   data/
     raw/
@@ -134,7 +134,7 @@ This is a scaffold ticket only.
 When done, the repo should have:
 
 - a coherent experiment-oriented package layout
-- frozen protocol config files checked into `multiagent/configs/`
+- frozen protocol config files checked into `experiment_runtime/configs/`
 - a buildable/importable LangGraph scaffold for the experiment pipeline
 - a basic CLI or entrypoint for the scaffold
 - smoke tests for config loading and graph creation
