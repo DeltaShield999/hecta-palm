@@ -1,1 +1,1 @@
-"""Experiment implementation package placeholders for later tickets."""
+"""Experiment implementation packages for the staged FHE workflow."""

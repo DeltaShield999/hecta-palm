@@ -1,0 +1,17 @@
+[protocol]
+config_dir = "configs/protocol"
+
+[generation]
+seed = 20260410
+fraud_rate_tolerance = 0.0025
+
+[outputs]
+output_dir = "data/processed"
+records_filename = "tier1_records.parquet"
+registry_filename = "canary_registry.csv"
+
+[dates]
+dob_start = "1946-01-01"
+dob_end = "2003-12-31"
+timestamp_start = "2025-01-01T00:00:00+00:00"
+timestamp_end = "2025-12-31T23:59:59+00:00"
