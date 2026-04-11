@@ -40,8 +40,6 @@ uv sync --python 3.12 --extra fhe
 Notes:
 
 - `openfhe` is installed only through the optional `fhe` extra.
-- The OpenFHE Python wrapper used here does not support the earlier Python `3.13` setup that this repo started with.
-- `.env` is only needed if you want to run the LangGraph demo or the endpoint smoke test.
 
 ## CLI Surface
 
@@ -60,12 +58,11 @@ Core experiment CLIs:
 | `fhe-eval-stage3-fhe` | Run Stage 3 CKKS/OpenFHE parity and latency eval | Linux with `--extra fhe` |
 | `fhe-eval-stage2-filtered` | Run integrated Stage 2 reruns with plaintext/FHE filters | Linux with `--extra fhe` |
 
-Demo and scaffold CLIs:
+Demo and scaffold CLI:
 
 | Command | Purpose |
 | --- | --- |
 | `fhe-experiment-run` | Run the local LangGraph scaffold |
-| `fhe-endpoint-smoke` | Smoke-test a remote OpenAI-compatible endpoint |
 
 ## Typical Commands
 
@@ -146,7 +143,7 @@ Run it locally with:
 uv run fhe-experiment-run --json
 ```
 
-That path is useful for local runtime smoke checks and demo purposes. It is not the official source of the reported experiment metrics.
+That path is useful for local runtime smoke checks and demo purposes. It is not the official source of the reported experiment metrics, and it currently runs as a local deterministic scaffold rather than an endpoint-backed production shell.
 
 ## Current Result Pointers
 

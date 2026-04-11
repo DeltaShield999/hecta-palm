@@ -1,86 +1,93 @@
 # Setup Guide
 
-This package now targets the FHE experiment scaffold rather than the old translation demo.
+This package now contains the completed `Qwen2-1.5B-Instruct` experiment runtime and its supporting CLIs.
 
-There are two distinct environments to keep in mind:
+Use this file for environment setup and machine-role guidance. For the experiment outcome summary, read [../RESULTS.md](../RESULTS.md). For the current runtime surface and artifact layout, read [README.md](./README.md).
 
-1. local macOS for scaffold work, config loading, graph construction, and non-GPU development
-2. remote NVIDIA Linux for later GPU-heavy stages such as Qwen training and model serving
+## Machine Roles
 
-This ticket only needs the local setup, but the endpoint smoke test can optionally use a remote OpenAI-compatible model server.
+There are three practical environments in this project:
 
-## Local Setup
+1. local macOS for repo navigation, documentation work, deterministic data tasks, and Stage 3 plaintext work
+2. Linux with NVIDIA GPU for Stage 1 model training and Stage 2 replay/evaluation
+3. Linux with the optional `fhe` extra for Stage 3 OpenFHE work and the integrated filtered reruns
+
+In practice, the Linux GPU box can serve as both `2` and `3`.
+
+## Base Environment
 
 From `experiment_runtime/`:
 
 ```bash
 uv venv --python 3.12 --clear
 uv sync --python 3.12
-cp .env.example .env
 ```
 
-Local verification:
+This is enough for:
+
+- data materialization
+- plaintext Stage 3 filter training
+- local test runs
+- the LangGraph demo/runtime scaffold
+
+## FHE Environment
+
+For Stage 3 OpenFHE work on Linux:
 
 ```bash
-uv run fhe-experiment-run
-uv run --python 3.12 python -m unittest discover -s tests -p "test_*.py"
+uv sync --python 3.12 --extra fhe
 ```
 
-## Environment Variables
+Notes:
 
-Current `.env.example`:
+- the optional `fhe` extra installs `openfhe`
+- the FHE path was implemented and evaluated on Linux, not on macOS
+
+## Git LFS
+
+This repo uses Git LFS for heavy experiment artifacts.
+
+After cloning on a fresh machine, make sure the payloads are present:
 
 ```bash
-OPENAI_BASE_URL=http://127.0.0.1:8001/v1
-MODEL_NAME=Qwen/Qwen2-1.5B-Instruct
-OPENAI_API_KEY=EMPTY
-GPU_TARGET=local macOS scaffold; remote NVIDIA Linux required later for GPU stages
+git lfs pull
 ```
 
-`GPU_TARGET` is informational only.
+This matters especially for:
 
-## Optional Remote Endpoint Smoke Test
+- Stage 1 adapters and checkpoints
+- the compiled Stage 3 OpenFHE bundle
 
-If you already have a remote OpenAI-compatible endpoint available, you can test connectivity with:
+## Common Verification Commands
+
+Full local test sweep:
 
 ```bash
-uv run fhe-endpoint-smoke "Summarize the purpose of the fraud scoring agent."
+uv run --python 3.12 python3 -m unittest discover -s tests -p "test_*.py"
 ```
 
-This is optional for the current scaffold ticket.
-
-## Remote Endpoint Notes
-
-Later stages will likely use:
-
-- a remote NVIDIA Linux box
-- `vLLM` or another OpenAI-compatible serving layer
-- Qwen2 family models, especially `Qwen/Qwen2-1.5B-Instruct` early and `Qwen/Qwen2-7B-Instruct` later
-
-Suggested baseline environment variables:
+LangGraph demo smoke run:
 
 ```bash
-export SSH_USER="root"
-export SSH_HOST="YOUR_REMOTE_HOST"
-export SSH_PORT="YOUR_REMOTE_SSH_PORT"
-export HF_TOKEN="YOUR_HUGGING_FACE_TOKEN"
-export REMOTE_DIR="/workspace/fhe-experiment-runtime"
-export REMOTE_VLLM_PORT="8000"
-export LOCAL_TUNNEL_PORT="8001"
+uv run fhe-experiment-run --json
 ```
 
-## Optional SSH Tunnel Pattern
-
-If you are exposing a remote OpenAI-compatible server on port `8000`, this local tunnel shape is still a reasonable default:
+Stage 3 plaintext filter training:
 
 ```bash
-ssh -f -N -p "$SSH_PORT" "$SSH_USER@$SSH_HOST" -L "${LOCAL_TUNNEL_PORT}:localhost:${REMOTE_VLLM_PORT}"
+uv run --python 3.12 fhe-train-stage3-plaintext --config configs/eval/stage3_plaintext_filter.toml
 ```
 
-Then the local `.env` can keep:
+Stage 3 FHE evaluation on Linux:
 
 ```bash
-OPENAI_BASE_URL=http://127.0.0.1:8001/v1
+uv run --python 3.12 --extra fhe fhe-eval-stage3-fhe --config configs/eval/stage3_fhe_filter.toml
+```
+
+Integrated Stage 2 filtered reruns on Linux:
+
+```bash
+uv run --python 3.12 --extra fhe fhe-eval-stage2-filtered --config configs/eval/stage2_filtered_replay.toml --exposure all --filter-mode all
 ```
 
 ## Troubleshooting
@@ -89,18 +96,21 @@ OPENAI_BASE_URL=http://127.0.0.1:8001/v1
 
 Check:
 
-- `uv` is installed locally
+- `uv` is installed
 - Python `3.12` is available or downloadable through `uv`
 
-### The local scaffold runs but the endpoint smoke test fails
+### `git lfs pull` does not fetch the expected large files
 
 Check:
 
-- the remote API is actually running
-- the tunnel is active
-- `.env` points to the right `OPENAI_BASE_URL`
-- `.env` uses the correct `MODEL_NAME`
+- `git-lfs` is installed
+- `git lfs install` has been run on that machine
+- the clone is on the expected branch / commit
 
-### The local scaffold blocks every request
+### macOS tests pass but FHE tests are skipped
 
-The current filter is a deterministic placeholder, not the final Stage 3 classifier. This is expected to be replaced later.
+That is expected if `openfhe` is not installed locally. The FHE path is optional on macOS and was validated on Linux.
+
+### The LangGraph demo behavior does not match the official experiment outputs
+
+That can also be expected in the current repo state. The official metrics were produced by the dedicated `experiment.*` harness, not by the LangGraph demo shell. See [../RESULTS.md](../RESULTS.md) for the current `Agentic Execution Note`.

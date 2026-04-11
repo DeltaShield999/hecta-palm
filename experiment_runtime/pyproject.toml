@@ -1,17 +1,14 @@
 [project]
 name = "fhe-experiment-runtime"
 version = "0.1.0"
-description = "LangGraph scaffold for the multi-agent FHE privacy experiment."
+description = "Runtime and evaluation package for the multi-agent FHE privacy experiment."
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
 dependencies = [
     "accelerate>=1.10.0",
     "pyarrow>=21.0.0",
     "peft>=0.18.0",
-    "langchain-openai>=1.0.0",
     "langgraph>=0.6.0",
-    "openai>=2.0.0",
-    "python-dotenv>=1.1.0",
     "rich>=14.0.0",
     "safetensors>=0.6.2",
     "torch>=2.8.0",
@@ -28,7 +25,6 @@ fhe = [
 
 [project.scripts]
 fhe-experiment-run = "qwen_langgraph_demo.main:main"
-fhe-endpoint-smoke = "qwen_langgraph_demo.test_endpoint:main"
 fhe-materialize-tier1 = "experiment.data_gen.materialize_tier1:main"
 fhe-materialize-stage1 = "experiment.data_gen.stage1_corpora:main"
 fhe-materialize-stage2 = "experiment.data_gen.stage2_attack_prompts:main"

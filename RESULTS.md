@@ -16,11 +16,16 @@ Completed:
 - Phase 4: Stage 3 plaintext filter training and evaluation
 - Phase 5: Stage 3 CKKS/OpenFHE filter parity and latency evaluation
 - Phase 6: integrated Stage 2 reruns with plaintext and FHE filters
+- closeout audit and handoff verification for the 1.5B flow
 
-Remaining:
+Handoff status:
 
-- final packaging and artifact handoff
-- optional Qwen2-7B-Instruct repeat
+- the main `Qwen2-1.5B-Instruct` experiment is complete and handoff-ready
+
+Optional follow-on work:
+
+- optional `Qwen2-7B-Instruct` repeat
+- optional LangGraph runtime wiring/parity check if the LangGraph shell itself should become the authoritative end-to-end execution path
 
 ## Stage 1 Setup
 
@@ -47,6 +52,7 @@ Key artifacts:
 - Stage 3 plaintext summary: `experiment_runtime/runs/stage3/plaintext/stage3_plaintext_metrics.json`
 - Stage 3 FHE summary: `experiment_runtime/runs/stage3/fhe/stage3_fhe_metrics.json`
 - Stage 2 filtered summary: `experiment_runtime/runs/stage2/filtered/stage2_filtered_summary.json`
+- final audit summary: `experiment_runtime/runs/final_artifact_audit.json`
 
 ## Stage 1 Training Results
 
@@ -241,23 +247,35 @@ In practical production terms, the answer is still largely yes: after fine-tunin
 - CKKS/OpenFHE filter artifacts
 - a LangGraph runtime scaffold with the correct high-level node structure
 
-What is still missing is one final integration step, not a missing research result. To make the LangGraph runtime itself the true end-to-end execution shell for this experiment, the official filter and scorer path would need to be wired into the LangGraph nodes, and then a parity smoke test should be run to confirm that the LangGraph path produces the same decisions and outputs as the already-validated direct harness on representative inputs.
+What is important to understand is that the current LangGraph shell is still a scaffold. In the current codebase, the `filter_middleware` node is a deterministic placeholder based on simple request markers, and the `fraud_scorer` node is also a deterministic placeholder that renders a benign fraud-scoring response without loading the official fine-tuned adapter path. So the remaining gap is not merely cosmetic.
 
-Until that step is done, the correct interpretation is:
+If someone wants the LangGraph runtime itself to become the true end-to-end execution shell for this experiment, the future work is concrete:
+
+- replace the current placeholder `filter_middleware` node with the official Stage 3 filter path, using either the plaintext filter or the CKKS/OpenFHE filter
+- replace the current placeholder `fraud_scorer` node with the official Stage 2 / integrated-rerun scorer path that uses the real fine-tuned Fraud Scoring Agent artifacts
+- introduce whatever explicit runtime configuration is needed for that scorer path in a deliberate way, rather than reviving the old removed endpoint-demo code
+- run a parity smoke test to confirm that the LangGraph runtime produces the same filter decisions and scorer outputs as the already-validated direct harness on representative inputs
+
+Absent that optional integration step, the correct interpretation is:
 
 - the experiment proves the behavior of the trained model and filters
 - the repo contains the intended agentic shell
 - but the LangGraph runtime has not itself been used as the authoritative execution path for the reported metrics
 
-## Remaining Work
+## Post-Experiment Status
 
-For the main `Qwen2-1.5B-Instruct` flow, the scientific part of the experiment is complete.
+For the main `Qwen2-1.5B-Instruct` flow, both the scientific work and the closeout audit are complete.
 
-Remaining repo work is operational:
+The current repo state is ready for handoff:
 
-- final packaging and artifact handoff
-- final check that the heavy-artifact archive includes Stage 1 adapters/checkpoints and the Stage 3 FHE compiled bundle
+- the repo-visible results and manifests are present
+- the final closeout audit artifact marks the 1.5B flow as ready for handoff
+- the critical heavy artifacts are preserved through Git LFS
+
+What remains is optional only:
+
 - optional `Qwen2-7B-Instruct` repeat if the designer still wants the scale comparison
+- optional LangGraph runtime wiring/parity work if the runtime shell itself should become the authoritative executed path
 
 ## Detailed Artifacts
 
@@ -285,6 +303,7 @@ Primary detailed artifacts for the completed 1.5B flow:
 - `experiment_runtime/runs/stage3/fhe/compiled_bundle_manifest.json`
 - `experiment_runtime/runs/stage2/filtered/stage2_filtered_summary.json`
 - `experiment_runtime/runs/stage2/filtered/filter_parity_summary.json`
+- `experiment_runtime/runs/final_artifact_audit.json`
 - `experiment_runtime/runs/stage2/filtered/1x/plaintext_filter/stage2_filtered_metrics.json`
 - `experiment_runtime/runs/stage2/filtered/10x/plaintext_filter/stage2_filtered_metrics.json`
 - `experiment_runtime/runs/stage2/filtered/50x/plaintext_filter/stage2_filtered_metrics.json`

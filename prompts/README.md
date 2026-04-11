@@ -29,4 +29,6 @@ Current implementation stage:
 - Task 10 Stage 3 plaintext filter training is complete
 - Task 11 Stage 3 FHE wrapper and evaluation is complete
 - Task 12 integrated Stage 2 reruns with filters is complete
-- the next task is `13_final_closeout_verification.md`
+- Task 13 final closeout verification is complete
+- the main `Qwen2-1.5B-Instruct` flow is complete and handoff-ready
+- only optional follow-on work remains, such as the `Qwen2-7B-Instruct` repeat or LangGraph runtime parity integration
