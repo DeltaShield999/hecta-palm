@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from csv import DictWriter
 from dataclasses import dataclass
+import hashlib
 from importlib import metadata
 import json
 from pathlib import Path
@@ -37,6 +38,7 @@ from .metrics import (
     summarize_latency_samples,
 )
 from .openfhe_backend import OpenFheCkksScorer
+from .openfhe_backend import OpenFheBundlePaths
 
 
 COMPARISON_COLUMNS = (
@@ -61,6 +63,7 @@ class Stage3FheArtifacts:
     latency_summary_path: Path
     latency_samples_path: Path
     context_metadata_path: Path
+    compiled_bundle_manifest_path: Path
 
 
 @dataclass(frozen=True, slots=True)
@@ -71,6 +74,7 @@ class Stage3FheRunResult:
     fhe_metrics: dict[str, Any]
     comparison_metrics: PredictionComparisonMetrics
     latency_summary: dict[str, dict[str, float]]
+    compiled_bundle_reused: bool
 
 
 def run_stage3_fhe_evaluation(
@@ -116,9 +120,13 @@ def run_stage3_fhe_evaluation(
     )
 
     example_count = min(config.benchmark.example_count, len(test_embeddings.message_ids))
-    scorer = OpenFheCkksScorer(settings=config.fhe, model_parameters=model_parameters)
+    bundle_paths = OpenFheBundlePaths.for_root(config.output_root / "compiled")
+    scorer = OpenFheCkksScorer.load_or_create(
+        settings=config.fhe,
+        model_parameters=model_parameters,
+        bundle_paths=bundle_paths,
+    )
 
-    fhe_logits = np.empty(example_count, dtype=np.float64)
     fhe_probabilities = np.empty(example_count, dtype=np.float64)
     fhe_predictions = np.empty(example_count, dtype=np.int8)
     latency_samples: list[LatencySample] = []
@@ -131,7 +139,6 @@ def run_stage3_fhe_evaluation(
         predicted_label = int(block_probability >= model_parameters.threshold)
         end_to_end_end = time.perf_counter()
 
-        fhe_logits[index] = decrypted_logit
         fhe_probabilities[index] = block_probability
         fhe_predictions[index] = predicted_label
 
@@ -192,6 +199,7 @@ def run_stage3_fhe_evaluation(
         latency_summary_path=config.output_root / "latency_summary.json",
         latency_samples_path=config.output_root / "latency_samples.csv",
         context_metadata_path=config.output_root / "context_metadata.json",
+        compiled_bundle_manifest_path=config.output_root / "compiled_bundle_manifest.json",
     )
     config.output_root.mkdir(parents=True, exist_ok=True)
 
@@ -203,12 +211,23 @@ def run_stage3_fhe_evaluation(
     )
     _write_json(artifacts.latency_summary_path, latency_summary)
     _write_json(
+        artifacts.compiled_bundle_manifest_path,
+        _build_compiled_bundle_manifest(
+            bundle_paths=bundle_paths,
+            model_parameters=model_parameters,
+            model_parameters_path=config.plaintext_artifacts.model_parameters_path,
+            scorer=scorer,
+        ),
+    )
+    _write_json(
         artifacts.context_metadata_path,
         _build_context_metadata(
             config=config,
             model_parameters=model_parameters,
             example_count=example_count,
             scorer=scorer,
+            bundle_paths=bundle_paths,
+            compiled_bundle_manifest_path=artifacts.compiled_bundle_manifest_path,
         ),
     )
     _write_json(
@@ -224,6 +243,8 @@ def run_stage3_fhe_evaluation(
             },
             "fhe_library_used": scorer.resolved_parameters.backend,
             "resolved_ckks_parameters": scorer.resolved_parameters.to_document(),
+            "compiled_bundle_reused": scorer.reused_existing_bundle,
+            "compiled_bundle_manifest_path": str(artifacts.compiled_bundle_manifest_path),
             "plaintext_test_metrics": plaintext_test_metrics.to_document(),
             "fhe_test_metrics": fhe_test_metrics.to_document(),
             **comparison_metrics.to_document(),
@@ -242,6 +263,7 @@ def run_stage3_fhe_evaluation(
         fhe_metrics=fhe_test_metrics.to_document(),
         comparison_metrics=comparison_metrics,
         latency_summary=latency_summary,
+        compiled_bundle_reused=scorer.reused_existing_bundle,
     )
 
 
@@ -321,6 +343,8 @@ def _build_context_metadata(
     model_parameters,
     example_count: int,
     scorer: OpenFheCkksScorer,
+    bundle_paths: OpenFheBundlePaths,
+    compiled_bundle_manifest_path: Path,
 ) -> dict[str, Any]:
     return {
         "python_version": sys.version.split()[0],
@@ -338,6 +362,9 @@ def _build_context_metadata(
         },
         "chosen_fhe_backend": scorer.resolved_parameters.backend,
         "resolved_ckks_parameters": scorer.resolved_parameters.to_document(),
+        "compiled_bundle_reused": scorer.reused_existing_bundle,
+        "compiled_bundle_paths": bundle_paths.to_document(),
+        "compiled_bundle_manifest_path": str(compiled_bundle_manifest_path),
         "vector_dimension": model_parameters.embedding_dimension,
         "benchmark_split": config.benchmark.split_name,
         "benchmark_example_count": example_count,
@@ -346,6 +373,47 @@ def _build_context_metadata(
             "Decrypt the CKKS linear logit, compute sigmoid(z) in plaintext, "
             "then predict BLOCK iff block_probability >= the saved plaintext threshold."
         ),
+    }
+
+
+def _build_compiled_bundle_manifest(
+    *,
+    bundle_paths: OpenFheBundlePaths,
+    model_parameters,
+    model_parameters_path: Path,
+    scorer: OpenFheCkksScorer,
+) -> dict[str, Any]:
+    return {
+        "bundle_format": "openfhe_ckks_stage3_v1",
+        "bundle_root": str(bundle_paths.root_dir),
+        "resolved_ckks_parameters": scorer.resolved_parameters.to_document(),
+        "embedding_dimension": model_parameters.embedding_dimension,
+        "threshold": model_parameters.threshold,
+        "plaintext_model_parameters_path": str(model_parameters_path),
+        "plaintext_model_parameters_sha256": _sha256_file(model_parameters_path),
+        "thresholding_policy": "local plaintext thresholding after decrypting the CKKS logit",
+        "artifacts": {
+            "crypto_context": _bundle_file_document(
+                bundle_paths.crypto_context_path,
+                scope="shared OpenFHE crypto context",
+            ),
+            "public_key": _bundle_file_document(
+                bundle_paths.public_key_path,
+                scope="client encryption / server evaluation public key",
+            ),
+            "secret_key": _bundle_file_document(
+                bundle_paths.secret_key_path,
+                scope="client-only decryption key",
+            ),
+            "eval_mult_key": _bundle_file_document(
+                bundle_paths.eval_mult_key_path,
+                scope="server-side CKKS multiplication evaluation key",
+            ),
+            "eval_automorphism_key": _bundle_file_document(
+                bundle_paths.eval_automorphism_key_path,
+                scope="server-side CKKS rotation/sum evaluation key",
+            ),
+        },
     }
 
 
@@ -372,3 +440,19 @@ def _write_csv(path: Path, fieldnames: tuple[str, ...], rows: list[dict[str, Any
 def _write_json(path: Path, payload: dict[str, Any]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(payload, indent=2, sort_keys=False) + "\n", encoding="utf-8")
+
+
+def _bundle_file_document(path: Path, *, scope: str) -> dict[str, str | int]:
+    return {
+        "path": str(path),
+        "size_bytes": path.stat().st_size,
+        "scope": scope,
+    }
+
+
+def _sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()

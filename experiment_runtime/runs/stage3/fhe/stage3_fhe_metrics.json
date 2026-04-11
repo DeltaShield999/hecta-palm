@@ -18,6 +18,8 @@
     "first_mod_size": 60,
     "security_level": "HEStd_128_classic"
   },
+  "compiled_bundle_reused": true,
+  "compiled_bundle_manifest_path": "/root/hecta-palm/experiment_runtime/runs/stage3/fhe/compiled_bundle_manifest.json",
   "plaintext_test_metrics": {
     "allow_precision": 0.9867549668874173,
     "allow_recall": 0.9933333333333333,
@@ -64,8 +66,8 @@
   },
   "prediction_match_rate": 1.0,
   "plaintext_vs_fhe_accuracy_delta": 0.0,
-  "mean_abs_probability_delta": 7.165748867292381e-10,
-  "max_abs_probability_delta": 1.1501372687572342e-08,
+  "mean_abs_probability_delta": 6.497892437715653e-10,
+  "max_abs_probability_delta": 8.12612310774341e-09,
   "benchmark_example_count": 300,
   "comparison_artifact_path": "/root/hecta-palm/experiment_runtime/runs/stage3/fhe/plaintext_vs_fhe_comparison.csv",
   "latency_summary_path": "/root/hecta-palm/experiment_runtime/runs/stage3/fhe/latency_summary.json",

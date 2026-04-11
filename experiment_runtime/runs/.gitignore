@@ -4,4 +4,5 @@
 **/*.pt
 **/*.pth
 **/*.bin
+stage3/fhe/compiled/
 **/tokenizer/tokenizer.json

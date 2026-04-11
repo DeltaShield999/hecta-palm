@@ -26,7 +26,9 @@ def main(argv: Sequence[str] | None = None) -> int:
     print(f"latency_summary: {result.artifacts.latency_summary_path}")
     print(f"latency_samples: {result.artifacts.latency_samples_path}")
     print(f"context_metadata: {result.artifacts.context_metadata_path}")
+    print(f"compiled_bundle_manifest: {result.artifacts.compiled_bundle_manifest_path}")
     print(f"prediction_match_rate: {result.comparison_metrics.prediction_match_rate}")
+    print(f"compiled_bundle_reused: {result.compiled_bundle_reused}")
     print(
         "mean_abs_probability_delta: "
         f"{result.comparison_metrics.mean_abs_probability_delta}"

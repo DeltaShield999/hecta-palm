@@ -20,6 +20,16 @@
     "first_mod_size": 60,
     "security_level": "HEStd_128_classic"
   },
+  "compiled_bundle_reused": true,
+  "compiled_bundle_paths": {
+    "root_dir": "/root/hecta-palm/experiment_runtime/runs/stage3/fhe/compiled",
+    "crypto_context_path": "/root/hecta-palm/experiment_runtime/runs/stage3/fhe/compiled/crypto_context.bin",
+    "public_key_path": "/root/hecta-palm/experiment_runtime/runs/stage3/fhe/compiled/public_key.bin",
+    "secret_key_path": "/root/hecta-palm/experiment_runtime/runs/stage3/fhe/compiled/secret_key.bin",
+    "eval_mult_key_path": "/root/hecta-palm/experiment_runtime/runs/stage3/fhe/compiled/eval_mult_key.bin",
+    "eval_automorphism_key_path": "/root/hecta-palm/experiment_runtime/runs/stage3/fhe/compiled/eval_automorphism_key.bin"
+  },
+  "compiled_bundle_manifest_path": "/root/hecta-palm/experiment_runtime/runs/stage3/fhe/compiled_bundle_manifest.json",
   "vector_dimension": 384,
   "benchmark_split": "test",
   "benchmark_example_count": 300,

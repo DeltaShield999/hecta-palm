@@ -1,6 +1,7 @@
 from pathlib import Path
 import importlib.util
 import sys
+import tempfile
 import unittest
 
 import numpy as np
@@ -31,7 +32,10 @@ from experiment.fhe.metrics import (  # noqa: E402
     compute_prediction_comparison_metrics,
     summarize_latency_samples,
 )
-from experiment.fhe.openfhe_backend import OpenFheCkksScorer  # noqa: E402
+from experiment.fhe.openfhe_backend import (  # noqa: E402
+    OpenFheBundlePaths,
+    OpenFheCkksScorer,
+)
 
 
 class Stage3FheTests(unittest.TestCase):
@@ -139,26 +143,41 @@ class Stage3FheTests(unittest.TestCase):
         if importlib.util.find_spec("openfhe") is None:
             self.skipTest("Optional openfhe dependency is not installed.")
 
-        scorer = OpenFheCkksScorer(
-            settings=self.config.fhe,
-            model_parameters=type(self.model_parameters)(
-                encoder_model_name=self.model_parameters.encoder_model_name,
-                embedding_dimension=4,
-                normalize_embeddings=True,
-                classes=self.model_parameters.classes,
-                class_mapping=self.model_parameters.class_mapping,
-                weights=np.asarray([1.0, 0.5, -0.25, 2.0], dtype=np.float64),
-                intercept=0.125,
-                threshold=0.5,
-                score_definition=self.model_parameters.score_definition,
-                decision_rule=self.model_parameters.decision_rule,
-                threshold_selection_split=self.model_parameters.threshold_selection_split,
-            ),
+        toy_model_parameters = type(self.model_parameters)(
+            encoder_model_name=self.model_parameters.encoder_model_name,
+            embedding_dimension=4,
+            normalize_embeddings=True,
+            classes=self.model_parameters.classes,
+            class_mapping=self.model_parameters.class_mapping,
+            weights=np.asarray([1.0, 0.5, -0.25, 2.0], dtype=np.float64),
+            intercept=0.125,
+            threshold=0.5,
+            score_definition=self.model_parameters.score_definition,
+            decision_rule=self.model_parameters.decision_rule,
+            threshold_selection_split=self.model_parameters.threshold_selection_split,
         )
-        vector = np.asarray([0.1, -0.2, 0.3, 0.4], dtype=np.float64)
-        expected_logit = float(vector @ np.asarray([1.0, 0.5, -0.25, 2.0]) + 0.125)
-        decrypted_logit, _ = scorer.score_embedding(vector)
-        self.assertAlmostEqual(decrypted_logit, expected_logit, places=6)
+        with tempfile.TemporaryDirectory() as temp_dir:
+            bundle_paths = OpenFheBundlePaths.for_root(Path(temp_dir) / "compiled")
+            scorer = OpenFheCkksScorer.load_or_create(
+                settings=self.config.fhe,
+                model_parameters=toy_model_parameters,
+                bundle_paths=bundle_paths,
+            )
+            vector = np.asarray([0.1, -0.2, 0.3, 0.4], dtype=np.float64)
+            expected_logit = float(vector @ np.asarray([1.0, 0.5, -0.25, 2.0]) + 0.125)
+            decrypted_logit, _ = scorer.score_embedding(vector)
+            self.assertAlmostEqual(decrypted_logit, expected_logit, places=6)
+            self.assertFalse(scorer.reused_existing_bundle)
+            self.assertTrue(bundle_paths.is_complete())
+
+            reloaded_scorer = OpenFheCkksScorer.load_or_create(
+                settings=self.config.fhe,
+                model_parameters=toy_model_parameters,
+                bundle_paths=bundle_paths,
+            )
+            reloaded_logit, _ = reloaded_scorer.score_embedding(vector)
+            self.assertAlmostEqual(reloaded_logit, expected_logit, places=6)
+            self.assertTrue(reloaded_scorer.reused_existing_bundle)
 
 
 if __name__ == "__main__":

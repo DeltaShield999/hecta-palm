@@ -1,0 +1,46 @@
+{
+  "bundle_format": "openfhe_ckks_stage3_v1",
+  "bundle_root": "/root/hecta-palm/experiment_runtime/runs/stage3/fhe/compiled",
+  "resolved_ckks_parameters": {
+    "backend": "openfhe",
+    "scheme": "CKKS",
+    "ring_dimension": 16384,
+    "batch_size": 512,
+    "multiplicative_depth": 1,
+    "scaling_mod_size": 40,
+    "first_mod_size": 60,
+    "security_level": "HEStd_128_classic"
+  },
+  "embedding_dimension": 384,
+  "threshold": 0.4199950085320943,
+  "plaintext_model_parameters_path": "/root/hecta-palm/experiment_runtime/runs/stage3/plaintext/model/model_parameters.json",
+  "plaintext_model_parameters_sha256": "eb7d283ccec869bd3dad460cb2f463dfd6e6b4c1a16a613cafce54e83665de2a",
+  "thresholding_policy": "local plaintext thresholding after decrypting the CKKS logit",
+  "artifacts": {
+    "crypto_context": {
+      "path": "/root/hecta-palm/experiment_runtime/runs/stage3/fhe/compiled/crypto_context.bin",
+      "size_bytes": 621,
+      "scope": "shared OpenFHE crypto context"
+    },
+    "public_key": {
+      "path": "/root/hecta-palm/experiment_runtime/runs/stage3/fhe/compiled/public_key.bin",
+      "size_bytes": 787371,
+      "scope": "client encryption / server evaluation public key"
+    },
+    "secret_key": {
+      "path": "/root/hecta-palm/experiment_runtime/runs/stage3/fhe/compiled/secret_key.bin",
+      "size_bytes": 394028,
+      "scope": "client-only decryption key"
+    },
+    "eval_mult_key": {
+      "path": "/root/hecta-palm/experiment_runtime/runs/stage3/fhe/compiled/eval_mult_key.bin",
+      "size_bytes": 2623363,
+      "scope": "server-side CKKS multiplication evaluation key"
+    },
+    "eval_automorphism_key": {
+      "path": "/root/hecta-palm/experiment_runtime/runs/stage3/fhe/compiled/eval_automorphism_key.bin",
+      "size_bytes": 23601419,
+      "scope": "server-side CKKS rotation/sum evaluation key"
+    }
+  }
+}
