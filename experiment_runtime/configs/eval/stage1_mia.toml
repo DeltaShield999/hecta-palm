@@ -1,0 +1,38 @@
+[protocol]
+config_dir = "configs/protocol"
+
+[inputs]
+mia_eval_path = "data/processed/mia_eval.jsonl"
+
+[inputs.official_run_dirs]
+"1x" = "runs/stage1/official-1x-20260411-r1"
+"10x" = "runs/stage1/official-10x-20260411-r1"
+"50x" = "runs/stage1/official-50x-20260411-r1"
+
+[outputs]
+root_dir = "runs/stage1/mia"
+
+[model]
+name = "Qwen/Qwen2-1.5B-Instruct"
+trust_remote_code = false
+attn_implementation = "sdpa"
+
+[tokenizer]
+source = "Qwen/Qwen2-1.5B-Instruct"
+use_fast = true
+add_generation_prompt = false
+padding_side = "right"
+truncation_side = "right"
+max_sequence_length = 1024
+
+[inference]
+batch_size = 16
+bf16 = true
+tf32 = true
+
+[bootstrap]
+replicates = 1000
+confidence_level = 0.95
+
+[seed]
+value = 20260411

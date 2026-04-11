@@ -6,12 +6,24 @@ from typing import Any, Mapping
 
 import torch
 from torch.utils.data import Dataset
+from transformers import AutoTokenizer
 
 from experiment.data_gen.io import read_jsonl_rows
-from experiment.schemas.tier2 import Stage1TrainingExample
+from experiment.schemas.tier2 import ChatMessage, Stage1TrainingExample, normalize_messages
 
 
 FULL_SEQUENCE_LABEL_PAD_TOKEN_ID = -100
+
+
+@dataclass(frozen=True, slots=True)
+class TokenizedChatSequence:
+    input_ids: tuple[int, ...]
+    attention_mask: tuple[int, ...]
+    labels: tuple[int, ...]
+
+    @property
+    def sequence_length(self) -> int:
+        return len(self.input_ids)
 
 
 @dataclass(frozen=True, slots=True)
@@ -127,15 +139,38 @@ def build_full_sequence_labels(input_ids: list[int] | tuple[int, ...]) -> tuple[
     return tuple(int(token_id) for token_id in input_ids)
 
 
-def tokenize_training_example(
-    example: Stage1TrainingExample,
+def load_stage1_tokenizer(
+    model_name_or_path: str | Path,
+    *,
+    use_fast: bool,
+    trust_remote_code: bool,
+    padding_side: str,
+    truncation_side: str,
+) -> Any:
+    tokenizer = AutoTokenizer.from_pretrained(
+        str(model_name_or_path),
+        use_fast=use_fast,
+        trust_remote_code=trust_remote_code,
+    )
+    tokenizer.padding_side = padding_side
+    tokenizer.truncation_side = truncation_side
+    if tokenizer.pad_token is None:
+        if tokenizer.eos_token is None:
+            raise RuntimeError("Tokenizer does not define a pad token or eos token.")
+        tokenizer.pad_token = tokenizer.eos_token
+    return tokenizer
+
+
+def tokenize_chat_messages(
+    messages: tuple[ChatMessage, ...] | list[ChatMessage] | list[Mapping[str, Any]],
     *,
     tokenizer: Any,
     max_sequence_length: int,
     add_generation_prompt: bool,
-) -> TokenizedTrainingExample:
+) -> TokenizedChatSequence:
+    normalized_messages = normalize_messages(messages)
     rendered = tokenizer.apply_chat_template(
-        [message.to_row() for message in example.messages],
+        [message.to_row() for message in normalized_messages],
         tokenize=True,
         add_generation_prompt=add_generation_prompt,
         truncation=True,
@@ -143,15 +178,35 @@ def tokenize_training_example(
     )
     normalized_input_ids, attention_mask = _normalize_chat_template_output(rendered)
     if not normalized_input_ids:
-        raise ValueError(f"Tokenization produced an empty sequence for example {example.example_id}.")
+        raise ValueError("Tokenization produced an empty sequence.")
 
     labels = build_full_sequence_labels(normalized_input_ids)
-    return TokenizedTrainingExample(
-        example_id=example.example_id,
-        record_id=example.record_id,
+    return TokenizedChatSequence(
         input_ids=normalized_input_ids,
         attention_mask=attention_mask,
         labels=labels,
+    )
+
+
+def tokenize_training_example(
+    example: Stage1TrainingExample,
+    *,
+    tokenizer: Any,
+    max_sequence_length: int,
+    add_generation_prompt: bool,
+) -> TokenizedTrainingExample:
+    tokenized_sequence = tokenize_chat_messages(
+        example.messages,
+        tokenizer=tokenizer,
+        max_sequence_length=max_sequence_length,
+        add_generation_prompt=add_generation_prompt,
+    )
+    return TokenizedTrainingExample(
+        example_id=example.example_id,
+        record_id=example.record_id,
+        input_ids=tokenized_sequence.input_ids,
+        attention_mask=tokenized_sequence.attention_mask,
+        labels=tokenized_sequence.labels,
     )
 
 

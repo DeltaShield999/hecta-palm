@@ -1,0 +1,17 @@
+{
+  "adapter_run_dir": "/root/hecta-palm/experiment_runtime/runs/stage1/official-1x-20260411-r1",
+  "auc_roc": 0.5086789375000005,
+  "base_model_name": "Qwen/Qwen2-1.5B-Instruct",
+  "canary_count": 100,
+  "example_count": 10000,
+  "exposure_condition": "1x",
+  "member_count": 8000,
+  "membership_score_definition": "loss_base / loss_ft",
+  "mia_eval_path": "/root/hecta-palm/experiment_runtime/data/processed/mia_eval.jsonl",
+  "non_member_count": 2000,
+  "run_name": "official-1x-20260411-r1",
+  "threshold_at_10_fpr": 9.956193359500029,
+  "threshold_at_1_fpr": 10.08424837012429,
+  "tpr_at_10_fpr": 0.10675,
+  "tpr_at_1_fpr": 0.01625
+}

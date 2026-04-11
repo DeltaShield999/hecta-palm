@@ -15,7 +15,6 @@ import torch
 from peft import LoraConfig, TaskType, get_peft_model
 from transformers import (
     AutoModelForCausalLM,
-    AutoTokenizer,
     Trainer,
     TrainingArguments,
     set_seed,
@@ -28,7 +27,7 @@ from .config import (
     render_toml_document,
     resolve_run_config,
 )
-from .data import FullSequenceDataCollator, prepare_training_dataset
+from .data import FullSequenceDataCollator, load_stage1_tokenizer, prepare_training_dataset
 
 
 @dataclass(frozen=True, slots=True)
@@ -218,18 +217,13 @@ def _build_trainer_kwargs(
 
 
 def _load_tokenizer(run_config: Stage1RunConfig) -> Any:
-    tokenizer = AutoTokenizer.from_pretrained(
+    return load_stage1_tokenizer(
         run_config.model.name,
         use_fast=run_config.tokenizer.use_fast,
         trust_remote_code=run_config.model.trust_remote_code,
+        padding_side=run_config.tokenizer.padding_side,
+        truncation_side=run_config.tokenizer.truncation_side,
     )
-    tokenizer.padding_side = run_config.tokenizer.padding_side
-    tokenizer.truncation_side = run_config.tokenizer.truncation_side
-    if tokenizer.pad_token is None:
-        if tokenizer.eos_token is None:
-            raise RuntimeError("Tokenizer does not define a pad token or eos token.")
-        tokenizer.pad_token = tokenizer.eos_token
-    return tokenizer
 
 
 def _load_model(run_config: Stage1RunConfig, tokenizer: Any) -> torch.nn.Module:
