@@ -45,7 +45,7 @@ The next planned step in the experiment is to determine whether the fine-tuned a
   - `experiment_runtime/src/experiment/train_qwen/data.py`
   - `experiment_runtime/src/experiment/train_qwen/config.py`
   - `experiment_runtime/src/experiment/train_qwen/runner.py`
-- use `uv` with Python `3.13`
+- use `uv` with Python `3.12`
 - keep this ticket single-GPU only
 - target the current Linux box with the trained adapters already present locally
 
@@ -371,12 +371,12 @@ Keep changes minimal and directly motivated by exact training/evaluation parity.
 At minimum, run:
 
 1. environment/setup if needed:
-   - `uv sync --python 3.13`
+   - `uv sync --python 3.12`
 2. lightweight tests:
-   - `uv run --python 3.13 python -m unittest tests.test_stage1_mia`
-   - `uv run --python 3.13 python -m unittest tests.test_stage1_training_pipeline tests.test_stage1_mia`
+   - `uv run --python 3.12 python -m unittest tests.test_stage1_mia`
+   - `uv run --python 3.12 python -m unittest tests.test_stage1_training_pipeline tests.test_stage1_mia`
 3. the real evaluation:
-   - `uv run --python 3.13 fhe-eval-stage1-mia --config configs/eval/stage1_mia.toml --exposure all`
+   - `uv run --python 3.12 fhe-eval-stage1-mia --config configs/eval/stage1_mia.toml --exposure all`
 
 If your CLI does not support `all`, evaluate the three exposures sequentially and document the commands.
 

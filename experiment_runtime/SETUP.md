@@ -14,8 +14,8 @@ This ticket only needs the local setup, but the endpoint smoke test can optional
 From `experiment_runtime/`:
 
 ```bash
-uv venv --python 3.13 --clear
-uv sync --python 3.13
+uv venv --python 3.12 --clear
+uv sync --python 3.12
 cp .env.example .env
 ```
 
@@ -23,7 +23,7 @@ Local verification:
 
 ```bash
 uv run fhe-experiment-run
-uv run --python 3.13 python -m unittest discover -s tests -p "test_*.py"
+uv run --python 3.12 python -m unittest discover -s tests -p "test_*.py"
 ```
 
 ## Environment Variables
@@ -85,12 +85,12 @@ OPENAI_BASE_URL=http://127.0.0.1:8001/v1
 
 ## Troubleshooting
 
-### `uv sync --python 3.13` fails
+### `uv sync --python 3.12` fails
 
 Check:
 
 - `uv` is installed locally
-- Python `3.13` is available or downloadable through `uv`
+- Python `3.12` is available or downloadable through `uv`
 
 ### The local scaffold runs but the endpoint smoke test fails
 

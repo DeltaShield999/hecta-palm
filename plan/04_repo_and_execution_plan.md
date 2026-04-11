@@ -33,7 +33,7 @@ experiment_runtime/
 
 Implementation rules:
 
-- use `uv` with Python `3.13`
+- use `uv` with Python `3.12`
 - every script takes a config path
 - every run writes to an isolated run folder
 - pin seeds for every generation, train, and eval job

@@ -385,11 +385,11 @@ Add tests for at least:
 At minimum, run:
 
 1. environment/setup if needed:
-   - `uv sync --python 3.13`
+   - `uv sync --python 3.12`
 2. lightweight tests:
-   - `uv run --python 3.13 python -m unittest tests.test_stage3_plaintext_filter`
+   - `uv run --python 3.12 python -m unittest tests.test_stage3_plaintext_filter`
 3. the real training/evaluation run:
-   - `uv run --python 3.13 fhe-train-stage3-plaintext --config configs/eval/stage3_plaintext_filter.toml`
+   - `uv run --python 3.12 fhe-train-stage3-plaintext --config configs/eval/stage3_plaintext_filter.toml`
 
 If you also touch adjacent Stage 3 package code, run any relevant regression tests and document them.
 

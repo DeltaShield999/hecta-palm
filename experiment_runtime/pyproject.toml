@@ -3,7 +3,7 @@ name = "fhe-experiment-runtime"
 version = "0.1.0"
 description = "LangGraph scaffold for the multi-agent FHE privacy experiment."
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.12,<3.13"
 dependencies = [
     "accelerate>=1.10.0",
     "pyarrow>=21.0.0",

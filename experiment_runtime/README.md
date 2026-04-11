@@ -81,8 +81,8 @@ experiment_runtime/
 ## Local Setup
 
 ```bash
-uv venv --python 3.13 --clear
-uv sync --python 3.13
+uv venv --python 3.12 --clear
+uv sync --python 3.12
 cp .env.example .env
 ```
 
@@ -109,7 +109,7 @@ uv run fhe-experiment-run --json
 Run the unit tests:
 
 ```bash
-uv run --python 3.13 python -m unittest discover -s tests -p "test_*.py"
+uv run --python 3.12 python -m unittest discover -s tests -p "test_*.py"
 ```
 
 ## Optional Remote Endpoint Smoke Test

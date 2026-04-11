@@ -43,7 +43,7 @@ The next planned step is the first real model-training milestone:
   - `experiment_runtime/src/experiment/train_qwen/`
 - the current config already exists:
   - `experiment_runtime/configs/train/stage1_lora.toml`
-- use `uv` with Python `3.13`
+- use `uv` with Python `3.12`
 - keep this ticket single-GPU only
 - target the current Linux box with the `NVIDIA RTX PRO 6000 Blackwell`
 
@@ -150,14 +150,14 @@ Use the non-smoke path. Do not pass `--smoke`.
 At minimum, run:
 
 1. environment/setup command if needed:
-   - `uv sync --python 3.13`
+   - `uv sync --python 3.12`
 2. quick regression checks before long runs:
-   - `uv run --python 3.13 python -m unittest tests.test_stage1_training_pipeline`
-   - `uv run --python 3.13 python -m unittest tests.test_stage1_corpora tests.test_stage1_training_pipeline`
+   - `uv run --python 3.12 python -m unittest tests.test_stage1_training_pipeline`
+   - `uv run --python 3.12 python -m unittest tests.test_stage1_corpora tests.test_stage1_training_pipeline`
 3. the three official trainings:
-   - `uv run --python 3.13 fhe-train-stage1 --config configs/train/stage1_lora.toml --exposure 1x --run-name <run_name>`
-   - `uv run --python 3.13 fhe-train-stage1 --config configs/train/stage1_lora.toml --exposure 10x --run-name <run_name>`
-   - `uv run --python 3.13 fhe-train-stage1 --config configs/train/stage1_lora.toml --exposure 50x --run-name <run_name>`
+   - `uv run --python 3.12 fhe-train-stage1 --config configs/train/stage1_lora.toml --exposure 1x --run-name <run_name>`
+   - `uv run --python 3.12 fhe-train-stage1 --config configs/train/stage1_lora.toml --exposure 10x --run-name <run_name>`
+   - `uv run --python 3.12 fhe-train-stage1 --config configs/train/stage1_lora.toml --exposure 50x --run-name <run_name>`
 
 If you add any helper commands for inspection or summarization, keep them minimal and document them.
 

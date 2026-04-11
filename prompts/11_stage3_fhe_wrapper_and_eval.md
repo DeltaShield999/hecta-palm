@@ -98,7 +98,7 @@ Rules to preserve:
 
 ## FHE Stack Decision
 
-Use a Python-accessible CKKS library that works cleanly on the Linux box with `uv` and Python `3.13`.
+Use a Python-accessible CKKS library that works cleanly on the Linux box with `uv` and Python `3.12`.
 
 Preferred stack:
 
@@ -110,7 +110,7 @@ Reason:
 - it supports CKKS
 - it is a better long-term engineering choice than building a one-off custom bridge
 
-If `openfhe-python` proves genuinely infeasible on the Linux box under Python `3.13`, use the simplest viable Python-accessible CKKS alternative and document the deviation clearly. Do not silently switch stacks.
+If `openfhe-python` proves genuinely infeasible on the Linux box under Python `3.12`, use the simplest viable Python-accessible CKKS alternative and document the deviation clearly. Do not silently switch stacks.
 
 Do not switch to a TFHE-based stack such as Concrete ML in this ticket unless the user explicitly confirms PI/sponsor approval. The original guide allows that only with explicit confirmation.
 
@@ -315,10 +315,10 @@ Keep tests lightweight. Do not add a heavyweight full benchmark to unit tests.
 
 Run at least:
 
-1. `uv sync --python 3.13`
-2. `uv run --python 3.13 python3 -m unittest tests.test_stage3_fhe`
-3. `uv run --python 3.13 python3 -m unittest tests.test_stage3_plaintext_filter tests.test_stage3_fhe`
-4. `uv run --python 3.13 fhe-eval-stage3-fhe --config configs/eval/stage3_fhe_filter.toml`
+1. `uv sync --python 3.12`
+2. `uv run --python 3.12 python3 -m unittest tests.test_stage3_fhe`
+3. `uv run --python 3.12 python3 -m unittest tests.test_stage3_plaintext_filter tests.test_stage3_fhe`
+4. `uv run --python 3.12 fhe-eval-stage3-fhe --config configs/eval/stage3_fhe_filter.toml`
 
 If you must add one extra verification command, keep it targeted and explain why.
 

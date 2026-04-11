@@ -123,7 +123,7 @@ This is a scaffold ticket only.
 
 ## Practical Constraints
 
-- use `uv` with Python `3.13`
+- use `uv` with Python `3.12`
 - do not keep the project positioned as a translation demo
 - avoid giant speculative abstractions
 - keep the skeleton simple and easy for later Codex sessions to extend

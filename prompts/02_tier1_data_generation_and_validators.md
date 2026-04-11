@@ -190,7 +190,7 @@ This ticket ends at the Tier 1 deterministic data layer plus validation.
 
 ## Practical Constraints
 
-- use `uv` with Python `3.13`
+- use `uv` with Python `3.12`
 - do not redesign the schema
 - do not change the split sizes or canary count
 - do not add speculative abstractions for future stages

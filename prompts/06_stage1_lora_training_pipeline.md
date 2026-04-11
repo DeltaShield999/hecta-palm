@@ -40,7 +40,7 @@ The next planned step is Phase 2 Stage 1 training. This ticket should implement 
 
 - the datasets are already committed in the repo on the Linux box
 - do not regenerate the deterministic datasets in this ticket
-- use `uv` with Python `3.13`
+- use `uv` with Python `3.12`
 - assume a single powerful NVIDIA GPU is available
 - target the current Linux box with an `NVIDIA RTX PRO 6000 Blackwell`
 - keep this ticket single-GPU only
@@ -291,7 +291,7 @@ Tests do not need to launch a real full training job on CPU. Keep them lightweig
 
 ## Practical Constraints
 
-- use `uv` with Python `3.13`
+- use `uv` with Python `3.12`
 - keep the implementation easy to audit
 - do not redesign the Stage 1 protocol
 - do not regenerate the datasets

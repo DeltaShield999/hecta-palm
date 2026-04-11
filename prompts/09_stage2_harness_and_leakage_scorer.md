@@ -58,7 +58,7 @@ This is the natural validation step for the strong `50x` canary result seen in S
 - the protocol bundle already contains the frozen Stage 1 system prompt and Stage 2 decoding rules:
   - `experiment_runtime/src/qwen_langgraph_demo/runtime/protocol.py`
 
-Use `uv` with Python `3.13`.
+Use `uv` with Python `3.12`.
 
 Keep this ticket single-GPU only.
 
@@ -417,12 +417,12 @@ If you refactor shared tokenizer helpers, rerun the adjacent Stage 1 tests as we
 At minimum, run:
 
 1. environment/setup if needed:
-   - `uv sync --python 3.13`
+   - `uv sync --python 3.12`
 2. lightweight tests:
-   - `uv run --python 3.13 python -m unittest tests.test_stage2_eval`
-   - `uv run --python 3.13 python -m unittest tests.test_stage2_attack_prompts tests.test_stage2_eval`
+   - `uv run --python 3.12 python -m unittest tests.test_stage2_eval`
+   - `uv run --python 3.12 python -m unittest tests.test_stage2_attack_prompts tests.test_stage2_eval`
 3. the real evaluation:
-   - `uv run --python 3.13 fhe-eval-stage2 --config configs/eval/stage2_replay.toml --exposure all --condition all`
+   - `uv run --python 3.12 fhe-eval-stage2 --config configs/eval/stage2_replay.toml --exposure all --condition all`
 
 If your CLI does not support `all`, evaluate the six runs sequentially and document the commands explicitly.
 

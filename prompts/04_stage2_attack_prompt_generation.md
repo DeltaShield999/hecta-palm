@@ -288,7 +288,7 @@ If helpful, implement reusable validation functions plus test coverage.
 
 ## Practical Constraints
 
-- use `uv` with Python `3.13`
+- use `uv` with Python `3.12`
 - keep the implementation easy to audit
 - do not redesign the dataset schema
 - do not use an LLM for this ticket
