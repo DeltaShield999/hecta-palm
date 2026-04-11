@@ -28,4 +28,5 @@ Current implementation stage:
 - Task 09 Stage 2 harness and leakage scorer is complete
 - Task 10 Stage 3 plaintext filter training is complete
 - Task 11 Stage 3 FHE wrapper and evaluation is complete
-- the next task is `12_stage2_integrated_reruns_with_filters.md`
+- Task 12 integrated Stage 2 reruns with filters is complete
+- the next task is `13_final_closeout_verification.md`
