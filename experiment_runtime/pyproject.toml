@@ -27,6 +27,7 @@ fhe-materialize-stage2 = "experiment.data_gen.stage2_attack_prompts:main"
 fhe-materialize-stage3 = "experiment.data_gen.stage3_filter_messages:main"
 fhe-train-stage1 = "experiment.train_qwen.cli:main"
 fhe-eval-stage1-mia = "experiment.mia.cli:main"
+fhe-eval-stage2 = "experiment.eval.cli:main"
 
 [build-system]
 requires = ["hatchling"]

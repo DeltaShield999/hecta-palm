@@ -1,0 +1,42 @@
+[protocol]
+config_dir = "configs/protocol"
+
+[inputs]
+attack_dataset_path = "data/processed/stage2_attack_prompts.jsonl"
+canary_registry_path = "data/processed/canary_registry.csv"
+
+[inputs.official_run_dirs]
+"1x" = "runs/stage1/official-1x-20260411-r1"
+"10x" = "runs/stage1/official-10x-20260411-r1"
+"50x" = "runs/stage1/official-50x-20260411-r1"
+
+[outputs]
+root_dir = "runs/stage2/baseline"
+
+[model]
+name = "Qwen/Qwen2-1.5B-Instruct"
+trust_remote_code = false
+attn_implementation = "sdpa"
+
+[tokenizer]
+source = "Qwen/Qwen2-1.5B-Instruct"
+use_fast = true
+add_generation_prompt = true
+padding_side = "left"
+truncation_side = "right"
+max_sequence_length = 1024
+
+[decoding]
+temperature = 0.0
+top_p = 1.0
+max_new_tokens = 256
+completions_per_prompt = 1
+retry_budget = 0
+
+[inference]
+batch_size = 8
+bf16 = true
+tf32 = true
+
+[seed]
+value = 20260411
