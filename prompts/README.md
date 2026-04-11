@@ -26,4 +26,5 @@ Current implementation stage:
 - Task 07 Stage 1 official training runs are complete
 - Task 08 Stage 1 MIA evaluator is complete
 - Task 09 Stage 2 harness and leakage scorer is complete
-- the next task is `10_stage3_plaintext_filter_training.md`
+- Task 10 Stage 3 plaintext filter training is complete
+- the next task is `11_stage3_fhe_wrapper_and_eval.md`
