@@ -1,0 +1,12 @@
+{
+  "epoch": 1.0,
+  "sequence_length_max": 444,
+  "sequence_length_mean": 425.52475,
+  "sequence_length_min": 406,
+  "total_flos": 2.836225683239731e+16,
+  "train_examples": 8000,
+  "train_loss": 0.3637056453227997,
+  "train_runtime": 249.0624,
+  "train_samples_per_second": 32.12,
+  "train_steps_per_second": 4.015
+}

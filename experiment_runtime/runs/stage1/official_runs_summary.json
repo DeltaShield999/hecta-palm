@@ -1,0 +1,68 @@
+{
+  "base_model_name": "Qwen/Qwen2-1.5B-Instruct",
+  "runs": [
+    {
+      "configured_max_steps": 1000,
+      "corpus_path": "/root/hecta-palm/experiment_runtime/data/processed/tier2_train_1x.jsonl",
+      "exposure_condition": "1x",
+      "final_global_step": 1000,
+      "final_train_loss": 0.3637056453227997,
+      "run_directory": "/root/hecta-palm/experiment_runtime/runs/stage1/official-1x-20260411-r1",
+      "run_name": "official-1x-20260411-r1",
+      "sequence_length_summary": {
+        "example_count": 8000,
+        "exposure_condition": "1x",
+        "max_sequence_length": 444,
+        "mean_sequence_length": 425.52475,
+        "min_sequence_length": 406,
+        "source_path": "/root/hecta-palm/experiment_runtime/data/processed/tier2_train_1x.jsonl"
+      },
+      "smoke_disabled": true,
+      "train_examples": 8000,
+      "train_runtime": 249.0624,
+      "train_steps_per_second": 4.015
+    },
+    {
+      "configured_max_steps": 1000,
+      "corpus_path": "/root/hecta-palm/experiment_runtime/data/processed/tier2_train_10x.jsonl",
+      "exposure_condition": "10x",
+      "final_global_step": 1000,
+      "final_train_loss": 0.3643515510559082,
+      "run_directory": "/root/hecta-palm/experiment_runtime/runs/stage1/official-10x-20260411-r1",
+      "run_name": "official-10x-20260411-r1",
+      "sequence_length_summary": {
+        "example_count": 8900,
+        "exposure_condition": "10x",
+        "max_sequence_length": 444,
+        "mean_sequence_length": 425.64460674157306,
+        "min_sequence_length": 406,
+        "source_path": "/root/hecta-palm/experiment_runtime/data/processed/tier2_train_10x.jsonl"
+      },
+      "smoke_disabled": true,
+      "train_examples": 8900,
+      "train_runtime": 253.4912,
+      "train_steps_per_second": 3.945
+    },
+    {
+      "configured_max_steps": 1000,
+      "corpus_path": "/root/hecta-palm/experiment_runtime/data/processed/tier2_train_50x.jsonl",
+      "exposure_condition": "50x",
+      "final_global_step": 1000,
+      "final_train_loss": 0.322095077753067,
+      "run_directory": "/root/hecta-palm/experiment_runtime/runs/stage1/official-50x-20260411-r1",
+      "run_name": "official-50x-20260411-r1",
+      "sequence_length_summary": {
+        "example_count": 12900,
+        "exposure_condition": "50x",
+        "max_sequence_length": 444,
+        "mean_sequence_length": 425.97496124031005,
+        "min_sequence_length": 406,
+        "source_path": "/root/hecta-palm/experiment_runtime/data/processed/tier2_train_50x.jsonl"
+      },
+      "smoke_disabled": true,
+      "train_examples": 12900,
+      "train_runtime": 253.4363,
+      "train_steps_per_second": 3.946
+    }
+  ]
+}
