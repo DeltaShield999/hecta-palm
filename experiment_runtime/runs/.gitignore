@@ -1,8 +1,1 @@
-# Keep lightweight run metadata visible, but ignore heavyweight training artifacts.
-**/trainer_output/
-**/*.safetensors
-**/*.pt
-**/*.pth
-**/*.bin
-stage3/fhe/compiled/
-**/tokenizer/tokenizer.json
+# Keep run artifacts visible by default.
