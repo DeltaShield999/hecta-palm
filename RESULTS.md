@@ -12,10 +12,10 @@ Completed:
 - Phase 1: deterministic data layer
 - Phase 2 Stage 1: Qwen2-1.5B-Instruct training
 - Phase 2 Stage 1: membership inference evaluation
+- Phase 3: Stage 2 baseline replay and leakage scoring
 
 Remaining:
 
-- Phase 3: Stage 2 replay and leakage scoring
 - Phase 4: Stage 3 plaintext filter training and evaluation
 - Phase 5: Stage 3 FHE filter evaluation and latency
 - Phase 6: integrated reruns and packaging
@@ -41,6 +41,7 @@ Key artifacts:
 
 - training summary: `experiment_runtime/runs/stage1/official_runs_summary.json`
 - MIA summary: `experiment_runtime/runs/stage1/mia/mia_summary.json`
+- Stage 2 summary: `experiment_runtime/runs/stage2/baseline/stage2_summary.json`
 
 ## Stage 1 Training Results
 
@@ -76,11 +77,35 @@ Canary-only MIA metrics:
 | `10x` | 0.6477 | 0.09 | 0.25 |
 | `50x` | 1.0000 | 1.00 | 1.00 |
 
-## Current Interpretation
+## Stage 2 Attack Replay Results
+
+Headline Stage 2 metrics:
+
+| Exposure | No-system any leak | No-system full leak | System-prompt any leak | System-prompt full leak | System-prompt refusal rate |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| `1x` | 0.964 | 0.400 | 0.036 | 0.000 | 0.000 |
+| `10x` | 0.944 | 0.404 | 0.052 | 0.004 | 0.000 |
+| `50x` | 0.944 | 0.372 | 0.232 | 0.052 | 0.000 |
+
+Stage 2 interpretation:
+
+- Without the system prompt, the model is extremely leaky across all three exposure conditions.
+- With the system prompt active, leakage drops sharply at `1x` and `10x`.
+- With the system prompt active, leakage rises substantially at `50x`, which is the key Stage 2 result.
+- `other_canary_leak_rate` is `0.0` in all six runs.
+- `refusal_rate` is also `0.0` in all six runs, so the system prompt is not protecting mainly by emitting the exact refusal string.
+
+Family-level note:
+
+- without the system prompt, all attack families are highly effective
+- with the system prompt active, direct injection is strongest at `1x` and `10x`
+- at `50x`, direct injection and role-play are the strongest system-prompt-active families
+
+## Current Cross-Stage Interpretation
 
 Current judgment:
 
-- the Stage 1 results look plausible and in line with the experiment design
+- the Stage 1 and Stage 2 results look plausible and in line with the experiment design
 - they do not currently suggest an obvious implementation bug
 
 Why this looks like the expected pattern:
@@ -88,11 +113,13 @@ Why this looks like the expected pattern:
 - whole-population MIA is weak at `1x` and `10x`, which is reasonable because only `100` of the `8,000` member records are overexposed canaries
 - whole-population MIA becomes meaningfully stronger at `50x`, which is the intended direction of the exposure manipulation
 - the strongest signal is canary-specific: canary MIA rises sharply with exposure count
+- Stage 2 targeted extraction tells the same story: system-prompt-active leakage stays low at `1x` and `10x`, then rises materially at `50x`
 
 Most important takeaway so far:
 
 - increasing canary exposure from `1x` and `10x` to `50x` materially increases MIA signal, especially on the canary subset
 - at `50x`, canary-only MIA is perfectly separated in the produced evaluation artifacts: canary AUC-ROC is `1.0`, with `TPR@1%FPR = 1.0` and `TPR@10%FPR = 1.0`
+- the Stage 2 replay results validate that this memorization signal is not merely abstract: by `50x`, it translates into a much higher targeted leakage rate even with the system prompt active
 
 Why this does not currently look suspicious:
 
@@ -104,8 +131,8 @@ Why this does not currently look suspicious:
 
 Current caution:
 
-- the `50x` canary-only result is extremely strong, so it should be treated as a real signal to validate with Stage 2 rather than as proof on its own
-- the next major check is whether Stage 2 targeted extraction results are also clearly stronger for `50x`
+- the no-system baseline is so leaky that it mainly serves as a stress baseline, not as a realistic deployment setting
+- the next major check is whether the Stage 3 plaintext filter can materially reduce the system-prompt-active leakage seen at `50x`
 
 This means the project has moved past pure implementation validation and into actual experimental output.
 
@@ -113,7 +140,6 @@ This means the project has moved past pure implementation validation and into ac
 
 The following sections should be added as later tasks complete:
 
-- Stage 2 replay and leakage scoring
 - Stage 3 plaintext filter training and held-out metrics
 - Stage 3 FHE filter metrics and latency
 - Integrated final attack reruns with filter active
@@ -131,3 +157,7 @@ Primary detailed artifacts for the completed stages:
 - `experiment_runtime/runs/stage1/mia/1x/canary_metrics.json`
 - `experiment_runtime/runs/stage1/mia/10x/canary_metrics.json`
 - `experiment_runtime/runs/stage1/mia/50x/canary_metrics.json`
+- `experiment_runtime/runs/stage2/baseline/stage2_summary.json`
+- `experiment_runtime/runs/stage2/baseline/1x/system_prompt_active/stage2_metrics.json`
+- `experiment_runtime/runs/stage2/baseline/10x/system_prompt_active/stage2_metrics.json`
+- `experiment_runtime/runs/stage2/baseline/50x/system_prompt_active/stage2_metrics.json`
