@@ -76,23 +76,36 @@ Canary-only MIA metrics:
 | `10x` | 0.6477 | 0.09 | 0.25 |
 | `50x` | 1.0000 | 1.00 | 1.00 |
 
-MIA interpretation:
+## Current Interpretation
 
-- Whole-population MIA is weak at `1x` and `10x`, and becomes meaningfully stronger at `50x`.
-- The strongest signal is canary-specific: canary MIA rises sharply with exposure count.
-- At `50x`, canary-only MIA is perfectly separated in the produced evaluation artifacts: canary AUC-ROC is `1.0`, with `TPR@1%FPR = 1.0` and `TPR@10%FPR = 1.0`.
-- The current Stage 1 result is therefore:
-  - weak overall membership signal at low exposure
-  - clear exposure-linked memorization signal by `50x`
-  - extremely strong canary-specific memorization at `50x`
+Current judgment:
 
-## Current Bottom Line
+- the Stage 1 results look plausible and in line with the experiment design
+- they do not currently suggest an obvious implementation bug
 
-The Stage 1 portion of the experiment is working and is already producing non-trivial signal.
+Why this looks like the expected pattern:
 
-The most important result so far is:
+- whole-population MIA is weak at `1x` and `10x`, which is reasonable because only `100` of the `8,000` member records are overexposed canaries
+- whole-population MIA becomes meaningfully stronger at `50x`, which is the intended direction of the exposure manipulation
+- the strongest signal is canary-specific: canary MIA rises sharply with exposure count
+
+Most important takeaway so far:
 
 - increasing canary exposure from `1x` and `10x` to `50x` materially increases MIA signal, especially on the canary subset
+- at `50x`, canary-only MIA is perfectly separated in the produced evaluation artifacts: canary AUC-ROC is `1.0`, with `TPR@1%FPR = 1.0` and `TPR@10%FPR = 1.0`
+
+Why this does not currently look suspicious:
+
+- the strongest effect is concentrated on the canary subset rather than appearing as a bizarre across-the-board jump at every exposure level
+- if the implementation were badly wrong, a more suspicious pattern would be either:
+  - strong leakage already at `1x`, or
+  - no clear increase as exposure rises
+- that is not what we see
+
+Current caution:
+
+- the `50x` canary-only result is extremely strong, so it should be treated as a real signal to validate with Stage 2 rather than as proof on its own
+- the next major check is whether Stage 2 targeted extraction results are also clearly stronger for `50x`
 
 This means the project has moved past pure implementation validation and into actual experimental output.
 
