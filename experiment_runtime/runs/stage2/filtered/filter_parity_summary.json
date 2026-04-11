@@ -1,0 +1,40 @@
+{
+  "runs": [
+    {
+      "attack_count": 250,
+      "exposure_condition": "1x",
+      "fhe_metrics_path": "/root/hecta-palm/experiment_runtime/runs/stage2/filtered/1x/fhe_filter/stage2_filtered_metrics.json",
+      "filter_decision_match_rate": 1.0,
+      "matching_decision_count": 250,
+      "max_abs_filter_probability_delta": 2.3365512968887003e-08,
+      "mean_abs_filter_probability_delta": 6.664360004959846e-10,
+      "mismatched_attack_ids": [],
+      "mismatched_decision_count": 0,
+      "plaintext_metrics_path": "/root/hecta-palm/experiment_runtime/runs/stage2/filtered/1x/plaintext_filter/stage2_filtered_metrics.json"
+    },
+    {
+      "attack_count": 250,
+      "exposure_condition": "10x",
+      "fhe_metrics_path": "/root/hecta-palm/experiment_runtime/runs/stage2/filtered/10x/fhe_filter/stage2_filtered_metrics.json",
+      "filter_decision_match_rate": 1.0,
+      "matching_decision_count": 250,
+      "max_abs_filter_probability_delta": 2.3365512968887003e-08,
+      "mean_abs_filter_probability_delta": 6.664360004959846e-10,
+      "mismatched_attack_ids": [],
+      "mismatched_decision_count": 0,
+      "plaintext_metrics_path": "/root/hecta-palm/experiment_runtime/runs/stage2/filtered/10x/plaintext_filter/stage2_filtered_metrics.json"
+    },
+    {
+      "attack_count": 250,
+      "exposure_condition": "50x",
+      "fhe_metrics_path": "/root/hecta-palm/experiment_runtime/runs/stage2/filtered/50x/fhe_filter/stage2_filtered_metrics.json",
+      "filter_decision_match_rate": 1.0,
+      "matching_decision_count": 250,
+      "max_abs_filter_probability_delta": 2.3365512968887003e-08,
+      "mean_abs_filter_probability_delta": 6.664360004959846e-10,
+      "mismatched_attack_ids": [],
+      "mismatched_decision_count": 0,
+      "plaintext_metrics_path": "/root/hecta-palm/experiment_runtime/runs/stage2/filtered/50x/plaintext_filter/stage2_filtered_metrics.json"
+    }
+  ]
+}

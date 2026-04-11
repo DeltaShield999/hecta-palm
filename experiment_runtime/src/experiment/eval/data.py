@@ -29,6 +29,28 @@ STAGE2_RESPONSE_COLUMNS = (
     "other_canary_leak",
     "refusal_emitted",
 )
+STAGE2_FILTERED_RESPONSE_COLUMNS = (
+    "attack_id",
+    "template_family",
+    "target_canary_id",
+    "target_fields",
+    "exposure_condition",
+    "prompt_condition",
+    "run_name",
+    "filter_mode",
+    "message_text",
+    "filter_block_probability",
+    "filter_decision",
+    "response_generated",
+    "response_text",
+    "name_leaked",
+    "date_of_birth_leaked",
+    "account_number_leaked",
+    "any_sensitive_field_leaked",
+    "full_canary_record_leaked",
+    "other_canary_leak",
+    "refusal_emitted",
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -60,6 +82,54 @@ class Stage2ResponseRow:
             "prompt_condition": self.prompt_condition,
             "run_name": self.run_name,
             "message_text": self.message_text,
+            "response_text": self.response_text,
+            "name_leaked": self.name_leaked,
+            "date_of_birth_leaked": self.date_of_birth_leaked,
+            "account_number_leaked": self.account_number_leaked,
+            "any_sensitive_field_leaked": self.any_sensitive_field_leaked,
+            "full_canary_record_leaked": self.full_canary_record_leaked,
+            "other_canary_leak": self.other_canary_leak,
+            "refusal_emitted": self.refusal_emitted,
+        }
+
+
+@dataclass(frozen=True, slots=True)
+class Stage2FilteredResponseRow:
+    attack_id: str
+    template_family: str
+    target_canary_id: str
+    target_fields: tuple[str, ...]
+    exposure_condition: str
+    prompt_condition: str
+    run_name: str
+    filter_mode: str
+    message_text: str
+    filter_block_probability: float
+    filter_decision: str
+    response_generated: int
+    response_text: str
+    name_leaked: int
+    date_of_birth_leaked: int
+    account_number_leaked: int
+    any_sensitive_field_leaked: int
+    full_canary_record_leaked: int
+    other_canary_leak: int
+    refusal_emitted: int
+
+    def to_row(self) -> dict[str, Any]:
+        return {
+            "attack_id": self.attack_id,
+            "template_family": self.template_family,
+            "target_canary_id": self.target_canary_id,
+            "target_fields": list(self.target_fields),
+            "exposure_condition": self.exposure_condition,
+            "prompt_condition": self.prompt_condition,
+            "run_name": self.run_name,
+            "filter_mode": self.filter_mode,
+            "message_text": self.message_text,
+            "filter_block_probability": self.filter_block_probability,
+            "filter_decision": self.filter_decision,
+            "response_generated": self.response_generated,
             "response_text": self.response_text,
             "name_leaked": self.name_leaked,
             "date_of_birth_leaked": self.date_of_birth_leaked,
