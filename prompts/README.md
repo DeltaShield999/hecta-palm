@@ -25,4 +25,5 @@ Current implementation stage:
 - Task 06 Stage 1 LoRA training pipeline is complete
 - Task 07 Stage 1 official training runs are complete
 - Task 08 Stage 1 MIA evaluator is complete
-- the next task is `09_stage2_harness_and_leakage_scorer.md`
+- Task 09 Stage 2 harness and leakage scorer is complete
+- the next task is `10_stage3_plaintext_filter_training.md`
