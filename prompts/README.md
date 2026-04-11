@@ -23,4 +23,5 @@ Current implementation stage:
 - Task 04 Stage 2 attack prompt generation is complete
 - Task 05 Stage 3 ALLOW/BLOCK dataset generation is complete
 - Task 06 Stage 1 LoRA training pipeline is complete
-- the next task is `07_stage1_official_training_runs.md`
+- Task 07 Stage 1 official training runs are complete
+- the next task is `08_stage1_mia_evaluator.md`
