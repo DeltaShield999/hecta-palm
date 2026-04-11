@@ -21,6 +21,11 @@ dependencies = [
     "sentence-transformers>=5.4.0",
 ]
 
+[project.optional-dependencies]
+fhe = [
+    "openfhe>=1.5.1.0.24.4",
+]
+
 [project.scripts]
 fhe-experiment-run = "qwen_langgraph_demo.main:main"
 fhe-endpoint-smoke = "qwen_langgraph_demo.test_endpoint:main"
@@ -32,6 +37,7 @@ fhe-train-stage1 = "experiment.train_qwen.cli:main"
 fhe-eval-stage1-mia = "experiment.mia.cli:main"
 fhe-eval-stage2 = "experiment.eval.cli:main"
 fhe-train-stage3-plaintext = "experiment.filter_train.cli:main"
+fhe-eval-stage3-fhe = "experiment.fhe.cli:main"
 
 [build-system]
 requires = ["hatchling"]

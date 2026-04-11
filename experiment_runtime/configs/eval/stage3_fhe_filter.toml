@@ -1,0 +1,26 @@
+[inputs]
+plaintext_metrics_path = "runs/stage3/plaintext/stage3_plaintext_metrics.json"
+model_parameters_path = "runs/stage3/plaintext/model/model_parameters.json"
+test_embeddings_path = "runs/stage3/plaintext/embeddings/test_embeddings.npz"
+val_embeddings_path = "runs/stage3/plaintext/embeddings/val_embeddings.npz"
+test_predictions_path = "runs/stage3/plaintext/test_predictions.csv"
+
+[outputs]
+root_dir = "runs/stage3/fhe"
+
+[fhe]
+backend = "openfhe"
+scheme = "CKKS"
+ring_dimension = 16384
+multiplicative_depth = 1
+scaling_mod_size = 40
+first_mod_size = 60
+batch_size = 512
+security_level = "HEStd_128_classic"
+
+[benchmark]
+split_name = "test"
+example_count = 300
+
+[seed]
+value = 20260411

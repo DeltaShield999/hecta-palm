@@ -1,0 +1,28 @@
+{
+  "python_version": "3.12.3",
+  "package_versions": {
+    "fhe-experiment-runtime": "0.1.0",
+    "numpy": "2.4.4",
+    "openfhe": "1.5.1.0.24.4",
+    "scikit-learn": "1.8.0",
+    "sentence-transformers": "5.4.0",
+    "torch": "2.11.0",
+    "transformers": "5.5.3"
+  },
+  "chosen_fhe_backend": "openfhe",
+  "resolved_ckks_parameters": {
+    "backend": "openfhe",
+    "scheme": "CKKS",
+    "ring_dimension": 16384,
+    "batch_size": 512,
+    "multiplicative_depth": 1,
+    "scaling_mod_size": 40,
+    "first_mod_size": 60,
+    "security_level": "HEStd_128_classic"
+  },
+  "vector_dimension": 384,
+  "benchmark_split": "test",
+  "benchmark_example_count": 300,
+  "threshold": 0.4199950085320943,
+  "thresholding_policy": "Decrypt the CKKS linear logit, compute sigmoid(z) in plaintext, then predict BLOCK iff block_probability >= the saved plaintext threshold."
+}

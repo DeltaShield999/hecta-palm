@@ -199,6 +199,11 @@ dependencies = [
     { name = "transformers" },
 ]
 
+[package.optional-dependencies]
+fhe = [
+    { name = "openfhe" },
+]
+
 [package.metadata]
 requires-dist = [
     { name = "accelerate", specifier = ">=1.10.0" },
@@ -206,6 +211,7 @@ requires-dist = [
     { name = "langgraph", specifier = ">=0.6.0" },
     { name = "numpy", specifier = ">=2.4.4" },
     { name = "openai", specifier = ">=2.0.0" },
+    { name = "openfhe", marker = "extra == 'fhe'", specifier = ">=1.5.1.0.24.4" },
     { name = "peft", specifier = ">=0.18.0" },
     { name = "pyarrow", specifier = ">=21.0.0" },
     { name = "python-dotenv", specifier = ">=1.1.0" },
@@ -216,6 +222,7 @@ requires-dist = [
     { name = "torch", specifier = ">=2.8.0" },
     { name = "transformers", specifier = ">=4.57.0" },
 ]
+provides-extras = ["fhe"]
 
 [[package]]
 name = "filelock"
@@ -736,6 +743,14 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/56/87/eb0abb4ef88ddb95b3c13149384c4c288f584f3be17d6a4f63f8c3e3c226/openai-2.28.0.tar.gz", hash = "sha256:bb7fdff384d2a787fa82e8822d1dd3c02e8cf901d60f1df523b7da03cbb6d48d", size = 670334, upload-time = "2026-03-13T19:56:27.306Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/c0/5a/df122348638885526e53140e9c6b0d844af7312682b3bde9587eebc28b47/openai-2.28.0-py3-none-any.whl", hash = "sha256:79aa5c45dba7fef84085701c235cf13ba88485e1ef4f8dfcedc44fc2a698fc1d", size = 1141218, upload-time = "2026-03-13T19:56:25.46Z" },
+]
+
+[[package]]
+name = "openfhe"
+version = "1.5.1.0.24.4"
+source = { registry = "https://pypi.org/simple" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/c4/f4/671d48d5e45fd2d7a02e55bcc122dcb4c4509019ba41990c624eab5bcd19/openfhe-1.5.1.0.24.4-py3-none-any.whl", hash = "sha256:b39f50f570ea1236dc8a8c64b01552848eb66c068592c4178fa37249f182106e", size = 3977885, upload-time = "2026-04-10T19:49:31.073Z" },
 ]
 
 [[package]]

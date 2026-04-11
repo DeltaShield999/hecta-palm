@@ -1,0 +1,74 @@
+{
+  "config_path": "/root/hecta-palm/experiment_runtime/configs/eval/stage3_fhe_filter.toml",
+  "plaintext_artifact_paths": {
+    "plaintext_metrics_path": "/root/hecta-palm/experiment_runtime/runs/stage3/plaintext/stage3_plaintext_metrics.json",
+    "model_parameters_path": "/root/hecta-palm/experiment_runtime/runs/stage3/plaintext/model/model_parameters.json",
+    "test_embeddings_path": "/root/hecta-palm/experiment_runtime/runs/stage3/plaintext/embeddings/test_embeddings.npz",
+    "val_embeddings_path": "/root/hecta-palm/experiment_runtime/runs/stage3/plaintext/embeddings/val_embeddings.npz",
+    "test_predictions_path": "/root/hecta-palm/experiment_runtime/runs/stage3/plaintext/test_predictions.csv"
+  },
+  "fhe_library_used": "openfhe",
+  "resolved_ckks_parameters": {
+    "backend": "openfhe",
+    "scheme": "CKKS",
+    "ring_dimension": 16384,
+    "batch_size": 512,
+    "multiplicative_depth": 1,
+    "scaling_mod_size": 40,
+    "first_mod_size": 60,
+    "security_level": "HEStd_128_classic"
+  },
+  "plaintext_test_metrics": {
+    "allow_precision": 0.9867549668874173,
+    "allow_recall": 0.9933333333333333,
+    "allow_f1": 0.9900332225913622,
+    "block_precision": 0.9932885906040269,
+    "block_recall": 0.9866666666666667,
+    "block_f1": 0.9899665551839465,
+    "macro_f1": 0.9899998888876543,
+    "accuracy": 0.99,
+    "adversarial_block_rate": 0.9866666666666667,
+    "benign_false_positive_rate": 0.006666666666666667,
+    "true_allow_pred_allow": 149,
+    "true_allow_pred_block": 1,
+    "true_block_pred_allow": 2,
+    "true_block_pred_block": 148,
+    "confusion_matrix": {
+      "true_ALLOW_pred_ALLOW": 149,
+      "true_ALLOW_pred_BLOCK": 1,
+      "true_BLOCK_pred_ALLOW": 2,
+      "true_BLOCK_pred_BLOCK": 148
+    }
+  },
+  "fhe_test_metrics": {
+    "allow_precision": 0.9867549668874173,
+    "allow_recall": 0.9933333333333333,
+    "allow_f1": 0.9900332225913622,
+    "block_precision": 0.9932885906040269,
+    "block_recall": 0.9866666666666667,
+    "block_f1": 0.9899665551839465,
+    "macro_f1": 0.9899998888876543,
+    "accuracy": 0.99,
+    "adversarial_block_rate": 0.9866666666666667,
+    "benign_false_positive_rate": 0.006666666666666667,
+    "true_allow_pred_allow": 149,
+    "true_allow_pred_block": 1,
+    "true_block_pred_allow": 2,
+    "true_block_pred_block": 148,
+    "confusion_matrix": {
+      "true_ALLOW_pred_ALLOW": 149,
+      "true_ALLOW_pred_BLOCK": 1,
+      "true_BLOCK_pred_ALLOW": 2,
+      "true_BLOCK_pred_BLOCK": 148
+    }
+  },
+  "prediction_match_rate": 1.0,
+  "plaintext_vs_fhe_accuracy_delta": 0.0,
+  "mean_abs_probability_delta": 7.165748867292381e-10,
+  "max_abs_probability_delta": 1.1501372687572342e-08,
+  "benchmark_example_count": 300,
+  "comparison_artifact_path": "/root/hecta-palm/experiment_runtime/runs/stage3/fhe/plaintext_vs_fhe_comparison.csv",
+  "latency_summary_path": "/root/hecta-palm/experiment_runtime/runs/stage3/fhe/latency_summary.json",
+  "latency_samples_path": "/root/hecta-palm/experiment_runtime/runs/stage3/fhe/latency_samples.csv",
+  "context_metadata_path": "/root/hecta-palm/experiment_runtime/runs/stage3/fhe/context_metadata.json"
+}
