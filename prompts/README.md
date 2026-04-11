@@ -24,4 +24,5 @@ Current implementation stage:
 - Task 05 Stage 3 ALLOW/BLOCK dataset generation is complete
 - Task 06 Stage 1 LoRA training pipeline is complete
 - Task 07 Stage 1 official training runs are complete
-- the next task is `08_stage1_mia_evaluator.md`
+- Task 08 Stage 1 MIA evaluator is complete
+- the next task is `09_stage2_harness_and_leakage_scorer.md`
