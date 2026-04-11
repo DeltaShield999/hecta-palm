@@ -1,0 +1,203 @@
+{
+  "audit_generated_at_utc": "2026-04-11T16:31:04.639675+00:00",
+  "critical_heavy_artifacts": {
+    "all_found_in_git_lfs": true,
+    "all_found_locally": true,
+    "groups": [
+      {
+        "all_critical_heavy_files_in_git_lfs": true,
+        "all_critical_heavy_files_present_locally": true,
+        "critical_heavy_file_count": 14,
+        "exists_locally": true,
+        "missing_git_lfs_paths": [],
+        "missing_local_paths": [],
+        "path": "experiment_runtime/runs/stage1/official-1x-20260411-r1"
+      },
+      {
+        "all_critical_heavy_files_in_git_lfs": true,
+        "all_critical_heavy_files_present_locally": true,
+        "critical_heavy_file_count": 14,
+        "exists_locally": true,
+        "missing_git_lfs_paths": [],
+        "missing_local_paths": [],
+        "path": "experiment_runtime/runs/stage1/official-10x-20260411-r1"
+      },
+      {
+        "all_critical_heavy_files_in_git_lfs": true,
+        "all_critical_heavy_files_present_locally": true,
+        "critical_heavy_file_count": 14,
+        "exists_locally": true,
+        "missing_git_lfs_paths": [],
+        "missing_local_paths": [],
+        "path": "experiment_runtime/runs/stage1/official-50x-20260411-r1"
+      },
+      {
+        "all_critical_heavy_files_in_git_lfs": true,
+        "all_critical_heavy_files_present_locally": true,
+        "critical_heavy_file_count": 5,
+        "exists_locally": true,
+        "missing_git_lfs_paths": [],
+        "missing_local_paths": [],
+        "path": "experiment_runtime/runs/stage3/fhe/compiled"
+      }
+    ],
+    "missing_git_lfs_paths": [],
+    "missing_local_paths": []
+  },
+  "critical_lightweight_artifacts": {
+    "all_git_tracked": true,
+    "all_in_normal_git": true,
+    "all_present": true,
+    "files": [
+      {
+        "git_tracked": true,
+        "in_git_lfs": false,
+        "path": "RESULTS.md",
+        "present": true
+      },
+      {
+        "git_tracked": true,
+        "in_git_lfs": false,
+        "path": "experiment_runtime/README.md",
+        "present": true
+      },
+      {
+        "git_tracked": true,
+        "in_git_lfs": false,
+        "path": "experiment_runtime/runs/stage1/official_runs_summary.json",
+        "present": true
+      },
+      {
+        "git_tracked": true,
+        "in_git_lfs": false,
+        "path": "experiment_runtime/runs/stage1/mia/mia_summary.json",
+        "present": true
+      },
+      {
+        "git_tracked": true,
+        "in_git_lfs": false,
+        "path": "experiment_runtime/runs/stage2/baseline/stage2_summary.json",
+        "present": true
+      },
+      {
+        "git_tracked": true,
+        "in_git_lfs": false,
+        "path": "experiment_runtime/runs/stage3/plaintext/stage3_plaintext_metrics.json",
+        "present": true
+      },
+      {
+        "git_tracked": true,
+        "in_git_lfs": false,
+        "path": "experiment_runtime/runs/stage3/fhe/stage3_fhe_metrics.json",
+        "present": true
+      },
+      {
+        "git_tracked": true,
+        "in_git_lfs": false,
+        "path": "experiment_runtime/runs/stage3/fhe/compiled_bundle_manifest.json",
+        "present": true
+      },
+      {
+        "git_tracked": true,
+        "in_git_lfs": false,
+        "path": "experiment_runtime/runs/stage2/filtered/stage2_filtered_summary.json",
+        "present": true
+      },
+      {
+        "git_tracked": true,
+        "in_git_lfs": false,
+        "path": "experiment_runtime/runs/stage2/filtered/filter_parity_summary.json",
+        "present": true
+      }
+    ]
+  },
+  "documentation_checks": {
+    "results_mentions_compiled_bundle_manifest": true,
+    "results_mentions_stage2_filtered_summary": true,
+    "runtime_readme_does_not_claim_local_only_heavy_artifacts": true,
+    "runtime_readme_mentions_filter_parity_summary": true,
+    "runtime_readme_mentions_git_lfs": true,
+    "runtime_readme_mentions_stage2_filtered_summary": true
+  },
+  "fixes_applied": [
+    "Updated experiment_runtime/README.md to reflect that heavy artifacts are preserved through Git LFS, not local-only.",
+    "Updated RESULTS.md to reflect that the Stage 3 compiled OpenFHE bundle is preserved through Git LFS."
+  ],
+  "gaps_detected": [],
+  "processed_datasets": {
+    "all_git_tracked": true,
+    "all_present": true,
+    "files": [
+      {
+        "git_tracked": true,
+        "in_git_lfs": false,
+        "path": "experiment_runtime/data/processed/.gitkeep",
+        "size_bytes": 1
+      },
+      {
+        "git_tracked": true,
+        "in_git_lfs": false,
+        "path": "experiment_runtime/data/processed/canary_registry.csv",
+        "size_bytes": 6284
+      },
+      {
+        "git_tracked": true,
+        "in_git_lfs": false,
+        "path": "experiment_runtime/data/processed/mia_eval.jsonl",
+        "size_bytes": 18133806
+      },
+      {
+        "git_tracked": true,
+        "in_git_lfs": false,
+        "path": "experiment_runtime/data/processed/stage2_attack_prompts.jsonl",
+        "size_bytes": 158109
+      },
+      {
+        "git_tracked": true,
+        "in_git_lfs": false,
+        "path": "experiment_runtime/data/processed/stage3_filter_messages_test.jsonl",
+        "size_bytes": 185374
+      },
+      {
+        "git_tracked": true,
+        "in_git_lfs": false,
+        "path": "experiment_runtime/data/processed/stage3_filter_messages_train.jsonl",
+        "size_bytes": 857501
+      },
+      {
+        "git_tracked": true,
+        "in_git_lfs": false,
+        "path": "experiment_runtime/data/processed/stage3_filter_messages_val.jsonl",
+        "size_bytes": 184872
+      },
+      {
+        "git_tracked": true,
+        "in_git_lfs": false,
+        "path": "experiment_runtime/data/processed/tier1_records.parquet",
+        "size_bytes": 832080
+      },
+      {
+        "git_tracked": true,
+        "in_git_lfs": false,
+        "path": "experiment_runtime/data/processed/tier2_train_10x.jsonl",
+        "size_bytes": 16491931
+      },
+      {
+        "git_tracked": true,
+        "in_git_lfs": false,
+        "path": "experiment_runtime/data/processed/tier2_train_1x.jsonl",
+        "size_bytes": 14798331
+      },
+      {
+        "git_tracked": true,
+        "in_git_lfs": false,
+        "path": "experiment_runtime/data/processed/tier2_train_50x.jsonl",
+        "size_bytes": 23947931
+      }
+    ],
+    "tracking_note": "Processed datasets are repo-visible and small enough for normal Git tracking on this checkout."
+  },
+  "python_baseline": "3.12",
+  "ready_for_handoff": true,
+  "repo_commit_audited": "f5552db9350a336366e882e67f818f995ebeac66"
+}

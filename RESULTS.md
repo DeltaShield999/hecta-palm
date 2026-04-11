@@ -154,7 +154,7 @@ FHE interpretation:
 
 - The CKKS/OpenFHE wrapper preserved the plaintext classifier behavior exactly on the held-out Stage 3 test set.
 - Probability drift stayed negligible, at roughly `1e-9` mean and `1e-8` max.
-- A reusable compiled-equivalent OpenFHE bundle was serialized locally, with a lightweight manifest committed to the repo and the heavy binary artifacts left out of git.
+- A reusable compiled-equivalent OpenFHE bundle was serialized and preserved through Git LFS, with a lightweight manifest committed alongside it for fast review.
 - The current Stage 3 FHE path keeps sentence encoding plaintext and applies the threshold locally after decrypting the CKKS score.
 
 ## Integrated Stage 2 Filtered Rerun Results

@@ -18,7 +18,7 @@ Top-level experiment results are summarized in [../RESULTS.md](../RESULTS.md). T
 
 - Official experiment results come from the `experiment.*` CLIs and the artifacts under `runs/`.
 - The `qwen_langgraph_demo/` package is still present as a historical LangGraph demo/runtime scaffold, but it is not the official execution path for the reported Stage 1, Stage 2, or Stage 3 results.
-- Heavy artifacts are intentionally kept out of git. The repo tracks lightweight summaries, manifests, and metrics; large adapters, checkpoints, and the compiled OpenFHE bundle remain local-only.
+- Heavy artifacts are tracked through Git LFS. The repo still keeps lightweight summaries, manifests, and metrics in normal Git, but the large adapters, checkpoints, and compiled OpenFHE bundle now require `git lfs pull` after clone if the payloads are not already present.
 
 ## Environment
 
@@ -106,7 +106,7 @@ The directories that matter most:
 | `runs/stage3/plaintext/` | Plaintext filter model, embeddings, selection sweep, and metrics |
 | `runs/stage3/fhe/` | FHE parity, latency, and compiled-bundle manifest artifacts |
 
-Heavy local-only artifacts:
+Heavy Git LFS artifacts:
 
 - Stage 1 adapter weights and trainer checkpoints
 - Stage 3 compiled OpenFHE bundle under `runs/stage3/fhe/compiled/`
