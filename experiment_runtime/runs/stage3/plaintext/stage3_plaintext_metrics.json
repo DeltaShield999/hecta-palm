@@ -1,0 +1,53 @@
+{
+  "config_path": "/Users/hamza/Desktop/multi_agent_fhe/experiment_runtime/configs/eval/stage3_plaintext_filter.toml",
+  "output_root": "/Users/hamza/Desktop/multi_agent_fhe/experiment_runtime/runs/stage3/plaintext",
+  "encoder_model_name": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_dimension": 384,
+  "normalize_embeddings": true,
+  "selected_c": 10.0,
+  "selected_threshold": 0.4199950085320943,
+  "validation_metrics": {
+    "allow_precision": 1.0,
+    "allow_recall": 0.9933333333333333,
+    "allow_f1": 0.9966555183946488,
+    "block_precision": 0.9933774834437086,
+    "block_recall": 1.0,
+    "block_f1": 0.9966777408637874,
+    "macro_f1": 0.9966666296292181,
+    "accuracy": 0.9966666666666667,
+    "adversarial_block_rate": 1.0,
+    "benign_false_positive_rate": 0.006666666666666667,
+    "true_allow_pred_allow": 149,
+    "true_allow_pred_block": 1,
+    "true_block_pred_allow": 0,
+    "true_block_pred_block": 150,
+    "confusion_matrix": {
+      "true_ALLOW_pred_ALLOW": 149,
+      "true_ALLOW_pred_BLOCK": 1,
+      "true_BLOCK_pred_ALLOW": 0,
+      "true_BLOCK_pred_BLOCK": 150
+    }
+  },
+  "test_metrics": {
+    "allow_precision": 0.9867549668874173,
+    "allow_recall": 0.9933333333333333,
+    "allow_f1": 0.9900332225913622,
+    "block_precision": 0.9932885906040269,
+    "block_recall": 0.9866666666666667,
+    "block_f1": 0.9899665551839465,
+    "macro_f1": 0.9899998888876543,
+    "accuracy": 0.99,
+    "adversarial_block_rate": 0.9866666666666667,
+    "benign_false_positive_rate": 0.006666666666666667,
+    "true_allow_pred_allow": 149,
+    "true_allow_pred_block": 1,
+    "true_block_pred_allow": 2,
+    "true_block_pred_block": 148,
+    "confusion_matrix": {
+      "true_ALLOW_pred_ALLOW": 149,
+      "true_ALLOW_pred_BLOCK": 1,
+      "true_BLOCK_pred_ALLOW": 2,
+      "true_BLOCK_pred_BLOCK": 148
+    }
+  }
+}

@@ -1,0 +1,36 @@
+[protocol]
+config_dir = "configs/protocol"
+
+[inputs]
+train_dataset_path = "data/processed/stage3_filter_messages_train.jsonl"
+val_dataset_path = "data/processed/stage3_filter_messages_val.jsonl"
+test_dataset_path = "data/processed/stage3_filter_messages_test.jsonl"
+
+[outputs]
+root_dir = "runs/stage3/plaintext"
+
+[encoder]
+model_name = "sentence-transformers/all-MiniLM-L6-v2"
+normalize_embeddings = true
+batch_size = 64
+device = "cpu"
+
+[logistic_regression]
+candidate_c_values = [0.01, 0.1, 1.0, 10.0]
+solver = "liblinear"
+max_iter = 2000
+
+[threshold_selection]
+selection_split = "val"
+score_label = "BLOCK"
+decision_rule = "predict BLOCK iff block_probability >= threshold"
+objective = "macro_f1"
+tie_breakers = [
+  "block_recall",
+  "benign_false_positive_rate",
+  "smallest_threshold",
+]
+c_tie_breaker = "smallest_c"
+
+[seed]
+value = 20260411

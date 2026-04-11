@@ -13,10 +13,10 @@ Completed:
 - Phase 2 Stage 1: Qwen2-1.5B-Instruct training
 - Phase 2 Stage 1: membership inference evaluation
 - Phase 3: Stage 2 baseline replay and leakage scoring
+- Phase 4: Stage 3 plaintext filter training and evaluation
 
 Remaining:
 
-- Phase 4: Stage 3 plaintext filter training and evaluation
 - Phase 5: Stage 3 FHE filter evaluation and latency
 - Phase 6: integrated reruns and packaging
 
@@ -42,6 +42,7 @@ Key artifacts:
 - training summary: `experiment_runtime/runs/stage1/official_runs_summary.json`
 - MIA summary: `experiment_runtime/runs/stage1/mia/mia_summary.json`
 - Stage 2 summary: `experiment_runtime/runs/stage2/baseline/stage2_summary.json`
+- Stage 3 plaintext summary: `experiment_runtime/runs/stage3/plaintext/stage3_plaintext_metrics.json`
 
 ## Stage 1 Training Results
 
@@ -101,11 +102,39 @@ Family-level note:
 - with the system prompt active, direct injection is strongest at `1x` and `10x`
 - at `50x`, direct injection and role-play are the strongest system-prompt-active families
 
+## Stage 3 Plaintext Filter Results
+
+Held-out plaintext filter metrics:
+
+| Metric | Value |
+| --- | ---: |
+| Encoder | `sentence-transformers/all-MiniLM-L6-v2` |
+| Embedding dimension | 384 |
+| Selected `C` | 10.0 |
+| Selected threshold | 0.4200 |
+| `ALLOW` precision | 0.9868 |
+| `ALLOW` recall | 0.9933 |
+| `ALLOW` F1 | 0.9900 |
+| `BLOCK` precision | 0.9933 |
+| `BLOCK` recall | 0.9867 |
+| `BLOCK` F1 | 0.9900 |
+| Macro F1 | 0.9900 |
+| Adversarial block rate | 0.9867 |
+| Benign false positive rate | 0.0067 |
+
+Plaintext filter interpretation:
+
+- The plaintext sentence-embedding plus logistic-regression filter performs extremely well on the held-out Stage 3 test split.
+- The saved model artifacts are FHE-ready in the narrow sense that the exact linear weights, intercept, and threshold have been materialized for later wrapping.
+- These metrics are strong, but they are still dataset-internal metrics on the Stage 3 split. They do not yet prove end-to-end defense effectiveness against the real Stage 2 attack set.
+- The next meaningful check is the integrated rerun: replay the Stage 2 attacks with the plaintext filter active and measure how much system-prompt-active leakage is actually removed.
+
 ## Current Cross-Stage Interpretation
 
 Current judgment:
 
 - the Stage 1 and Stage 2 results look plausible and in line with the experiment design
+- the Stage 3 plaintext filter results also look internally consistent and technically strong
 - they do not currently suggest an obvious implementation bug
 
 Why this looks like the expected pattern:
@@ -114,25 +143,28 @@ Why this looks like the expected pattern:
 - whole-population MIA becomes meaningfully stronger at `50x`, which is the intended direction of the exposure manipulation
 - the strongest signal is canary-specific: canary MIA rises sharply with exposure count
 - Stage 2 targeted extraction tells the same story: system-prompt-active leakage stays low at `1x` and `10x`, then rises materially at `50x`
+- Stage 3 plaintext evaluation shows that a simple linear filter has enough signal to separate the curated `ALLOW` and `BLOCK` distributions almost perfectly on held-out Stage 3 data
 
 Most important takeaway so far:
 
 - increasing canary exposure from `1x` and `10x` to `50x` materially increases MIA signal, especially on the canary subset
 - at `50x`, canary-only MIA is perfectly separated in the produced evaluation artifacts: canary AUC-ROC is `1.0`, with `TPR@1%FPR = 1.0` and `TPR@10%FPR = 1.0`
 - the Stage 2 replay results validate that this memorization signal is not merely abstract: by `50x`, it translates into a much higher targeted leakage rate even with the system prompt active
+- the Stage 3 plaintext results suggest the defense layer is likely viable, but that remains a hypothesis until the filter is inserted into the attack path and the Stage 2 baseline is rerun
 
 Why this does not currently look suspicious:
 
 - the strongest effect is concentrated on the canary subset rather than appearing as a bizarre across-the-board jump at every exposure level
-- if the implementation were badly wrong, a more suspicious pattern would be either:
-  - strong leakage already at `1x`, or
-  - no clear increase as exposure rises
+- if the implementation were badly wrong, a more suspicious pattern would be strong leakage already at `1x`
+- another suspicious pattern would be no clear increase as exposure rises
 - that is not what we see
 
 Current caution:
 
 - the no-system baseline is so leaky that it mainly serves as a stress baseline, not as a realistic deployment setting
-- the next major check is whether the Stage 3 plaintext filter can materially reduce the system-prompt-active leakage seen at `50x`
+- the Stage 3 plaintext dataset is structured and intentionally separable, so the very high held-out classifier metrics should not be overread as final defense success
+- the next major check is whether the plaintext filter materially reduces the Stage 2 system-prompt-active leakage, especially at `50x`
+- the next check after that is whether the later FHE wrapping preserves that behavior with acceptable latency
 
 This means the project has moved past pure implementation validation and into actual experimental output.
 
@@ -140,7 +172,6 @@ This means the project has moved past pure implementation validation and into ac
 
 The following sections should be added as later tasks complete:
 
-- Stage 3 plaintext filter training and held-out metrics
 - Stage 3 FHE filter metrics and latency
 - Integrated final attack reruns with filter active
 - Final cross-stage interpretation
@@ -161,3 +192,7 @@ Primary detailed artifacts for the completed stages:
 - `experiment_runtime/runs/stage2/baseline/1x/system_prompt_active/stage2_metrics.json`
 - `experiment_runtime/runs/stage2/baseline/10x/system_prompt_active/stage2_metrics.json`
 - `experiment_runtime/runs/stage2/baseline/50x/system_prompt_active/stage2_metrics.json`
+- `experiment_runtime/runs/stage3/plaintext/stage3_plaintext_metrics.json`
+- `experiment_runtime/runs/stage3/plaintext/model_selection.csv`
+- `experiment_runtime/runs/stage3/plaintext/validation_threshold_sweep.csv`
+- `experiment_runtime/runs/stage3/plaintext/model/model_parameters.json`

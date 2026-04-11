@@ -16,6 +16,9 @@ dependencies = [
     "safetensors>=0.6.2",
     "torch>=2.8.0",
     "transformers>=4.57.0",
+    "numpy>=2.4.4",
+    "scikit-learn>=1.8.0",
+    "sentence-transformers>=5.4.0",
 ]
 
 [project.scripts]
@@ -28,6 +31,7 @@ fhe-materialize-stage3 = "experiment.data_gen.stage3_filter_messages:main"
 fhe-train-stage1 = "experiment.train_qwen.cli:main"
 fhe-eval-stage1-mia = "experiment.mia.cli:main"
 fhe-eval-stage2 = "experiment.eval.cli:main"
+fhe-train-stage3-plaintext = "experiment.filter_train.cli:main"
 
 [build-system]
 requires = ["hatchling"]

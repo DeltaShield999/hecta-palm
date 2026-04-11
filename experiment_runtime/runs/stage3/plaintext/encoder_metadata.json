@@ -1,0 +1,28 @@
+{
+  "model_name": "sentence-transformers/all-MiniLM-L6-v2",
+  "embedding_dimension": 384,
+  "normalize_embeddings": true,
+  "batch_size": 64,
+  "device": "cpu",
+  "package_versions": {
+    "sentence_transformers": "5.4.0",
+    "scikit_learn": "1.8.0",
+    "torch": "2.11.0",
+    "transformers": "5.5.3"
+  },
+  "dataset_paths": {
+    "train": "/Users/hamza/Desktop/multi_agent_fhe/experiment_runtime/data/processed/stage3_filter_messages_train.jsonl",
+    "val": "/Users/hamza/Desktop/multi_agent_fhe/experiment_runtime/data/processed/stage3_filter_messages_val.jsonl",
+    "test": "/Users/hamza/Desktop/multi_agent_fhe/experiment_runtime/data/processed/stage3_filter_messages_test.jsonl"
+  },
+  "embedding_artifacts": {
+    "train": "/Users/hamza/Desktop/multi_agent_fhe/experiment_runtime/runs/stage3/plaintext/embeddings/train_embeddings.npz",
+    "val": "/Users/hamza/Desktop/multi_agent_fhe/experiment_runtime/runs/stage3/plaintext/embeddings/val_embeddings.npz",
+    "test": "/Users/hamza/Desktop/multi_agent_fhe/experiment_runtime/runs/stage3/plaintext/embeddings/test_embeddings.npz"
+  },
+  "row_counts": {
+    "train": 1400,
+    "val": 300,
+    "test": 300
+  }
+}
