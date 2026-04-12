@@ -1,0 +1,31 @@
+{
+  "adapter_run_dir": "/root/hecta-palm/experiment_runtime/runs/stage1/official-50x-20260411-r1",
+  "base_model_name": "Qwen/Qwen2-1.5B-Instruct",
+  "bootstrap_replicates": 1000,
+  "confidence_level": 0.95,
+  "exposure_condition": "50x",
+  "interval_method": "percentile",
+  "mia_eval_path": "/root/hecta-palm/experiment_runtime/data/processed/mia_eval.jsonl",
+  "percentile_intervals": {
+    "auc_roc": {
+      "lower": 0.5415233015624996,
+      "upper": 0.5683972546874997
+    },
+    "tpr_at_10_fpr": {
+      "lower": 0.145,
+      "upper": 0.17800312499999998
+    },
+    "tpr_at_1_fpr": {
+      "lower": 0.030493750000000003,
+      "upper": 0.050375
+    }
+  },
+  "point_estimates": {
+    "auc_roc": 0.5546118749999998,
+    "tpr_at_10_fpr": 0.161,
+    "tpr_at_1_fpr": 0.039125
+  },
+  "run_name": "official-50x-20260411-r1",
+  "seed": 20260411,
+  "stratified_by_label": true
+}

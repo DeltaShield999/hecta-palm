@@ -14,6 +14,7 @@ from experiment.mia.metrics import (  # noqa: E402
     compute_membership_score,
     compute_roc_metrics,
 )
+from experiment.mia.runner import BatchTimingRow, _summarize_batch_timings  # noqa: E402
 
 
 class Stage1MiaTests(unittest.TestCase):
@@ -24,9 +25,22 @@ class Stage1MiaTests(unittest.TestCase):
         self.assertFalse(config.tokenizer.add_generation_prompt)
         self.assertEqual(config.inference.batch_size, 16)
         self.assertEqual(config.bootstrap.replicates, 1000)
+        self.assertFalse(config.timing.enabled)
+        self.assertFalse(config.timing.cuda_synchronize)
         self.assertEqual(config.official_runs["1x"].run_name, "official-1x-20260411-r1")
         self.assertEqual(config.official_runs["10x"].run_name, "official-10x-20260411-r1")
         self.assertEqual(config.official_runs["50x"].run_name, "official-50x-20260411-r1")
+
+    def test_timing_config_enables_diagnostics_and_temp_output_root(self) -> None:
+        config = Stage1MiaConfig.from_toml(PROJECT_ROOT / "configs" / "eval" / "stage1_mia_timing.toml")
+
+        self.assertTrue(config.timing.enabled)
+        self.assertTrue(config.timing.cuda_synchronize)
+        self.assertTrue(config.timing.force_recompute_base_losses)
+        self.assertEqual(
+            config.output_root,
+            PROJECT_ROOT / "runs" / "tmp" / "stage1_mia_timing" / "20260412-r1",
+        )
 
     def test_membership_score_uses_loss_ratio(self) -> None:
         self.assertAlmostEqual(compute_membership_score(2.5, 1.25), 2.0)
@@ -69,6 +83,49 @@ class Stage1MiaTests(unittest.TestCase):
         self.assertIn("auc_roc", first["percentile_intervals"])
         self.assertIn("tpr_at_1_fpr", first["percentile_intervals"])
         self.assertIn("tpr_at_10_fpr", first["percentile_intervals"])
+
+    def test_batch_timing_summary_helper(self) -> None:
+        rows = (
+            BatchTimingRow(
+                phase="base_forward",
+                exposure_condition="base",
+                batch_index=0,
+                batch_size=16,
+                start_example_index=0,
+                end_example_index=15,
+                elapsed_ms=10.0,
+                gpu_synchronized_elapsed_ms=7.0,
+            ),
+            BatchTimingRow(
+                phase="base_forward",
+                exposure_condition="base",
+                batch_index=1,
+                batch_size=16,
+                start_example_index=16,
+                end_example_index=31,
+                elapsed_ms=20.0,
+                gpu_synchronized_elapsed_ms=11.0,
+            ),
+            BatchTimingRow(
+                phase="base_forward",
+                exposure_condition="base",
+                batch_index=2,
+                batch_size=8,
+                start_example_index=32,
+                end_example_index=39,
+                elapsed_ms=40.0,
+                gpu_synchronized_elapsed_ms=19.0,
+            ),
+        )
+
+        summary = _summarize_batch_timings(rows)
+
+        self.assertAlmostEqual(summary["mean_batch_ms"], 70.0 / 3.0)
+        self.assertAlmostEqual(summary["p50_batch_ms"], 20.0)
+        self.assertAlmostEqual(summary["p95_batch_ms"], 38.0)
+        self.assertAlmostEqual(summary["mean_gpu_synchronized_batch_ms"], 37.0 / 3.0)
+        self.assertAlmostEqual(summary["p50_gpu_synchronized_batch_ms"], 11.0)
+        self.assertAlmostEqual(summary["p95_gpu_synchronized_batch_ms"], 18.2)
 
 
 if __name__ == "__main__":

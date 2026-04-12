@@ -1,0 +1,26 @@
+{
+  "adapter_model_load_ms": 1365.1038249954581,
+  "artifact_write_ms": 41.96896200301126,
+  "batch_count": 625,
+  "bootstrap_ms": 6810.196244041435,
+  "example_count": 10000,
+  "examples_per_second": 66.44074940321869,
+  "exposure_condition": "1x",
+  "forward_batches_path": "/root/hecta-palm/experiment_runtime/runs/tmp/stage1_mia_timing/20260412-r1/1x/forward_batches.csv",
+  "forward_gpu_synchronized_total_ms": 148571.19597308338,
+  "forward_total_ms": 150510.04225300858,
+  "mean_batch_ms": 240.80481492672115,
+  "mean_gpu_synchronized_batch_ms": 237.7139135569334,
+  "mean_ms_per_example": 15.051004225300858,
+  "measurement_modes": {
+    "gpu_synchronized_timing": true,
+    "wall_clock_batch_timing": true
+  },
+  "metrics_compute_ms": 26.043192017823458,
+  "p50_batch_ms": 241.18418397847563,
+  "p50_gpu_synchronized_batch_ms": 238.1282080314122,
+  "p95_batch_ms": 243.53902278235182,
+  "p95_gpu_synchronized_batch_ms": 240.4099919833243,
+  "run_name": "official-1x-20260411-r1",
+  "total_exposure_wall_clock_ms": 158792.03772096662
+}

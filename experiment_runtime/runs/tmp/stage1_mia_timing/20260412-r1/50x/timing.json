@@ -1,0 +1,26 @@
+{
+  "adapter_model_load_ms": 1332.8774799592793,
+  "artifact_write_ms": 44.015888997819275,
+  "batch_count": 625,
+  "bootstrap_ms": 6832.761597994249,
+  "example_count": 10000,
+  "examples_per_second": 65.89068397564975,
+  "exposure_condition": "50x",
+  "forward_batches_path": "/root/hecta-palm/experiment_runtime/runs/tmp/stage1_mia_timing/20260412-r1/50x/forward_batches.csv",
+  "forward_gpu_synchronized_total_ms": 149779.79578229133,
+  "forward_total_ms": 151766.52292296058,
+  "mean_batch_ms": 242.81501017212867,
+  "mean_gpu_synchronized_batch_ms": 239.64767325166613,
+  "mean_ms_per_example": 15.176652292296058,
+  "measurement_modes": {
+    "gpu_synchronized_timing": true,
+    "wall_clock_batch_timing": true
+  },
+  "metrics_compute_ms": 26.09503298299387,
+  "p50_batch_ms": 243.33517503691837,
+  "p50_gpu_synchronized_batch_ms": 240.1837590150535,
+  "p95_batch_ms": 243.92955281073228,
+  "p95_gpu_synchronized_batch_ms": 240.7584630069323,
+  "run_name": "official-50x-20260411-r1",
+  "total_exposure_wall_clock_ms": 160042.1291530365
+}

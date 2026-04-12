@@ -1,0 +1,74 @@
+{
+  "base_losses_path": "/root/hecta-palm/experiment_runtime/runs/tmp/stage1_mia_timing/20260412-r1/base_losses.csv",
+  "runs": [
+    {
+      "auc_roc": 0.5086789375000005,
+      "bootstrap_auc_roc_ci": {
+        "lower": 0.49607022656250027,
+        "upper": 0.5228927781249998
+      },
+      "bootstrap_metrics_path": "/root/hecta-palm/experiment_runtime/runs/tmp/stage1_mia_timing/20260412-r1/1x/bootstrap_metrics.json",
+      "bootstrap_tpr_at_10_fpr_ci": {
+        "lower": 0.0925,
+        "upper": 0.11962812499999999
+      },
+      "bootstrap_tpr_at_1_fpr_ci": {
+        "lower": 0.008125,
+        "upper": 0.023256249999999996
+      },
+      "canary_auc_roc": 0.5240849999999978,
+      "canary_metrics_path": "/root/hecta-palm/experiment_runtime/runs/tmp/stage1_mia_timing/20260412-r1/1x/canary_metrics.json",
+      "exposure_condition": "1x",
+      "metrics_path": "/root/hecta-palm/experiment_runtime/runs/tmp/stage1_mia_timing/20260412-r1/1x/stage1_metrics.json",
+      "run_name": "official-1x-20260411-r1",
+      "tpr_at_10_fpr": 0.10675,
+      "tpr_at_1_fpr": 0.01625
+    },
+    {
+      "auc_roc": 0.5121864375000001,
+      "bootstrap_auc_roc_ci": {
+        "lower": 0.4999268640624995,
+        "upper": 0.5262510953125004
+      },
+      "bootstrap_metrics_path": "/root/hecta-palm/experiment_runtime/runs/tmp/stage1_mia_timing/20260412-r1/10x/bootstrap_metrics.json",
+      "bootstrap_tpr_at_10_fpr_ci": {
+        "lower": 0.09824687500000001,
+        "upper": 0.12738124999999997
+      },
+      "bootstrap_tpr_at_1_fpr_ci": {
+        "lower": 0.01,
+        "upper": 0.023375
+      },
+      "canary_auc_roc": 0.6476850000000003,
+      "canary_metrics_path": "/root/hecta-palm/experiment_runtime/runs/tmp/stage1_mia_timing/20260412-r1/10x/canary_metrics.json",
+      "exposure_condition": "10x",
+      "metrics_path": "/root/hecta-palm/experiment_runtime/runs/tmp/stage1_mia_timing/20260412-r1/10x/stage1_metrics.json",
+      "run_name": "official-10x-20260411-r1",
+      "tpr_at_10_fpr": 0.111875,
+      "tpr_at_1_fpr": 0.015
+    },
+    {
+      "auc_roc": 0.5546118749999998,
+      "bootstrap_auc_roc_ci": {
+        "lower": 0.5415233015624996,
+        "upper": 0.5683972546874997
+      },
+      "bootstrap_metrics_path": "/root/hecta-palm/experiment_runtime/runs/tmp/stage1_mia_timing/20260412-r1/50x/bootstrap_metrics.json",
+      "bootstrap_tpr_at_10_fpr_ci": {
+        "lower": 0.145,
+        "upper": 0.17800312499999998
+      },
+      "bootstrap_tpr_at_1_fpr_ci": {
+        "lower": 0.030493750000000003,
+        "upper": 0.050375
+      },
+      "canary_auc_roc": 1.0,
+      "canary_metrics_path": "/root/hecta-palm/experiment_runtime/runs/tmp/stage1_mia_timing/20260412-r1/50x/canary_metrics.json",
+      "exposure_condition": "50x",
+      "metrics_path": "/root/hecta-palm/experiment_runtime/runs/tmp/stage1_mia_timing/20260412-r1/50x/stage1_metrics.json",
+      "run_name": "official-50x-20260411-r1",
+      "tpr_at_10_fpr": 0.161,
+      "tpr_at_1_fpr": 0.039125
+    }
+  ]
+}

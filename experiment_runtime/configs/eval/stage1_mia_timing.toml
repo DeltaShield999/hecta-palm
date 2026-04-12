@@ -10,7 +10,7 @@ mia_eval_path = "data/processed/mia_eval.jsonl"
 "50x" = "runs/stage1/official-50x-20260411-r1"
 
 [outputs]
-root_dir = "runs/stage1/mia"
+root_dir = "runs/tmp/stage1_mia_timing/20260412-r1"
 
 [model]
 name = "Qwen/Qwen2-1.5B-Instruct"
@@ -35,9 +35,9 @@ replicates = 1000
 confidence_level = 0.95
 
 [timing]
-enabled = false
-cuda_synchronize = false
-force_recompute_base_losses = false
+enabled = true
+cuda_synchronize = true
+force_recompute_base_losses = true
 
 [seed]
 value = 20260411

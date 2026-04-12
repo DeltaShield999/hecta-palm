@@ -44,6 +44,13 @@ class BootstrapSettings:
 
 
 @dataclass(frozen=True, slots=True)
+class TimingSettings:
+    enabled: bool
+    cuda_synchronize: bool
+    force_recompute_base_losses: bool
+
+
+@dataclass(frozen=True, slots=True)
 class OfficialRunReference:
     exposure_condition: str
     run_dir: Path
@@ -60,6 +67,7 @@ class Stage1MiaConfig:
     tokenizer: TokenizerSettings
     inference: InferenceSettings
     bootstrap: BootstrapSettings
+    timing: TimingSettings
     official_runs: dict[str, OfficialRunReference]
     seed: int
 
@@ -113,6 +121,17 @@ class Stage1MiaConfig:
         if not 0.0 < bootstrap.confidence_level < 1.0:
             raise ValueError("bootstrap.confidence_level must be between 0 and 1.")
 
+        timing_document = document.get("timing", {})
+        timing = TimingSettings(
+            enabled=bool(timing_document.get("enabled", False)),
+            cuda_synchronize=bool(timing_document.get("cuda_synchronize", False)),
+            force_recompute_base_losses=bool(timing_document.get("force_recompute_base_losses", False)),
+        )
+        if timing.cuda_synchronize and not timing.enabled:
+            raise ValueError("timing.cuda_synchronize requires timing.enabled = true.")
+        if timing.force_recompute_base_losses and not timing.enabled:
+            raise ValueError("timing.force_recompute_base_losses requires timing.enabled = true.")
+
         official_run_dirs = {
             str(exposure): _resolve_path(run_dir)
             for exposure, run_dir in document["inputs"]["official_run_dirs"].items()
@@ -140,6 +159,7 @@ class Stage1MiaConfig:
             tokenizer=tokenizer,
             inference=inference,
             bootstrap=bootstrap,
+            timing=timing,
             official_runs=official_runs,
             seed=int(document["seed"]["value"]),
         )

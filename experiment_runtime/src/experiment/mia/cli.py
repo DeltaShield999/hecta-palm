@@ -30,10 +30,18 @@ def main(argv: Sequence[str] | None = None) -> int:
     )
 
     print(f"base_losses: {result.base_losses_path}")
+    if result.base_loss_batches_path is not None:
+        print(f"base_loss_batches: {result.base_loss_batches_path}")
     for exposure_condition, artifacts in result.exposure_artifacts.items():
         print(f"{exposure_condition}_losses: {artifacts.stage1_losses_path}")
         print(f"{exposure_condition}_metrics: {artifacts.stage1_metrics_path}")
+        if artifacts.forward_batches_path is not None:
+            print(f"{exposure_condition}_forward_batches: {artifacts.forward_batches_path}")
+        if artifacts.timing_path is not None:
+            print(f"{exposure_condition}_timing: {artifacts.timing_path}")
     print(f"summary: {result.summary_path}")
+    if result.timing_summary_path is not None:
+        print(f"timing_summary: {result.timing_summary_path}")
     return 0
 
 
