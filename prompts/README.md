@@ -32,3 +32,7 @@ Current implementation stage:
 - Task 13 final closeout verification is complete
 - the main `Qwen2-1.5B-Instruct` flow is complete and handoff-ready
 - only optional follow-on work remains, such as the `Qwen2-7B-Instruct` repeat or LangGraph runtime parity integration
+
+Ad hoc post-experiment prompts live under:
+
+- [temp/](./temp/README.md)
