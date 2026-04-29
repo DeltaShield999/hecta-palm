@@ -4,7 +4,7 @@ This folder contains handoff prompts for the adaptive-attacker follow-on experim
 
 Authoritative scope:
 
-1. `plan2.md`
+1. `plan/follow_on_designer_scope.md`
 2. `plan/05_follow_on_adaptive_evaluation.md`
 3. `prompts/follow_on/00_follow_on_shared_context.md`
 

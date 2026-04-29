@@ -10,6 +10,10 @@ Start here, then read the files in order:
 4. [Repo Structure and Execution Plan](./04_repo_and_execution_plan.md)
 5. [Follow-On Adaptive Evaluation](./05_follow_on_adaptive_evaluation.md)
 
+Follow-on designer scope:
+
+- [Follow-On Designer Scope](./follow_on_designer_scope.md)
+
 Structure rule:
 
 - `01` is the conceptual and architectural entry point

@@ -18,16 +18,14 @@ Do not replace, mutate, or reinterpret the frozen original experiment artifacts 
 
 The authoritative follow-on scope is:
 
-1. `plan2.md`
+1. `plan/follow_on_designer_scope.md`
 2. `plan/05_follow_on_adaptive_evaluation.md`
 
 The designer explicitly settled the scope:
 
 ```text
-Use plan2.md as the authoritative scope. Do not implement threshold sensitivity, keyword/rule baselines, or the broader generalization check in this pass. The priority is adaptive attacker evaluation, mixed-traffic evaluation, confidence intervals, expanded timing, and updated result artifacts/docs. We can add ablations later after the adaptive evaluation is stable.
+Use plan/follow_on_designer_scope.md as the authoritative scope. Do not implement threshold sensitivity, keyword/rule baselines, or the broader generalization check in this pass. The priority is adaptive attacker evaluation, mixed-traffic evaluation, confidence intervals, expanded timing, and updated result artifacts/docs. We can add ablations later after the adaptive evaluation is stable.
 ```
-
-This means `plan1.md` is background only.
 
 ## Required Read Order
 

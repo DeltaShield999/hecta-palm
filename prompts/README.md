@@ -43,7 +43,6 @@ Follow-on adaptive attacker prompts live under:
 
 Follow-on scope note:
 
-- `plan2.md` is the authoritative scope for the adaptive-attacker follow-on
+- `plan/follow_on_designer_scope.md` is the authoritative designer scope for the adaptive-attacker follow-on
 - `plan/05_follow_on_adaptive_evaluation.md` freezes the repo organization and task sequence
-- `plan1.md` is background only for this pass
 - threshold sensitivity, keyword/rule baselines, and broader generalization checks are intentionally deferred

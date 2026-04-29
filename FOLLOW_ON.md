@@ -10,11 +10,11 @@ This repo now also contains planning and handoff material for a follow-on experi
 
 Authoritative follow-on scope:
 
-1. [plan2.md](./plan2.md)
+1. [plan/follow_on_designer_scope.md](./plan/follow_on_designer_scope.md)
 2. [plan/05_follow_on_adaptive_evaluation.md](./plan/05_follow_on_adaptive_evaluation.md)
 3. [prompts/follow_on/](./prompts/follow_on/)
 
-`plan1.md` is background only. For this pass, do not implement threshold sensitivity, keyword/rule baselines, or the broader generalization check.
+For this pass, do not implement threshold sensitivity, keyword/rule baselines, or the broader generalization check.
 
 Planned follow-on artifact layout:
 

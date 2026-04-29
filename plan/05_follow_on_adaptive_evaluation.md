@@ -12,15 +12,14 @@ Use this file as the canonical implementation plan for the follow-on work.
 
 Use sources in this order:
 
-1. `plan2.md`
+1. `plan/follow_on_designer_scope.md`
 2. this file
 3. `plan/README.md` and the original `plan/01` through `plan/04` files for existing experiment context
-4. `plan1.md` as background only
 
 The experiment designer explicitly settled the scope:
 
 ```text
-Use plan2.md as the authoritative scope. Do not implement threshold sensitivity, keyword/rule baselines, or the broader generalization check in this pass. The priority is adaptive attacker evaluation, mixed-traffic evaluation, confidence intervals, expanded timing, and updated result artifacts/docs. We can add ablations later after the adaptive evaluation is stable.
+Use plan/follow_on_designer_scope.md as the authoritative scope. Do not implement threshold sensitivity, keyword/rule baselines, or the broader generalization check in this pass. The priority is adaptive attacker evaluation, mixed-traffic evaluation, confidence intervals, expanded timing, and updated result artifacts/docs. We can add ablations later after the adaptive evaluation is stable.
 ```
 
 ## 3. Scope

@@ -1,3 +1,5 @@
+# Follow-On Designer Scope
+
 Update the experiment so the main evaluation includes a scaffold-aware adaptive attacker.
 
 First, inspect the current Stage 2 and Stage 3 data generation, evaluation, and result-summary code. Preserve the existing frozen baseline attack set and all current results; add the adaptive evaluation as a new experiment layer rather than replacing the old one.
