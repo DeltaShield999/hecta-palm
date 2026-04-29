@@ -36,3 +36,14 @@ Current implementation stage:
 Ad hoc post-experiment prompts live under:
 
 - [temp/](./temp/README.md)
+
+Follow-on adaptive attacker prompts live under:
+
+- [follow_on/](./follow_on/README.md)
+
+Follow-on scope note:
+
+- `plan2.md` is the authoritative scope for the adaptive-attacker follow-on
+- `plan/05_follow_on_adaptive_evaluation.md` freezes the repo organization and task sequence
+- `plan1.md` is background only for this pass
+- threshold sensitivity, keyword/rule baselines, and broader generalization checks are intentionally deferred
