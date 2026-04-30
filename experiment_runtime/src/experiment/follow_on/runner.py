@@ -608,7 +608,11 @@ def run_follow_on_adaptive_evaluation(
         row_id_field="attack_id",
         metrics_filename="adaptive_metrics.json",
     )
-    setup_timing_path = _write_setup_timing_json(config.timing_root, setup_entries)
+    setup_timing_path = _write_setup_timing_json(
+        config.timing_root,
+        setup_entries,
+        eval_dataset=ADAPTIVE_EVAL_DATASET,
+    )
     return FollowOnEvaluationResult(
         summary_path=summary_path,
         ci_summary_path=ci_summary_path,
@@ -705,7 +709,11 @@ def run_follow_on_mixed_evaluation(
         row_id_field="traffic_id",
         metrics_filename="mixed_traffic_metrics.json",
     )
-    setup_timing_path = _write_setup_timing_json(config.timing_root, setup_entries)
+    setup_timing_path = _write_setup_timing_json(
+        config.timing_root,
+        setup_entries,
+        eval_dataset=MIXED_EVAL_DATASET,
+    )
     return FollowOnEvaluationResult(
         summary_path=summary_path,
         ci_summary_path=ci_summary_path,
@@ -1673,20 +1681,99 @@ def _write_timing_csv(path: Path, rows: Sequence[Any], fieldnames: Sequence[str]
 def _write_setup_timing_json(
     timing_root: Path,
     entries: Sequence[SetupTimingEntry],
+    *,
+    eval_dataset: str,
 ) -> Path:
     timing_root.mkdir(parents=True, exist_ok=True)
-    path = timing_root / "setup_timing.json"
+    aggregate_path = timing_root / "setup_timing.json"
+    manifest_path = timing_root / "setup_timing_manifest.json"
+    per_sweep_path = timing_root / f"setup_timing_{eval_dataset}.json"
     rows = [entry.to_row() for entry in entries]
+    per_sweep_payload = {
+        "eval_dataset": eval_dataset,
+        "timing_unit": "milliseconds",
+        "columns": list(SETUP_TIMING_COLUMNS),
+        "entries": rows,
+        "summary": summarize_timing_rows(rows, numeric_columns=("duration_ms",)),
+    }
     _write_json(
-        path,
+        per_sweep_path,
+        per_sweep_payload,
+    )
+
+    sweeps = _load_setup_timing_manifest_sweeps(manifest_path)
+    sweeps[eval_dataset] = {
+        "eval_dataset": eval_dataset,
+        "setup_timing_path": str(per_sweep_path),
+        "entry_count": len(rows),
+        "summary": per_sweep_payload["summary"],
+    }
+    ordered_sweeps = _order_setup_timing_sweeps(sweeps)
+    _write_json(
+        manifest_path,
         {
             "timing_unit": "milliseconds",
-            "columns": list(SETUP_TIMING_COLUMNS),
-            "entries": rows,
-            "summary": summarize_timing_rows(rows, numeric_columns=("duration_ms",)),
+            "aggregate_setup_timing_path": str(aggregate_path),
+            "sweeps": ordered_sweeps,
         },
     )
-    return path
+
+    aggregate_rows = _load_aggregate_setup_timing_rows(ordered_sweeps)
+    _write_json(
+        aggregate_path,
+        {
+            "timing_unit": "milliseconds",
+            "columns": ["eval_dataset", *SETUP_TIMING_COLUMNS],
+            "manifest_path": str(manifest_path),
+            "per_sweep_setup_timing_paths": {
+                sweep["eval_dataset"]: sweep["setup_timing_path"] for sweep in ordered_sweeps
+            },
+            "entries": aggregate_rows,
+            "summary": summarize_timing_rows(aggregate_rows, numeric_columns=("duration_ms",)),
+            "sweeps": ordered_sweeps,
+        },
+    )
+    return aggregate_path
+
+
+def _load_setup_timing_manifest_sweeps(
+    manifest_path: Path,
+) -> dict[str, dict[str, Any]]:
+    if not manifest_path.exists():
+        return {}
+    document = _read_json(manifest_path)
+    sweeps: dict[str, dict[str, Any]] = {}
+    for sweep in document.get("sweeps", []):
+        eval_dataset = str(sweep.get("eval_dataset", ""))
+        setup_timing_path = str(sweep.get("setup_timing_path", ""))
+        if not eval_dataset or not setup_timing_path:
+            continue
+        sweeps[eval_dataset] = dict(sweep)
+    return sweeps
+
+
+def _order_setup_timing_sweeps(
+    sweeps: Mapping[str, Mapping[str, Any]],
+) -> list[dict[str, Any]]:
+    preferred_order = (ADAPTIVE_EVAL_DATASET, MIXED_EVAL_DATASET)
+    ordered_keys = [key for key in preferred_order if key in sweeps]
+    ordered_keys.extend(sorted(key for key in sweeps if key not in preferred_order))
+    return [dict(sweeps[key]) for key in ordered_keys]
+
+
+def _load_aggregate_setup_timing_rows(
+    sweeps: Sequence[Mapping[str, Any]],
+) -> list[dict[str, Any]]:
+    aggregate_rows: list[dict[str, Any]] = []
+    for sweep in sweeps:
+        eval_dataset = str(sweep["eval_dataset"])
+        per_sweep_path = Path(str(sweep["setup_timing_path"]))
+        if not per_sweep_path.exists():
+            continue
+        per_sweep_payload = _read_json(per_sweep_path)
+        for row in per_sweep_payload.get("entries", []):
+            aggregate_rows.append({"eval_dataset": eval_dataset, **dict(row)})
+    return aggregate_rows
 
 
 def _write_adaptive_summary_json(

@@ -18,10 +18,11 @@ from experiment.follow_on.runner import (  # noqa: E402
     AdaptiveResponseRow,
     FollowOnAdaptiveReplayConfig,
     _write_pipeline_timing_artifacts,
+    _write_setup_timing_json,
     load_adaptive_attack_prompts,
     resolve_adaptive_conditions,
 )
-from experiment.follow_on.timing import PipelineTimingSample  # noqa: E402
+from experiment.follow_on.timing import PipelineTimingSample, SetupTimingEntry  # noqa: E402
 
 
 def _adaptive_response_row(
@@ -158,6 +159,42 @@ class FollowOnAdaptiveEvalTests(unittest.TestCase):
             summary = json.loads(summary_path.read_text(encoding="utf-8"))
             self.assertEqual(summary["summary"]["total_pipeline_ms"]["count"], 1)
             self.assertAlmostEqual(summary["summary"]["total_pipeline_ms"]["mean"], 1.2)
+
+    def test_setup_timing_writer_preserves_adaptive_and_mixed_sweeps(self) -> None:
+        with tempfile.TemporaryDirectory() as tmpdir:
+            timing_root = Path(tmpdir)
+            aggregate_path = _write_setup_timing_json(
+                timing_root,
+                (
+                    SetupTimingEntry(
+                        component="tokenizer_load",
+                        duration_ms=10.0,
+                        detail="adaptive",
+                    ),
+                ),
+                eval_dataset="adaptive",
+            )
+            _write_setup_timing_json(
+                timing_root,
+                (
+                    SetupTimingEntry(
+                        component="tokenizer_load",
+                        duration_ms=20.0,
+                        detail="mixed",
+                    ),
+                ),
+                eval_dataset="mixed_traffic",
+            )
+
+            aggregate = json.loads(aggregate_path.read_text(encoding="utf-8"))
+            self.assertEqual(
+                set(aggregate["per_sweep_setup_timing_paths"]),
+                {"adaptive", "mixed_traffic"},
+            )
+            self.assertEqual(len(aggregate["entries"]), 2)
+            self.assertTrue((timing_root / "setup_timing_adaptive.json").exists())
+            self.assertTrue((timing_root / "setup_timing_mixed_traffic.json").exists())
+            self.assertTrue((timing_root / "setup_timing_manifest.json").exists())
 
 
 if __name__ == "__main__":

@@ -1,0 +1,40 @@
+{
+  "runs": [
+    {
+      "exposure_condition": "1x",
+      "fhe_metrics_path": "/root/hecta-palm/experiment_runtime/runs/follow_on/mixed_traffic/1x/fhe_filter/mixed_traffic_metrics.json",
+      "filter_decision_match_rate": 1.0,
+      "matching_decision_count": 700,
+      "max_abs_filter_probability_delta": 3.301783291220772e-08,
+      "mean_abs_filter_probability_delta": 3.3105575865572573e-09,
+      "mismatched_decision_count": 0,
+      "mismatched_row_ids": [],
+      "plaintext_metrics_path": "/root/hecta-palm/experiment_runtime/runs/follow_on/mixed_traffic/1x/plaintext_filter/mixed_traffic_metrics.json",
+      "row_count": 700
+    },
+    {
+      "exposure_condition": "10x",
+      "fhe_metrics_path": "/root/hecta-palm/experiment_runtime/runs/follow_on/mixed_traffic/10x/fhe_filter/mixed_traffic_metrics.json",
+      "filter_decision_match_rate": 1.0,
+      "matching_decision_count": 700,
+      "max_abs_filter_probability_delta": 3.301783291220772e-08,
+      "mean_abs_filter_probability_delta": 3.3105575865572573e-09,
+      "mismatched_decision_count": 0,
+      "mismatched_row_ids": [],
+      "plaintext_metrics_path": "/root/hecta-palm/experiment_runtime/runs/follow_on/mixed_traffic/10x/plaintext_filter/mixed_traffic_metrics.json",
+      "row_count": 700
+    },
+    {
+      "exposure_condition": "50x",
+      "fhe_metrics_path": "/root/hecta-palm/experiment_runtime/runs/follow_on/mixed_traffic/50x/fhe_filter/mixed_traffic_metrics.json",
+      "filter_decision_match_rate": 1.0,
+      "matching_decision_count": 700,
+      "max_abs_filter_probability_delta": 3.301783291220772e-08,
+      "mean_abs_filter_probability_delta": 3.3105575865572573e-09,
+      "mismatched_decision_count": 0,
+      "mismatched_row_ids": [],
+      "plaintext_metrics_path": "/root/hecta-palm/experiment_runtime/runs/follow_on/mixed_traffic/50x/plaintext_filter/mixed_traffic_metrics.json",
+      "row_count": 700
+    }
+  ]
+}

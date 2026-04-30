@@ -1,0 +1,770 @@
+{
+  "adaptive_run_count": 12,
+  "adaptive_runs": [
+    {
+      "condition": "no_system_prompt",
+      "exposure_condition": "1x",
+      "files": [
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/1x/no_system_prompt/adaptive_responses.jsonl",
+          "size_bytes": 484714
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/1x/no_system_prompt/adaptive_metrics.json",
+          "size_bytes": 1407
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/1x/no_system_prompt/family_metrics.csv",
+          "size_bytes": 893
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/1x/no_system_prompt/timing_pipeline_samples.csv",
+          "size_bytes": 53077
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/1x/no_system_prompt/timing_pipeline_summary.json",
+          "size_bytes": 1356
+        }
+      ]
+    },
+    {
+      "condition": "system_prompt_active",
+      "exposure_condition": "1x",
+      "files": [
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/1x/system_prompt_active/adaptive_responses.jsonl",
+          "size_bytes": 467874
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/1x/system_prompt_active/adaptive_metrics.json",
+          "size_bytes": 1309
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/1x/system_prompt_active/family_metrics.csv",
+          "size_bytes": 811
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/1x/system_prompt_active/timing_pipeline_samples.csv",
+          "size_bytes": 54434
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/1x/system_prompt_active/timing_pipeline_summary.json",
+          "size_bytes": 1360
+        }
+      ]
+    },
+    {
+      "condition": "plaintext_filter",
+      "exposure_condition": "1x",
+      "files": [
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/1x/plaintext_filter/adaptive_responses.jsonl",
+          "size_bytes": 409160
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/1x/plaintext_filter/adaptive_metrics.json",
+          "size_bytes": 2068
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/1x/plaintext_filter/family_metrics.csv",
+          "size_bytes": 942
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/1x/plaintext_filter/timing_pipeline_samples.csv",
+          "size_bytes": 61860
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/1x/plaintext_filter/timing_pipeline_summary.json",
+          "size_bytes": 1437
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/1x/plaintext_filter/timing_filter_samples.csv",
+          "size_bytes": 43317
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/1x/plaintext_filter/timing_filter_summary.json",
+          "size_bytes": 1954
+        }
+      ]
+    },
+    {
+      "condition": "fhe_filter",
+      "exposure_condition": "1x",
+      "files": [
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/1x/fhe_filter/adaptive_responses.jsonl",
+          "size_bytes": 404968
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/1x/fhe_filter/adaptive_metrics.json",
+          "size_bytes": 2056
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/1x/fhe_filter/family_metrics.csv",
+          "size_bytes": 858
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/1x/fhe_filter/timing_pipeline_samples.csv",
+          "size_bytes": 57715
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/1x/fhe_filter/timing_pipeline_summary.json",
+          "size_bytes": 1443
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/1x/fhe_filter/timing_filter_samples.csv",
+          "size_bytes": 58969
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/1x/fhe_filter/timing_filter_summary.json",
+          "size_bytes": 2282
+        }
+      ]
+    },
+    {
+      "condition": "no_system_prompt",
+      "exposure_condition": "10x",
+      "files": [
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/10x/no_system_prompt/adaptive_responses.jsonl",
+          "size_bytes": 485290
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/10x/no_system_prompt/adaptive_metrics.json",
+          "size_bytes": 1383
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/10x/no_system_prompt/family_metrics.csv",
+          "size_bytes": 899
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/10x/no_system_prompt/timing_pipeline_samples.csv",
+          "size_bytes": 53395
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/10x/no_system_prompt/timing_pipeline_summary.json",
+          "size_bytes": 1355
+        }
+      ]
+    },
+    {
+      "condition": "system_prompt_active",
+      "exposure_condition": "10x",
+      "files": [
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/10x/system_prompt_active/adaptive_responses.jsonl",
+          "size_bytes": 473041
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/10x/system_prompt_active/adaptive_metrics.json",
+          "size_bytes": 1312
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/10x/system_prompt_active/family_metrics.csv",
+          "size_bytes": 818
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/10x/system_prompt_active/timing_pipeline_samples.csv",
+          "size_bytes": 54719
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/10x/system_prompt_active/timing_pipeline_summary.json",
+          "size_bytes": 1361
+        }
+      ]
+    },
+    {
+      "condition": "plaintext_filter",
+      "exposure_condition": "10x",
+      "files": [
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/10x/plaintext_filter/adaptive_responses.jsonl",
+          "size_bytes": 411387
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/10x/plaintext_filter/adaptive_metrics.json",
+          "size_bytes": 2071
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/10x/plaintext_filter/family_metrics.csv",
+          "size_bytes": 949
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/10x/plaintext_filter/timing_pipeline_samples.csv",
+          "size_bytes": 62187
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/10x/plaintext_filter/timing_pipeline_summary.json",
+          "size_bytes": 1433
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/10x/plaintext_filter/timing_filter_samples.csv",
+          "size_bytes": 43317
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/10x/plaintext_filter/timing_filter_summary.json",
+          "size_bytes": 1954
+        }
+      ]
+    },
+    {
+      "condition": "fhe_filter",
+      "exposure_condition": "10x",
+      "files": [
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/10x/fhe_filter/adaptive_responses.jsonl",
+          "size_bytes": 407195
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/10x/fhe_filter/adaptive_metrics.json",
+          "size_bytes": 2059
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/10x/fhe_filter/family_metrics.csv",
+          "size_bytes": 865
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/10x/fhe_filter/timing_pipeline_samples.csv",
+          "size_bytes": 58023
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/10x/fhe_filter/timing_pipeline_summary.json",
+          "size_bytes": 1447
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/10x/fhe_filter/timing_filter_samples.csv",
+          "size_bytes": 58969
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/10x/fhe_filter/timing_filter_summary.json",
+          "size_bytes": 2282
+        }
+      ]
+    },
+    {
+      "condition": "no_system_prompt",
+      "exposure_condition": "50x",
+      "files": [
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/50x/no_system_prompt/adaptive_responses.jsonl",
+          "size_bytes": 483057
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/50x/no_system_prompt/adaptive_metrics.json",
+          "size_bytes": 1412
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/50x/no_system_prompt/family_metrics.csv",
+          "size_bytes": 885
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/50x/no_system_prompt/timing_pipeline_samples.csv",
+          "size_bytes": 53345
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/50x/no_system_prompt/timing_pipeline_summary.json",
+          "size_bytes": 1351
+        }
+      ]
+    },
+    {
+      "condition": "system_prompt_active",
+      "exposure_condition": "50x",
+      "files": [
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/50x/system_prompt_active/adaptive_responses.jsonl",
+          "size_bytes": 468845
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/50x/system_prompt_active/adaptive_metrics.json",
+          "size_bytes": 1411
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/50x/system_prompt_active/family_metrics.csv",
+          "size_bytes": 857
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/50x/system_prompt_active/timing_pipeline_samples.csv",
+          "size_bytes": 54795
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/50x/system_prompt_active/timing_pipeline_summary.json",
+          "size_bytes": 1357
+        }
+      ]
+    },
+    {
+      "condition": "plaintext_filter",
+      "exposure_condition": "50x",
+      "files": [
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/50x/plaintext_filter/adaptive_responses.jsonl",
+          "size_bytes": 409852
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/50x/plaintext_filter/adaptive_metrics.json",
+          "size_bytes": 2071
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/50x/plaintext_filter/family_metrics.csv",
+          "size_bytes": 949
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/50x/plaintext_filter/timing_pipeline_samples.csv",
+          "size_bytes": 62200
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/50x/plaintext_filter/timing_pipeline_summary.json",
+          "size_bytes": 1443
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/50x/plaintext_filter/timing_filter_samples.csv",
+          "size_bytes": 43317
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/50x/plaintext_filter/timing_filter_summary.json",
+          "size_bytes": 1954
+        }
+      ]
+    },
+    {
+      "condition": "fhe_filter",
+      "exposure_condition": "50x",
+      "files": [
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/50x/fhe_filter/adaptive_responses.jsonl",
+          "size_bytes": 405660
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/50x/fhe_filter/adaptive_metrics.json",
+          "size_bytes": 2059
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/50x/fhe_filter/family_metrics.csv",
+          "size_bytes": 865
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/50x/fhe_filter/timing_pipeline_samples.csv",
+          "size_bytes": 58049
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/50x/fhe_filter/timing_pipeline_summary.json",
+          "size_bytes": 1442
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/50x/fhe_filter/timing_filter_samples.csv",
+          "size_bytes": 58969
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/adaptive/50x/fhe_filter/timing_filter_summary.json",
+          "size_bytes": 2282
+        }
+      ]
+    }
+  ],
+  "artifact": "follow_on_artifact_audit",
+  "data_artifacts": [
+    {
+      "exists": true,
+      "path": "data/processed/follow_on/adaptive_attack_prompts.jsonl",
+      "size_bytes": 233371
+    },
+    {
+      "exists": true,
+      "path": "data/processed/follow_on/adaptive_attack_manifest.json",
+      "size_bytes": 2996
+    },
+    {
+      "exists": true,
+      "path": "data/processed/follow_on/mixed_traffic_eval.jsonl",
+      "size_bytes": 488100
+    },
+    {
+      "exists": true,
+      "path": "data/processed/follow_on/mixed_traffic_manifest.json",
+      "size_bytes": 1949
+    }
+  ],
+  "documentation_files_updated": [
+    {
+      "exists": true,
+      "path": "/root/hecta-palm/RESULTS.md",
+      "size_bytes": 22589
+    }
+  ],
+  "missing_files": [],
+  "mixed_traffic_run_count": 6,
+  "mixed_traffic_runs": [
+    {
+      "exposure_condition": "1x",
+      "files": [
+        {
+          "exists": true,
+          "path": "runs/follow_on/mixed_traffic/1x/plaintext_filter/mixed_traffic_responses.jsonl",
+          "size_bytes": 870262
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/mixed_traffic/1x/plaintext_filter/mixed_traffic_metrics.json",
+          "size_bytes": 2414
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/mixed_traffic/1x/plaintext_filter/family_metrics.csv",
+          "size_bytes": 1275
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/mixed_traffic/1x/plaintext_filter/timing_pipeline_samples.csv",
+          "size_bytes": 126855
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/mixed_traffic/1x/plaintext_filter/timing_pipeline_summary.json",
+          "size_bytes": 1456
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/mixed_traffic/1x/plaintext_filter/timing_filter_samples.csv",
+          "size_bytes": 92523
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/mixed_traffic/1x/plaintext_filter/timing_filter_summary.json",
+          "size_bytes": 1955
+        }
+      ],
+      "filter_mode": "plaintext_filter"
+    },
+    {
+      "exposure_condition": "1x",
+      "files": [
+        {
+          "exists": true,
+          "path": "runs/follow_on/mixed_traffic/1x/fhe_filter/mixed_traffic_responses.jsonl",
+          "size_bytes": 866064
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/mixed_traffic/1x/fhe_filter/mixed_traffic_metrics.json",
+          "size_bytes": 2408
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/mixed_traffic/1x/fhe_filter/family_metrics.csv",
+          "size_bytes": 1203
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/mixed_traffic/1x/fhe_filter/timing_pipeline_samples.csv",
+          "size_bytes": 118436
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/mixed_traffic/1x/fhe_filter/timing_pipeline_summary.json",
+          "size_bytes": 1461
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/mixed_traffic/1x/fhe_filter/timing_filter_samples.csv",
+          "size_bytes": 123765
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/mixed_traffic/1x/fhe_filter/timing_filter_summary.json",
+          "size_bytes": 2285
+        }
+      ],
+      "filter_mode": "fhe_filter"
+    },
+    {
+      "exposure_condition": "10x",
+      "files": [
+        {
+          "exists": true,
+          "path": "runs/follow_on/mixed_traffic/10x/plaintext_filter/mixed_traffic_responses.jsonl",
+          "size_bytes": 875216
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/mixed_traffic/10x/plaintext_filter/mixed_traffic_metrics.json",
+          "size_bytes": 2417
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/mixed_traffic/10x/plaintext_filter/family_metrics.csv",
+          "size_bytes": 1287
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/mixed_traffic/10x/plaintext_filter/timing_pipeline_samples.csv",
+          "size_bytes": 127550
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/mixed_traffic/10x/plaintext_filter/timing_pipeline_summary.json",
+          "size_bytes": 1456
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/mixed_traffic/10x/plaintext_filter/timing_filter_samples.csv",
+          "size_bytes": 92523
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/mixed_traffic/10x/plaintext_filter/timing_filter_summary.json",
+          "size_bytes": 1955
+        }
+      ],
+      "filter_mode": "plaintext_filter"
+    },
+    {
+      "exposure_condition": "10x",
+      "files": [
+        {
+          "exists": true,
+          "path": "runs/follow_on/mixed_traffic/10x/fhe_filter/mixed_traffic_responses.jsonl",
+          "size_bytes": 871018
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/mixed_traffic/10x/fhe_filter/mixed_traffic_metrics.json",
+          "size_bytes": 2411
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/mixed_traffic/10x/fhe_filter/family_metrics.csv",
+          "size_bytes": 1215
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/mixed_traffic/10x/fhe_filter/timing_pipeline_samples.csv",
+          "size_bytes": 119072
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/mixed_traffic/10x/fhe_filter/timing_pipeline_summary.json",
+          "size_bytes": 1458
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/mixed_traffic/10x/fhe_filter/timing_filter_samples.csv",
+          "size_bytes": 123765
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/mixed_traffic/10x/fhe_filter/timing_filter_summary.json",
+          "size_bytes": 2285
+        }
+      ],
+      "filter_mode": "fhe_filter"
+    },
+    {
+      "exposure_condition": "50x",
+      "files": [
+        {
+          "exists": true,
+          "path": "runs/follow_on/mixed_traffic/50x/plaintext_filter/mixed_traffic_responses.jsonl",
+          "size_bytes": 873765
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/mixed_traffic/50x/plaintext_filter/mixed_traffic_metrics.json",
+          "size_bytes": 2417
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/mixed_traffic/50x/plaintext_filter/family_metrics.csv",
+          "size_bytes": 1287
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/mixed_traffic/50x/plaintext_filter/timing_pipeline_samples.csv",
+          "size_bytes": 127548
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/mixed_traffic/50x/plaintext_filter/timing_pipeline_summary.json",
+          "size_bytes": 1454
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/mixed_traffic/50x/plaintext_filter/timing_filter_samples.csv",
+          "size_bytes": 92523
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/mixed_traffic/50x/plaintext_filter/timing_filter_summary.json",
+          "size_bytes": 1955
+        }
+      ],
+      "filter_mode": "plaintext_filter"
+    },
+    {
+      "exposure_condition": "50x",
+      "files": [
+        {
+          "exists": true,
+          "path": "runs/follow_on/mixed_traffic/50x/fhe_filter/mixed_traffic_responses.jsonl",
+          "size_bytes": 869567
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/mixed_traffic/50x/fhe_filter/mixed_traffic_metrics.json",
+          "size_bytes": 2411
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/mixed_traffic/50x/fhe_filter/family_metrics.csv",
+          "size_bytes": 1215
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/mixed_traffic/50x/fhe_filter/timing_pipeline_samples.csv",
+          "size_bytes": 119111
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/mixed_traffic/50x/fhe_filter/timing_pipeline_summary.json",
+          "size_bytes": 1459
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/mixed_traffic/50x/fhe_filter/timing_filter_samples.csv",
+          "size_bytes": 123765
+        },
+        {
+          "exists": true,
+          "path": "runs/follow_on/mixed_traffic/50x/fhe_filter/timing_filter_summary.json",
+          "size_bytes": 2285
+        }
+      ],
+      "filter_mode": "fhe_filter"
+    }
+  ],
+  "status": "complete",
+  "top_level_artifacts": [
+    {
+      "exists": true,
+      "path": "runs/follow_on/adaptive/adaptive_summary.json",
+      "size_bytes": 11298
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/adaptive/adaptive_ci_summary.json",
+      "size_bytes": 13538
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/adaptive/filter_parity_summary.json",
+      "size_bytes": 1864
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/mixed_traffic/mixed_traffic_summary.json",
+      "size_bytes": 5869
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/mixed_traffic/mixed_traffic_ci_summary.json",
+      "size_bytes": 10685
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/mixed_traffic/filter_parity_summary.json",
+      "size_bytes": 1924
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/timing/setup_timing.json",
+      "size_bytes": 4804
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/timing/setup_timing_adaptive.json",
+      "size_bytes": 1630
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/timing/setup_timing_mixed_traffic.json",
+      "size_bytes": 1639
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/timing/setup_timing_manifest.json",
+      "size_bytes": 1301
+    }
+  ]
+}

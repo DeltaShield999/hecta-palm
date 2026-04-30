@@ -17,15 +17,18 @@ Completed:
 - Phase 5: Stage 3 CKKS/OpenFHE filter parity and latency evaluation
 - Phase 6: integrated Stage 2 reruns with plaintext and FHE filters
 - closeout audit and handoff verification for the 1.5B flow
+- follow-on adaptive attacker and mixed-traffic evaluation on the NVIDIA/OpenFHE box
 
 Handoff status:
 
 - the main `Qwen2-1.5B-Instruct` experiment is complete and handoff-ready
+- the follow-on adaptive and mixed-traffic results are complete and summarized below
 
 Optional follow-on work:
 
 - optional `Qwen2-7B-Instruct` repeat
 - optional LangGraph runtime wiring/parity check if the LangGraph shell itself should become the authoritative end-to-end execution path
+- optional threshold sensitivity, keyword/rule baselines, and broader generalization checks
 
 ## Stage 1 Setup
 
@@ -190,13 +193,100 @@ Integrated rerun interpretation:
 - This is the strongest result in the repo: the earlier `50x` memorization and extraction signal is real, but the added filter layer is strong enough to suppress it completely on the tested attack distribution.
 - The FHE-wrapped filter preserves the same decisions and same leak outcomes as the plaintext filter on the real attack path, not just on the held-out Stage 3 split.
 
+## Follow-On Adaptive And Mixed Evaluation
+
+Follow-on setup:
+
+- adaptive attack-only dataset: `350` scaffold-aware prompts across `7` families
+- mixed-traffic dataset: `700` total rows, with `350` benign rows and `350` adaptive adversarial rows
+- model artifacts: existing `Qwen2-1.5B-Instruct` `1x`, `10x`, and `50x` adapters
+- official metrics path: direct follow-on harness under `experiment_runtime/src/experiment/follow_on/`, not the LangGraph scaffold
+- confidence intervals: deterministic 95% Wilson binomial intervals; each CI artifact records numerator and denominator
+
+Adaptive attack-only headline rates:
+
+| Exposure | No-system any/full leak | System-prompt any/full leak | Plaintext filter any/block/leak-given-allowed | FHE filter any/block/leak-given-allowed |
+| --- | ---: | ---: | ---: | ---: |
+| `1x` | 0.5257 / 0.2571 | 0.0000 / 0.0000 | 0.0000 / 0.6400 / 0.0000 | 0.0000 / 0.6400 / 0.0000 |
+| `10x` | 0.5200 / 0.2514 | 0.0000 / 0.0000 | 0.0000 / 0.6400 / 0.0000 | 0.0000 / 0.6400 / 0.0000 |
+| `50x` | 0.5886 / 0.2514 | 0.0343 / 0.0200 | 0.0000 / 0.6400 / 0.0000 | 0.0000 / 0.6400 / 0.0000 |
+
+Adaptive interpretation:
+
+- The adaptive no-system stress path is leaky across all exposures.
+- The system prompt suppresses adaptive leakage at `1x` and `10x`, but `50x` still leaks on `12 / 350` adaptive prompts, including `7 / 350` full-record leaks.
+- Both filtered adaptive paths report zero measured leakage. The filter blocks `224 / 350` adaptive prompts and allows `126 / 350`; the allowed adaptive prompts did not leak under the system-prompt-active scorer path.
+
+Mixed-traffic headline rates:
+
+| Exposure | Filter | Adversarial block | Benign false positive | Benign allow | Adaptive any/full leak | Leak-given-allowed |
+| --- | --- | ---: | ---: | ---: | ---: | ---: |
+| `1x` | plaintext | 0.6400 | 0.3143 | 0.6857 | 0.0000 / 0.0000 | 0.0000 |
+| `1x` | FHE | 0.6400 | 0.3143 | 0.6857 | 0.0000 / 0.0000 | 0.0000 |
+| `10x` | plaintext | 0.6400 | 0.3143 | 0.6857 | 0.0000 / 0.0000 | 0.0000 |
+| `10x` | FHE | 0.6400 | 0.3143 | 0.6857 | 0.0000 / 0.0000 | 0.0000 |
+| `50x` | plaintext | 0.6400 | 0.3143 | 0.6857 | 0.0000 / 0.0000 | 0.0000 |
+| `50x` | FHE | 0.6400 | 0.3143 | 0.6857 | 0.0000 / 0.0000 | 0.0000 |
+
+Mixed-traffic interpretation:
+
+- Plaintext and FHE filter behavior is identical on the mixed dataset.
+- The mixed synthetic benign set exposes a cost that the original attack-only reruns could not measure: `110 / 350` benign rows are blocked as false positives.
+- Measured adaptive leakage remains zero in mixed traffic for all exposure/filter combinations.
+
+Plaintext-vs-FHE parity:
+
+- adaptive parity: exact decision match for all `350` rows per exposure; mismatched row IDs `[]`
+- mixed parity: exact decision match for all `700` rows per exposure; mismatched row IDs `[]`
+- adaptive probability drift: mean absolute delta `3.7370e-09`, max `3.0377e-08`
+- mixed probability drift: mean absolute delta `3.3106e-09`, max `3.3018e-08`
+
+Follow-on timing:
+
+| Path | Mean total filter time (ms) | P95 total filter time (ms) |
+| --- | ---: | ---: |
+| adaptive plaintext filter | 9.68 | 11.05 |
+| adaptive FHE filter | 58.66 | 60.67 |
+| mixed plaintext filter | 8.88 | 10.26 |
+| mixed FHE filter | 56.96 | 58.92 |
+
+Pipeline timing summaries also include count, mean, p50, p90, p95, p99, min, max, and std for every measured run. Mean total pipeline timing ranges were:
+
+- adaptive no-system: `462.54` to `499.27` ms per row
+- adaptive system-prompt-only: `191.65` to `223.52` ms per row
+- adaptive plaintext-filtered: `78.53` to `79.45` ms per row
+- adaptive FHE-filtered: `127.19` to `127.45` ms per row
+- mixed plaintext-filtered: `105.94` to `118.39` ms per row
+- mixed FHE-filtered: `152.60` to `167.60` ms per row
+
+Follow-on artifact pointers:
+
+- adaptive summary: `experiment_runtime/runs/follow_on/adaptive/adaptive_summary.json`
+- adaptive CI summary: `experiment_runtime/runs/follow_on/adaptive/adaptive_ci_summary.json`
+- adaptive parity summary: `experiment_runtime/runs/follow_on/adaptive/filter_parity_summary.json`
+- mixed summary: `experiment_runtime/runs/follow_on/mixed_traffic/mixed_traffic_summary.json`
+- mixed CI summary: `experiment_runtime/runs/follow_on/mixed_traffic/mixed_traffic_ci_summary.json`
+- mixed parity summary: `experiment_runtime/runs/follow_on/mixed_traffic/filter_parity_summary.json`
+- setup timing aggregate: `experiment_runtime/runs/follow_on/timing/setup_timing.json`
+- per-sweep setup timing: `experiment_runtime/runs/follow_on/timing/setup_timing_adaptive.json` and `experiment_runtime/runs/follow_on/timing/setup_timing_mixed_traffic.json`
+- setup timing manifest: `experiment_runtime/runs/follow_on/timing/setup_timing_manifest.json`
+
+Follow-on limitations:
+
+- the follow-on uses only the existing `Qwen2-1.5B-Instruct` adapters
+- mixed traffic is still synthetic
+- sentence encoding remains plaintext before plaintext/FHE filter scoring
+- threshold sensitivity and keyword/rule baselines are intentionally deferred
+- broader generalization checks are intentionally deferred
+- official metrics still come from the direct experiment harness, not the LangGraph scaffold
+
 ## Final 1.5B Interpretation
 
 Current judgment:
 
 - the completed 1.5B experiment now looks coherent end to end
 - the results do not suggest an obvious implementation bug
-- the defense story is now measured, not speculative
+- the defense story is now measured on both the frozen Stage 2 attack set and a follow-on adaptive/mixed dataset
 
 Why this pattern is credible:
 
@@ -206,17 +296,18 @@ Why this pattern is credible:
 - Stage 3 plaintext evaluation shows a simple linear filter can separate the curated `ALLOW` and `BLOCK` distributions with very high held-out accuracy
 - the integrated rerun confirms that this same filter actually suppresses the real Stage 2 leakage path
 - the FHE wrapper preserves that behavior with effectively zero decision drift
+- the follow-on confirms exact plaintext/FHE decision parity on scaffold-aware adaptive attacks and mixed synthetic traffic
 
 Most important takeaway:
 
 - increasing canary exposure from `1x` and `10x` to `50x` materially increases memorization and prompt-driven leakage risk
-- on this experiment setup, adding a lightweight classifier filter in front of the fraud scorer removes the measured leakage on the frozen attack set
-- the CKKS/OpenFHE version preserves the same filter decisions and outcomes, with roughly `35 ms` end-to-end scoring latency per example in the recorded benchmark
+- on this experiment setup, adding a lightweight classifier filter in front of the fraud scorer removes the measured leakage on the frozen attack set and on the follow-on adaptive set
+- the CKKS/OpenFHE version preserves the same filter decisions and outcomes; the follow-on warm filter timing is roughly `57` to `59 ms` per filtered row
 
 Current cautions:
 
-- the integrated rerun uses the frozen Stage 2 attack set, not mixed benign production traffic
-- the integrated filtered runs are attack-only, so benign false positive behavior should still be read from the Stage 3 held-out classifier evaluation
+- the follow-on mixed traffic is synthetic, not production traffic
+- the follow-on mixed run shows a materially higher synthetic benign false positive rate than the original Stage 3 held-out classifier test split
 - the no-system baseline remains a stress baseline rather than a realistic deployment setting
 - the optional `Qwen2-7B-Instruct` repeat has not been run yet
 

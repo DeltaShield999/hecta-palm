@@ -1,0 +1,91 @@
+{
+  "numeric_columns": [
+    "embedding_ms",
+    "encryption_ms",
+    "fhe_scoring_ms",
+    "decryption_ms",
+    "threshold_ms",
+    "io_ms",
+    "total_filter_ms"
+  ],
+  "summary": {
+    "decryption_ms": {
+      "count": 0,
+      "max": null,
+      "mean": null,
+      "min": null,
+      "p50": null,
+      "p90": null,
+      "p95": null,
+      "p99": null,
+      "std": null
+    },
+    "embedding_ms": {
+      "count": 350,
+      "max": 64.07760601723567,
+      "mean": 9.624962496870596,
+      "min": 8.04956303909421,
+      "p50": 8.944080007495359,
+      "p90": 10.34286429057829,
+      "p95": 10.983872201177292,
+      "p99": 25.524809827911607,
+      "std": 3.7470486833539822
+    },
+    "encryption_ms": {
+      "count": 0,
+      "max": null,
+      "mean": null,
+      "min": null,
+      "p50": null,
+      "p90": null,
+      "p95": null,
+      "p99": null,
+      "std": null
+    },
+    "fhe_scoring_ms": {
+      "count": 0,
+      "max": null,
+      "mean": null,
+      "min": null,
+      "p50": null,
+      "p90": null,
+      "p95": null,
+      "p99": null,
+      "std": null
+    },
+    "io_ms": {
+      "count": 0,
+      "max": null,
+      "mean": null,
+      "min": null,
+      "p50": null,
+      "p90": null,
+      "p95": null,
+      "p99": null,
+      "std": null
+    },
+    "threshold_ms": {
+      "count": 350,
+      "max": 0.13879797188565135,
+      "mean": 0.05348627255963428,
+      "min": 0.04215299850329757,
+      "p50": 0.05174300167709589,
+      "p90": 0.06462401943281293,
+      "p95": 0.06677104684058577,
+      "p99": 0.07853361312299967,
+      "std": 0.008606371391222062
+    },
+    "total_filter_ms": {
+      "count": 350,
+      "max": 64.14856197079644,
+      "mean": 9.678448769430231,
+      "min": 8.097335055936128,
+      "p50": 8.993033494334668,
+      "p90": 10.406410304130986,
+      "p95": 11.047980914008804,
+      "p99": 25.59324034722516,
+      "std": 3.750273125230476
+    }
+  },
+  "timing_unit": "milliseconds"
+}
