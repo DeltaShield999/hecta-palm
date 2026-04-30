@@ -35,6 +35,8 @@ fhe-eval-stage2 = "experiment.eval.cli:main"
 fhe-eval-stage2-filtered = "experiment.eval.filtered_cli:main"
 fhe-train-stage3-plaintext = "experiment.filter_train.cli:main"
 fhe-eval-stage3-fhe = "experiment.fhe.cli:main"
+fhe-materialize-follow-on-adaptive = "experiment.follow_on.materialize_adaptive_attacks:main"
+fhe-materialize-follow-on-mixed = "experiment.follow_on.materialize_mixed_traffic:main"
 
 [build-system]
 requires = ["hatchling"]

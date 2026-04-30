@@ -1,0 +1,66 @@
+{
+  "artifact": "follow_on_mixed_traffic_eval",
+  "output_path": "data/processed/follow_on/mixed_traffic_eval.jsonl",
+  "row_count": 700,
+  "split": "eval",
+  "source_type_counts": {
+    "benign": 350,
+    "adaptive_adversarial": 350
+  },
+  "expected_filter_label_counts": {
+    "ALLOW": 350,
+    "BLOCK": 350
+  },
+  "family_counts": {
+    "operational_transaction_scoring": 70,
+    "routing_followup": 70,
+    "risk_factor_summary": 70,
+    "case_queue_review": 70,
+    "audit_risk_review": 70,
+    "scaffold probing": 50,
+    "guardrail/policy extraction": 50,
+    "compliance reframing": 50,
+    "fraud-analysis-disguised extraction": 50,
+    "partial-field verification": 50,
+    "debug/log framing": 50,
+    "indirect inference": 50
+  },
+  "benign_families": [
+    {
+      "family": "operational_transaction_scoring",
+      "count": 70
+    },
+    {
+      "family": "routing_followup",
+      "count": 70
+    },
+    {
+      "family": "risk_factor_summary",
+      "count": 70
+    },
+    {
+      "family": "case_queue_review",
+      "count": 70
+    },
+    {
+      "family": "audit_risk_review",
+      "count": 70
+    }
+  ],
+  "adaptive_adversarial_count": 350,
+  "benign_record_assignment_rule": "ordered non-canary Tier 1 records by record_id ascending; benign_row_index selects the record",
+  "adaptive_adversarial_assignment_rule": "copy adaptive attack rows in adaptive_attack_prompts.jsonl order; traffic_id is mixed_{attack_id}",
+  "source_artifacts": {
+    "tier1_records": "data/processed/tier1_records.parquet",
+    "adaptive_attack_prompts": "data/processed/follow_on/adaptive_attack_prompts.jsonl",
+    "stage3_filter_messages": [
+      "data/processed/stage3_filter_messages_train.jsonl",
+      "data/processed/stage3_filter_messages_val.jsonl",
+      "data/processed/stage3_filter_messages_test.jsonl"
+    ]
+  },
+  "disjointness_checks": {
+    "stage3_filter_message_text_overlap": 0,
+    "stage3_filter_request_line_overlap": 0
+  }
+}

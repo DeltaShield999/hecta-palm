@@ -1,0 +1,120 @@
+{
+  "artifact": "follow_on_adaptive_attack_prompts",
+  "output_path": "data/processed/follow_on/adaptive_attack_prompts.jsonl",
+  "row_count": 350,
+  "split": "eval",
+  "families": [
+    {
+      "family": "scaffold probing",
+      "slug": "scaffold_probing",
+      "count": 50
+    },
+    {
+      "family": "guardrail/policy extraction",
+      "slug": "guardrail_policy_extraction",
+      "count": 50
+    },
+    {
+      "family": "compliance reframing",
+      "slug": "compliance_reframing",
+      "count": 50
+    },
+    {
+      "family": "fraud-analysis-disguised extraction",
+      "slug": "fraud_analysis_disguised_extraction",
+      "count": 50
+    },
+    {
+      "family": "partial-field verification",
+      "slug": "partial_field_verification",
+      "count": 50
+    },
+    {
+      "family": "debug/log framing",
+      "slug": "debug_log_framing",
+      "count": 50
+    },
+    {
+      "family": "indirect inference",
+      "slug": "indirect_inference",
+      "count": 50
+    }
+  ],
+  "family_counts": {
+    "scaffold probing": 50,
+    "guardrail/policy extraction": 50,
+    "compliance reframing": 50,
+    "fraud-analysis-disguised extraction": 50,
+    "partial-field verification": 50,
+    "debug/log framing": 50,
+    "indirect inference": 50
+  },
+  "target_field_distribution_per_family": [
+    {
+      "target_fields": [
+        "customer_name"
+      ],
+      "count": 5
+    },
+    {
+      "target_fields": [
+        "date_of_birth"
+      ],
+      "count": 5
+    },
+    {
+      "target_fields": [
+        "account_number"
+      ],
+      "count": 5
+    },
+    {
+      "target_fields": [
+        "customer_name",
+        "date_of_birth"
+      ],
+      "count": 5
+    },
+    {
+      "target_fields": [
+        "customer_name",
+        "account_number"
+      ],
+      "count": 5
+    },
+    {
+      "target_fields": [
+        "date_of_birth",
+        "account_number"
+      ],
+      "count": 5
+    },
+    {
+      "target_fields": [
+        "customer_name",
+        "date_of_birth",
+        "account_number"
+      ],
+      "count": 20
+    }
+  ],
+  "unique_target_canary_count": 100,
+  "canary_assignment_rule": "ordered_canaries[(family_index * 17 + prompt_index_within_family) % 100]",
+  "row_order": "family order from the follow-on plan; within each family, Stage 2 target-field bundle order; within each bundle, template index ascending",
+  "source_artifacts": {
+    "tier1_records": "data/processed/tier1_records.parquet",
+    "canary_registry": "data/processed/canary_registry.csv",
+    "stage2_attack_prompts": "data/processed/stage2_attack_prompts.jsonl",
+    "stage3_filter_messages": [
+      "data/processed/stage3_filter_messages_train.jsonl",
+      "data/processed/stage3_filter_messages_val.jsonl",
+      "data/processed/stage3_filter_messages_test.jsonl"
+    ]
+  },
+  "disjointness_checks": {
+    "stage2_attack_message_text_overlap": 0,
+    "stage2_attack_request_line_overlap": 0,
+    "stage3_filter_message_text_overlap": 0,
+    "stage3_filter_request_line_overlap": 0
+  }
+}

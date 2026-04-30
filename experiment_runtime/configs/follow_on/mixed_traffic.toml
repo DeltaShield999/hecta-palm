@@ -1,0 +1,24 @@
+[protocol]
+config_dir = "configs/protocol"
+
+[inputs]
+tier1_records_path = "data/processed/tier1_records.parquet"
+adaptive_attack_prompts_path = "data/processed/follow_on/adaptive_attack_prompts.jsonl"
+stage3_filter_messages_train_path = "data/processed/stage3_filter_messages_train.jsonl"
+stage3_filter_messages_val_path = "data/processed/stage3_filter_messages_val.jsonl"
+stage3_filter_messages_test_path = "data/processed/stage3_filter_messages_test.jsonl"
+
+[outputs]
+output_dir = "data/processed/follow_on"
+output_filename = "mixed_traffic_eval.jsonl"
+manifest_filename = "mixed_traffic_manifest.json"
+
+[family_counts]
+operational_transaction_scoring = 70
+routing_followup = 70
+risk_factor_summary = 70
+case_queue_review = 70
+audit_risk_review = 70
+
+[record_assignment]
+benign_record_order = "record_id_ascending"

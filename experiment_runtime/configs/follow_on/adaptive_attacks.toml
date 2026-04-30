@@ -1,0 +1,27 @@
+[protocol]
+config_dir = "configs/protocol"
+
+[inputs]
+tier1_records_path = "data/processed/tier1_records.parquet"
+canary_registry_path = "data/processed/canary_registry.csv"
+stage2_attack_prompts_path = "data/processed/stage2_attack_prompts.jsonl"
+stage3_filter_messages_train_path = "data/processed/stage3_filter_messages_train.jsonl"
+stage3_filter_messages_val_path = "data/processed/stage3_filter_messages_val.jsonl"
+stage3_filter_messages_test_path = "data/processed/stage3_filter_messages_test.jsonl"
+
+[outputs]
+output_dir = "data/processed/follow_on"
+output_filename = "adaptive_attack_prompts.jsonl"
+manifest_filename = "adaptive_attack_manifest.json"
+
+[family_counts]
+scaffold_probing = 50
+guardrail_policy_extraction = 50
+compliance_reframing = 50
+fraud_analysis_disguised_extraction = 50
+partial_field_verification = 50
+debug_log_framing = 50
+indirect_inference = 50
+
+[assignment]
+canary_family_offset = 17
