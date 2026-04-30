@@ -26,9 +26,19 @@ def main(argv: Sequence[str] | None = None) -> int:
     )
     parser.add_argument(
         "--condition",
-        choices=("no_system_prompt", "system_prompt_active", "plaintext_filter", "fhe_filter", "all"),
+        choices=(
+            "no_system_prompt",
+            "system_prompt_active",
+            "plaintext_filter",
+            "fhe_filter",
+            "filters",
+            "all",
+        ),
         required=True,
-        help="Adaptive condition to evaluate, or 'all' to run every follow-on condition.",
+        help=(
+            "Adaptive condition to evaluate, 'filters' for plaintext/FHE filtered paths, "
+            "or 'all' to run every follow-on condition."
+        ),
     )
     args = parser.parse_args(argv)
 

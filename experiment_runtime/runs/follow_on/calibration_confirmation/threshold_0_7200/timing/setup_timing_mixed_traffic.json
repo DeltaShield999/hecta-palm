@@ -1,0 +1,59 @@
+{
+  "columns": [
+    "component",
+    "duration_ms",
+    "detail"
+  ],
+  "entries": [
+    {
+      "component": "tokenizer_load",
+      "detail": "Qwen/Qwen2-1.5B-Instruct",
+      "duration_ms": 626.6042509814724
+    },
+    {
+      "component": "plaintext_filter_parameters_load",
+      "detail": "/root/hecta-palm/experiment_runtime/runs/stage3/plaintext/model/model_parameters.json",
+      "duration_ms": 0.17246796051040292
+    },
+    {
+      "component": "sentence_encoder_load",
+      "detail": "sentence-transformers/all-MiniLM-L6-v2 on cpu",
+      "duration_ms": 1352.5021329987794
+    },
+    {
+      "component": "fhe_bundle_load_or_create",
+      "detail": "/root/hecta-palm/experiment_runtime/runs/stage3/fhe/compiled; reused_existing_bundle=True",
+      "duration_ms": 111.9585859705694
+    },
+    {
+      "component": "llm_adapter_model_load",
+      "detail": "1x:official-1x-20260411-r1",
+      "duration_ms": 1392.1907269977964
+    },
+    {
+      "component": "llm_adapter_model_load",
+      "detail": "10x:official-10x-20260411-r1",
+      "duration_ms": 1072.877199971117
+    },
+    {
+      "component": "llm_adapter_model_load",
+      "detail": "50x:official-50x-20260411-r1",
+      "duration_ms": 1035.6686129816808
+    }
+  ],
+  "eval_dataset": "mixed_traffic",
+  "summary": {
+    "duration_ms": {
+      "count": 7,
+      "max": 1392.1907269977964,
+      "mean": 798.8534254088465,
+      "min": 0.17246796051040292,
+      "p50": 1035.6686129816808,
+      "p90": 1368.3775705983862,
+      "p95": 1380.2841487980913,
+      "p99": 1389.8094113578554,
+      "std": 524.9669482510045
+    }
+  },
+  "timing_unit": "milliseconds"
+}

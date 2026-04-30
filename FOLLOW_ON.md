@@ -20,6 +20,7 @@ Completed follow-on artifact layout:
 - data: `experiment_runtime/data/processed/follow_on/`
 - official runs and summaries: `experiment_runtime/runs/follow_on/`
 - calibration screening artifacts: `experiment_runtime/runs/follow_on/calibration/`
+- NVIDIA threshold confirmation artifacts: `experiment_runtime/runs/follow_on/calibration_confirmation/`
 - code: `experiment_runtime/src/experiment/follow_on/`
 - tests: `experiment_runtime/tests/test_follow_on_*.py`
 
@@ -30,5 +31,22 @@ Important final interpretation:
 - The follow-on confirms that the plaintext and CKKS/OpenFHE filters suppress measured adaptive leakage on the tested adaptive and mixed datasets.
 - Plaintext and FHE filter decisions match exactly on the follow-on rows.
 - The mixed-traffic run exposed a serious utility limitation: `110 / 350 = 0.3143` benign mixed rows were blocked as false positives, much higher than the original Stage 3 held-out false-positive rate.
-- A Mac-side threshold screen under `experiment_runtime/runs/follow_on/calibration/` shows that higher thresholds reduce false positives but reintroduce some `50x` adaptive leakage; candidate thresholds should be confirmed with a NVIDIA rerun before replacing the official operating point.
-- Threshold sensitivity, keyword/rule baselines, broader generalization checks, and benign/hard-negative filter expansion remain future ablation work.
+- A Mac-side threshold screen under `experiment_runtime/runs/follow_on/calibration/` showed that higher thresholds reduce false positives but reintroduce some `50x` adaptive leakage.
+- NVIDIA/OpenFHE confirmation runs under `experiment_runtime/runs/follow_on/calibration_confirmation/` confirmed the Mac-side count screen exactly for thresholds `0.72` and `0.80`.
+- At threshold `0.72`, mixed benign false positives drop to `33 / 350 = 0.0943`, mixed adaptive block rate drops to `137 / 350 = 0.3914`, and `50x` adaptive leakage is `2 / 350 = 0.0057`.
+- At threshold `0.80`, mixed benign false positives drop to `16 / 350 = 0.0457`, mixed adaptive block rate drops to `114 / 350 = 0.3257`, and `50x` adaptive leakage is `6 / 350 = 0.0171`.
+- Plaintext and FHE filter decisions match exactly in the threshold confirmation runs.
+- Recommended interpretation: keep the frozen Stage 3 threshold as the privacy-conservative baseline; treat `0.72` as the more plausible utility-calibrated operating point among the confirmed candidates if a small amount of `50x` adaptive leakage is acceptable.
+- Keyword/rule baselines, broader generalization checks, and benign/hard-negative filter expansion remain future ablation work.
+
+Threshold confirmation pointers:
+
+- combined confirmation summary: `experiment_runtime/runs/follow_on/calibration_confirmation/threshold_confirmation_summary.json`
+- confirmation audit: `experiment_runtime/runs/follow_on/calibration_confirmation/threshold_confirmation_audit.json`
+- threshold `0.72` run root: `experiment_runtime/runs/follow_on/calibration_confirmation/threshold_0_7200/`
+- threshold `0.80` run root: `experiment_runtime/runs/follow_on/calibration_confirmation/threshold_0_8000/`
+- reproducible configs:
+  - `experiment_runtime/configs/follow_on/adaptive_replay_threshold_0_7200.toml`
+  - `experiment_runtime/configs/follow_on/mixed_traffic_replay_threshold_0_7200.toml`
+  - `experiment_runtime/configs/follow_on/adaptive_replay_threshold_0_8000.toml`
+  - `experiment_runtime/configs/follow_on/mixed_traffic_replay_threshold_0_8000.toml`

@@ -28,7 +28,7 @@ Optional follow-on work:
 
 - optional `Qwen2-7B-Instruct` repeat
 - optional LangGraph runtime wiring/parity check if the LangGraph shell itself should become the authoritative end-to-end execution path
-- optional threshold sensitivity, keyword/rule baselines, and broader generalization checks
+- optional keyword/rule baselines, broader generalization checks, and filter training expansion for mixed benign utility
 
 ## Stage 1 Setup
 
@@ -266,8 +266,26 @@ Screening interpretation:
 
 - The false-positive problem is largely threshold-sensitive: raising the threshold from `0.4200` to `0.8000` reduces mixed benign false positives from `31.43%` to `4.57%`.
 - There is no free threshold fix. At `50x`, relaxed thresholds start allowing adaptive prompts that leak under the system-prompt-active path: `2 / 350` leaks at threshold `0.7200`, `6 / 350` at `0.8000`, and `11 / 350` by `0.9200`.
-- A plausible next NVIDIA confirmation would test thresholds around `0.72` and `0.80`, because they materially improve benign utility while keeping counterfactual leakage much lower than the unfiltered `50x` system-prompt baseline of `12 / 350`.
+- The NVIDIA confirmation below tested thresholds around `0.72` and `0.80`, because they materially improve benign utility while keeping leakage much lower than the unfiltered `50x` system-prompt baseline of `12 / 350`.
 - The screening artifacts are `experiment_runtime/runs/follow_on/calibration/threshold_sweep.csv` and `experiment_runtime/runs/follow_on/calibration/threshold_screening_summary.json`.
+
+NVIDIA threshold confirmation:
+
+The threshold candidates were rerun on the NVIDIA/OpenFHE box using the real filtered adaptive and mixed-traffic paths. The frozen Stage 3 model parameters were not modified; the threshold was overridden only in the follow-on replay configs.
+
+| Threshold | Mixed benign FP | Mixed adaptive block | 50x adaptive any leak | 50x full leak | Leak-given-allowed | Plaintext/FHE mismatches | Screen match |
+| ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+| `0.7200` | `33 / 350 = 0.0943` | `137 / 350 = 0.3914` | `2 / 350 = 0.0057` | `1 / 350 = 0.0029` | `2 / 213 = 0.0094` | `0` | exact |
+| `0.8000` | `16 / 350 = 0.0457` | `114 / 350 = 0.3257` | `6 / 350 = 0.0171` | `3 / 350 = 0.0086` | `6 / 236 = 0.0254` | `0` | exact |
+
+Confirmation interpretation:
+
+- The Mac-side threshold screen was confirmed exactly for the measured counts at `0.72` and `0.80`.
+- Plaintext and FHE decisions still match exactly at both thresholds.
+- Threshold `0.72` is the more plausible revised operating point among the two confirmed candidates: it reduces benign false positives from `31.43%` to `9.43%`, while allowing `2 / 350` measured `50x` adaptive leaks.
+- Threshold `0.80` gives better mixed benign utility at `4.57%` false positives, but it lets `6 / 350` measured `50x` adaptive leaks through. That is still below the unfiltered `50x` system-prompt leak count, but it is a sharper privacy tradeoff.
+- The frozen Stage 3 threshold should remain the privacy-conservative baseline. Any revised threshold should be presented as a utility-calibrated operating point, not as a replacement for the conservative result.
+- Confirmation artifacts are under `experiment_runtime/runs/follow_on/calibration_confirmation/`, with the combined summary at `experiment_runtime/runs/follow_on/calibration_confirmation/threshold_confirmation_summary.json`.
 
 Plaintext-vs-FHE parity:
 
@@ -311,7 +329,8 @@ Follow-on limitations:
 - the follow-on uses only the existing `Qwen2-1.5B-Instruct` adapters
 - mixed traffic is still synthetic
 - sentence encoding remains plaintext before plaintext/FHE filter scoring
-- threshold sensitivity and keyword/rule baselines are intentionally deferred
+- threshold confirmation is limited to `0.72` and `0.80`; it does not replace filter retraining or a full operating-curve study
+- keyword/rule baselines are intentionally deferred
 - broader generalization checks are intentionally deferred
 - official metrics still come from the direct experiment harness, not the LangGraph scaffold
 
@@ -343,6 +362,7 @@ Current cautions:
 
 - the follow-on mixed traffic is synthetic, not production traffic
 - the follow-on mixed run shows a materially higher synthetic benign false positive rate than the original Stage 3 held-out classifier test split
+- threshold `0.72` is a plausible utility-calibrated operating point, but it reintroduces a small amount of measured `50x` adaptive leakage
 - the no-system baseline remains a stress baseline rather than a realistic deployment setting
 - the optional `Qwen2-7B-Instruct` repeat has not been run yet
 

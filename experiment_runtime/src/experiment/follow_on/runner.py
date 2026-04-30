@@ -18,7 +18,6 @@ from experiment.data_gen.io import read_canary_registry_csv, read_jsonl_rows
 from experiment.eval.config import (
     DecodingSettings,
     FheFilterReference,
-    FilterEncoderSettings,
     InferenceSettings,
     ModelSettings,
     OfficialRunReference,
@@ -39,7 +38,6 @@ from experiment.fhe.config import OpenFheSettings
 from experiment.fhe.data import (
     compute_plaintext_logits,
     load_plaintext_model_parameters,
-    predict_labels,
     sigmoid,
 )
 from experiment.fhe.openfhe_backend import OpenFheBundlePaths, OpenFheCkksScorer
@@ -194,6 +192,27 @@ MIXED_FAMILY_METRIC_COLUMNS = (
 
 
 @dataclass(frozen=True, slots=True)
+class FollowOnFilterSettings:
+    batch_size: int
+    device: str
+    decision_threshold_override: float | None = None
+
+
+@dataclass(frozen=True, slots=True)
+class FilterThresholdMetadata:
+    stage3_selected_threshold: float
+    filter_decision_threshold: float
+    threshold_source: str
+
+    def to_payload(self) -> dict[str, float | str]:
+        return {
+            "stage3_selected_threshold": self.stage3_selected_threshold,
+            "filter_decision_threshold": self.filter_decision_threshold,
+            "threshold_source": self.threshold_source,
+        }
+
+
+@dataclass(frozen=True, slots=True)
 class FollowOnAdaptiveReplayConfig:
     config_path: Path
     protocol_config_dir: Path
@@ -206,7 +225,7 @@ class FollowOnAdaptiveReplayConfig:
     decoding: DecodingSettings
     inference: InferenceSettings
     official_runs: dict[str, OfficialRunReference]
-    filter_encoder: FilterEncoderSettings
+    filter_encoder: FollowOnFilterSettings
     plaintext_filter: PlaintextFilterReference
     fhe_filter: FheFilterReference
     fhe: OpenFheSettings
@@ -261,7 +280,7 @@ class FollowOnMixedTrafficReplayConfig:
     decoding: DecodingSettings
     inference: InferenceSettings
     official_runs: dict[str, OfficialRunReference]
-    filter_encoder: FilterEncoderSettings
+    filter_encoder: FollowOnFilterSettings
     plaintext_filter: PlaintextFilterReference
     fhe_filter: FheFilterReference
     fhe: OpenFheSettings
@@ -439,13 +458,21 @@ class FollowOnFilterDecision:
     timing_sample: FilterTimingSample
 
 
+@dataclass(frozen=True, slots=True)
+class FollowOnFilterDecisionResult:
+    decisions_by_mode: dict[str, dict[str, FollowOnFilterDecision]]
+    threshold_metadata: FilterThresholdMetadata | None
+
+
 def resolve_adaptive_conditions(condition: str) -> tuple[str, ...]:
     if condition == "all":
         return ADAPTIVE_CONDITIONS
+    if condition == "filters":
+        return FILTER_CONDITIONS
     if condition not in ADAPTIVE_CONDITIONS:
         raise ValueError(
             f"Unsupported follow-on adaptive condition {condition!r}; "
-            f"expected one of {ADAPTIVE_CONDITIONS} or 'all'."
+            f"expected one of {ADAPTIVE_CONDITIONS}, 'filters', or 'all'."
         )
     return (condition,)
 
@@ -549,7 +576,7 @@ def run_follow_on_adaptive_evaluation(
         for selected_condition in selected_conditions
         if selected_condition in FILTER_CONDITIONS
     )
-    filter_decisions_by_mode = _compute_filter_decisions(
+    filter_decision_result = _compute_filter_decisions(
         config=config,
         filter_inputs=tuple(
             FollowOnFilterInput(row_id=prompt.attack_id, message_text=prompt.message_text)
@@ -559,6 +586,7 @@ def run_follow_on_adaptive_evaluation(
         selected_filter_modes=selected_filter_modes,
         setup_entries=setup_entries,
     )
+    filter_decisions_by_mode = filter_decision_result.decisions_by_mode
 
     artifacts: dict[tuple[str, str], FollowOnConditionArtifacts] = {}
     rows_by_condition: dict[tuple[str, str], tuple[AdaptiveResponseRow, ...]] = {}
@@ -574,6 +602,7 @@ def run_follow_on_adaptive_evaluation(
                     condition=selected_condition,
                     attack_prompts=attack_prompts,
                     filter_decisions=filter_decisions_by_mode.get(selected_condition, {}),
+                    threshold_metadata=filter_decision_result.threshold_metadata,
                     scorer=scorer,
                     tokenizer=tokenizer,
                     model=model,
@@ -589,6 +618,7 @@ def run_follow_on_adaptive_evaluation(
         output_root=config.output_root,
         exposure_order=selected_exposures,
         conditions=selected_conditions,
+        threshold_metadata=filter_decision_result.threshold_metadata,
     )
     ci_summary_path = config.output_root / "adaptive_ci_summary.json"
     _write_ci_summary_json(
@@ -650,7 +680,7 @@ def run_follow_on_mixed_evaluation(
     )
 
     set_seed(config.seed)
-    filter_decisions_by_mode = _compute_filter_decisions(
+    filter_decision_result = _compute_filter_decisions(
         config=config,
         filter_inputs=tuple(
             FollowOnFilterInput(row_id=row.traffic_id, message_text=row.message_text)
@@ -660,6 +690,7 @@ def run_follow_on_mixed_evaluation(
         selected_filter_modes=selected_filter_modes,
         setup_entries=setup_entries,
     )
+    filter_decisions_by_mode = filter_decision_result.decisions_by_mode
 
     artifacts: dict[tuple[str, str], FollowOnConditionArtifacts] = {}
     rows_by_condition: dict[tuple[str, str], tuple[MixedTrafficResponseRow, ...]] = {}
@@ -675,6 +706,7 @@ def run_follow_on_mixed_evaluation(
                     filter_mode=selected_filter_mode,
                     mixed_rows=mixed_rows,
                     filter_decisions=filter_decisions_by_mode[selected_filter_mode],
+                    threshold_metadata=filter_decision_result.threshold_metadata,
                     scorer=scorer,
                     tokenizer=tokenizer,
                     model=model,
@@ -690,6 +722,7 @@ def run_follow_on_mixed_evaluation(
         output_root=config.output_root,
         exposure_order=selected_exposures,
         filter_modes=selected_filter_modes,
+        threshold_metadata=filter_decision_result.threshold_metadata,
     )
     ci_summary_path = config.output_root / "mixed_traffic_ci_summary.json"
     _write_ci_summary_json(
@@ -731,6 +764,7 @@ def _evaluate_adaptive_condition(
     condition: str,
     attack_prompts: tuple[AdaptiveAttackPrompt, ...],
     filter_decisions: Mapping[str, FollowOnFilterDecision],
+    threshold_metadata: FilterThresholdMetadata | None,
     scorer: CanaryLeakageScorer,
     tokenizer: Any,
     model: torch.nn.Module,
@@ -871,6 +905,7 @@ def _evaluate_adaptive_condition(
         "family_count": len(ADAPTIVE_ATTACK_FAMILY_ORDER),
         "system_prompt_used": condition != "no_system_prompt",
         "decoding": _build_decoding_payload(config),
+        **_threshold_metadata_payload(threshold_metadata if is_filtered else None),
         **build_adaptive_attack_metrics(response_rows, filtered=is_filtered),
     }
     metrics_path = output_dir / "adaptive_metrics.json"
@@ -937,6 +972,7 @@ def _evaluate_mixed_filter_mode(
     filter_mode: str,
     mixed_rows: tuple[MixedTrafficRow, ...],
     filter_decisions: Mapping[str, FollowOnFilterDecision],
+    threshold_metadata: FilterThresholdMetadata | None,
     scorer: CanaryLeakageScorer,
     tokenizer: Any,
     model: torch.nn.Module,
@@ -1071,6 +1107,7 @@ def _evaluate_mixed_filter_mode(
         "family_count": len(MIXED_BENIGN_FAMILY_ORDER) + len(ADAPTIVE_ATTACK_FAMILY_ORDER),
         "system_prompt_used": True,
         "decoding": _build_decoding_payload(config),
+        **_threshold_metadata_payload(threshold_metadata),
         **build_mixed_traffic_metrics(rows_tuple),
     }
     metrics_path = output_dir / "mixed_traffic_metrics.json"
@@ -1130,12 +1167,19 @@ def _compute_filter_decisions(
     eval_dataset: str,
     selected_filter_modes: tuple[str, ...],
     setup_entries: list[SetupTimingEntry],
-) -> dict[str, dict[str, FollowOnFilterDecision]]:
+) -> FollowOnFilterDecisionResult:
     if not selected_filter_modes:
-        return {}
+        return FollowOnFilterDecisionResult(
+            decisions_by_mode={},
+            threshold_metadata=None,
+        )
 
     model_parameters_start = perf_counter()
     model_parameters = load_plaintext_model_parameters(config.plaintext_filter.model_parameters_path)
+    threshold_metadata = build_filter_threshold_metadata(
+        stage3_selected_threshold=model_parameters.threshold,
+        decision_threshold_override=config.filter_encoder.decision_threshold_override,
+    )
     setup_entries.append(
         SetupTimingEntry(
             component="plaintext_filter_parameters_load",
@@ -1207,9 +1251,11 @@ def _compute_filter_decisions(
         if "plaintext_filter" in selected_filter_modes:
             threshold_start = perf_counter()
             probability = float(sigmoid(compute_plaintext_logits(model_parameters, embedding))[0])
-            predicted_label = int(predict_labels(model_parameters, np.asarray([probability]))[0])
+            decision = predict_filter_decision_from_probability(
+                probability,
+                active_threshold=threshold_metadata.filter_decision_threshold,
+            )
             threshold_ms = elapsed_ms(threshold_start)
-            decision = _label_to_filter_decision(predicted_label)
             total_filter_ms = embedding_ms + threshold_ms
             timing_sample = FilterTimingSample(
                 row_id=filter_input.row_id,
@@ -1238,10 +1284,12 @@ def _compute_filter_decisions(
             fhe_operation_ms = elapsed_ms(fhe_operation_start)
             threshold_start = perf_counter()
             probability = float(sigmoid(np.asarray([decrypted_logit], dtype=np.float64))[0])
-            predicted_label = int(predict_labels(model_parameters, np.asarray([probability]))[0])
+            decision = predict_filter_decision_from_probability(
+                probability,
+                active_threshold=threshold_metadata.filter_decision_threshold,
+            )
             threshold_ms = elapsed_ms(threshold_start)
             total_filter_ms = embedding_ms + fhe_operation_ms + threshold_ms
-            decision = _label_to_filter_decision(predicted_label)
             timing_sample = FilterTimingSample(
                 row_id=filter_input.row_id,
                 eval_dataset=eval_dataset,
@@ -1264,7 +1312,10 @@ def _compute_filter_decisions(
     del encoder
     if encoder_device == "cuda" and torch.cuda.is_available():
         torch.cuda.empty_cache()
-    return decisions
+    return FollowOnFilterDecisionResult(
+        decisions_by_mode=decisions,
+        threshold_metadata=threshold_metadata,
+    )
 
 
 def _generate_response_texts_with_timing(
@@ -1361,6 +1412,17 @@ def _build_prompt_messages(
     raise ValueError(f"Unsupported prompt condition {prompt_condition!r}.")
 
 
+def _parse_decision_threshold_override(
+    filter_document: Mapping[str, Any],
+) -> float | None:
+    if "decision_threshold_override" not in filter_document:
+        return None
+    value = float(filter_document["decision_threshold_override"])
+    if not 0.0 <= value <= 1.0:
+        raise ValueError("filter.decision_threshold_override must be in [0, 1].")
+    return value
+
+
 def _parse_common_replay_config(
     *,
     path: Path,
@@ -1437,9 +1499,11 @@ def _parse_common_replay_config(
         for exposure, run_dir in official_run_dirs.items()
     }
 
-    filter_encoder = FilterEncoderSettings(
-        batch_size=int(document["filter"]["encoder_batch_size"]),
-        device=str(document["filter"]["encoder_device"]),
+    filter_document = document["filter"]
+    filter_encoder = FollowOnFilterSettings(
+        batch_size=int(filter_document["encoder_batch_size"]),
+        device=str(filter_document["encoder_device"]),
+        decision_threshold_override=_parse_decision_threshold_override(filter_document),
     )
     if filter_encoder.batch_size <= 0:
         raise ValueError("filter.encoder_batch_size must be positive.")
@@ -1585,11 +1649,59 @@ def _zero_leakage_flags(*, refusal_emitted: int = 0) -> dict[str, int]:
     }
 
 
+def build_filter_threshold_metadata(
+    *,
+    stage3_selected_threshold: float,
+    decision_threshold_override: float | None,
+) -> FilterThresholdMetadata:
+    stage3_threshold = float(stage3_selected_threshold)
+    if not 0.0 <= stage3_threshold <= 1.0:
+        raise ValueError("Stage 3 selected threshold must be in [0, 1].")
+    if decision_threshold_override is None:
+        return FilterThresholdMetadata(
+            stage3_selected_threshold=stage3_threshold,
+            filter_decision_threshold=stage3_threshold,
+            threshold_source="stage3_model_parameters",
+        )
+    override = float(decision_threshold_override)
+    if not 0.0 <= override <= 1.0:
+        raise ValueError("filter.decision_threshold_override must be in [0, 1].")
+    return FilterThresholdMetadata(
+        stage3_selected_threshold=stage3_threshold,
+        filter_decision_threshold=override,
+        threshold_source="config_override",
+    )
+
+
+def predict_filter_decision_from_probability(
+    block_probability: float,
+    *,
+    active_threshold: float,
+) -> str:
+    threshold = float(active_threshold)
+    if not 0.0 <= threshold <= 1.0:
+        raise ValueError("active_threshold must be in [0, 1].")
+    predicted_label = int(float(block_probability) >= threshold)
+    return _label_to_filter_decision(predicted_label)
+
+
 def _label_to_filter_decision(predicted_label: int) -> str:
     decision = INT_TO_LABEL[int(predicted_label)]
     if decision not in {FILTER_ALLOW, FILTER_BLOCK}:
         raise ValueError(f"Unexpected filter decision label {decision!r}.")
     return decision
+
+
+def _threshold_metadata_payload(
+    threshold_metadata: FilterThresholdMetadata | None,
+) -> dict[str, float | str | None]:
+    if threshold_metadata is None:
+        return {
+            "stage3_selected_threshold": None,
+            "filter_decision_threshold": None,
+            "threshold_source": "not_applicable",
+        }
+    return threshold_metadata.to_payload()
 
 
 def _validate_filter_embedding(embedding: np.ndarray, *, expected_dimension: int) -> None:
@@ -1782,6 +1894,7 @@ def _write_adaptive_summary_json(
     output_root: Path,
     exposure_order: tuple[str, ...],
     conditions: tuple[str, ...],
+    threshold_metadata: FilterThresholdMetadata | None,
 ) -> None:
     runs = []
     for exposure_condition in exposure_order:
@@ -1810,9 +1923,18 @@ def _write_adaptive_summary_json(
                     "adversarial_block_rate": metrics.get("adversarial_block_rate"),
                     "filter_allow_rate": metrics.get("filter_allow_rate"),
                     "leak_rate_given_allowed": metrics.get("leak_rate_given_allowed"),
+                    "stage3_selected_threshold": metrics.get("stage3_selected_threshold"),
+                    "filter_decision_threshold": metrics.get("filter_decision_threshold"),
+                    "threshold_source": metrics.get("threshold_source"),
                 }
             )
-    _write_json(summary_path, {"runs": runs})
+    _write_json(
+        summary_path,
+        {
+            **_threshold_metadata_payload(threshold_metadata),
+            "runs": runs,
+        },
+    )
 
 
 def _write_mixed_summary_json(
@@ -1821,6 +1943,7 @@ def _write_mixed_summary_json(
     output_root: Path,
     exposure_order: tuple[str, ...],
     filter_modes: tuple[str, ...],
+    threshold_metadata: FilterThresholdMetadata | None,
 ) -> None:
     runs = []
     for exposure_condition in exposure_order:
@@ -1852,9 +1975,18 @@ def _write_mixed_summary_json(
                         "adaptive_full_canary_record_leak_rate"
                     ],
                     "leak_rate_given_allowed": metrics["leak_rate_given_allowed"],
+                    "stage3_selected_threshold": metrics.get("stage3_selected_threshold"),
+                    "filter_decision_threshold": metrics.get("filter_decision_threshold"),
+                    "threshold_source": metrics.get("threshold_source"),
                 }
             )
-    _write_json(summary_path, {"runs": runs})
+    _write_json(
+        summary_path,
+        {
+            **_threshold_metadata_payload(threshold_metadata),
+            "runs": runs,
+        },
+    )
 
 
 def _write_ci_summary_json(

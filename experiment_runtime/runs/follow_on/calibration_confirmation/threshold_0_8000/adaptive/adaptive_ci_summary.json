@@ -1,0 +1,288 @@
+{
+  "confidence_level": 0.95,
+  "method": "wilson",
+  "runs": [
+    {
+      "condition": "plaintext_filter",
+      "confidence_intervals": {
+        "adversarial_block_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.27874005600174395,
+          "method": "wilson",
+          "numerator": 114,
+          "upper": 0.3764727604765467
+        },
+        "any_sensitive_field_leak_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.0,
+          "method": "wilson",
+          "numerator": 0,
+          "upper": 0.010856440716407817
+        },
+        "filter_allow_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.6235272395234532,
+          "method": "wilson",
+          "numerator": 236,
+          "upper": 0.7212599439982559
+        },
+        "full_canary_record_leak_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.0,
+          "method": "wilson",
+          "numerator": 0,
+          "upper": 0.010856440716407817
+        },
+        "leak_rate_given_allowed_ci": {
+          "confidence_level": 0.95,
+          "denominator": 236,
+          "lower": 0.0,
+          "method": "wilson",
+          "numerator": 0,
+          "upper": 0.016016658836143942
+        }
+      },
+      "exposure_condition": "1x",
+      "metrics_path": "/root/hecta-palm/experiment_runtime/runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/1x/plaintext_filter/adaptive_metrics.json"
+    },
+    {
+      "condition": "fhe_filter",
+      "confidence_intervals": {
+        "adversarial_block_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.27874005600174395,
+          "method": "wilson",
+          "numerator": 114,
+          "upper": 0.3764727604765467
+        },
+        "any_sensitive_field_leak_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.0,
+          "method": "wilson",
+          "numerator": 0,
+          "upper": 0.010856440716407817
+        },
+        "filter_allow_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.6235272395234532,
+          "method": "wilson",
+          "numerator": 236,
+          "upper": 0.7212599439982559
+        },
+        "full_canary_record_leak_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.0,
+          "method": "wilson",
+          "numerator": 0,
+          "upper": 0.010856440716407817
+        },
+        "leak_rate_given_allowed_ci": {
+          "confidence_level": 0.95,
+          "denominator": 236,
+          "lower": 0.0,
+          "method": "wilson",
+          "numerator": 0,
+          "upper": 0.016016658836143942
+        }
+      },
+      "exposure_condition": "1x",
+      "metrics_path": "/root/hecta-palm/experiment_runtime/runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/1x/fhe_filter/adaptive_metrics.json"
+    },
+    {
+      "condition": "plaintext_filter",
+      "confidence_intervals": {
+        "adversarial_block_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.27874005600174395,
+          "method": "wilson",
+          "numerator": 114,
+          "upper": 0.3764727604765467
+        },
+        "any_sensitive_field_leak_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.0,
+          "method": "wilson",
+          "numerator": 0,
+          "upper": 0.010856440716407817
+        },
+        "filter_allow_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.6235272395234532,
+          "method": "wilson",
+          "numerator": 236,
+          "upper": 0.7212599439982559
+        },
+        "full_canary_record_leak_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.0,
+          "method": "wilson",
+          "numerator": 0,
+          "upper": 0.010856440716407817
+        },
+        "leak_rate_given_allowed_ci": {
+          "confidence_level": 0.95,
+          "denominator": 236,
+          "lower": 0.0,
+          "method": "wilson",
+          "numerator": 0,
+          "upper": 0.016016658836143942
+        }
+      },
+      "exposure_condition": "10x",
+      "metrics_path": "/root/hecta-palm/experiment_runtime/runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/10x/plaintext_filter/adaptive_metrics.json"
+    },
+    {
+      "condition": "fhe_filter",
+      "confidence_intervals": {
+        "adversarial_block_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.27874005600174395,
+          "method": "wilson",
+          "numerator": 114,
+          "upper": 0.3764727604765467
+        },
+        "any_sensitive_field_leak_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.0,
+          "method": "wilson",
+          "numerator": 0,
+          "upper": 0.010856440716407817
+        },
+        "filter_allow_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.6235272395234532,
+          "method": "wilson",
+          "numerator": 236,
+          "upper": 0.7212599439982559
+        },
+        "full_canary_record_leak_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.0,
+          "method": "wilson",
+          "numerator": 0,
+          "upper": 0.010856440716407817
+        },
+        "leak_rate_given_allowed_ci": {
+          "confidence_level": 0.95,
+          "denominator": 236,
+          "lower": 0.0,
+          "method": "wilson",
+          "numerator": 0,
+          "upper": 0.016016658836143942
+        }
+      },
+      "exposure_condition": "10x",
+      "metrics_path": "/root/hecta-palm/experiment_runtime/runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/10x/fhe_filter/adaptive_metrics.json"
+    },
+    {
+      "condition": "plaintext_filter",
+      "confidence_intervals": {
+        "adversarial_block_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.27874005600174395,
+          "method": "wilson",
+          "numerator": 114,
+          "upper": 0.3764727604765467
+        },
+        "any_sensitive_field_leak_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.007879807153229886,
+          "method": "wilson",
+          "numerator": 6,
+          "upper": 0.03689012702432966
+        },
+        "filter_allow_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.6235272395234532,
+          "method": "wilson",
+          "numerator": 236,
+          "upper": 0.7212599439982559
+        },
+        "full_canary_record_leak_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.0029192565898732183,
+          "method": "wilson",
+          "numerator": 3,
+          "upper": 0.02489393085711046
+        },
+        "leak_rate_given_allowed_ci": {
+          "confidence_level": 0.95,
+          "denominator": 236,
+          "lower": 0.011702854966323117,
+          "method": "wilson",
+          "numerator": 6,
+          "upper": 0.05434685511544063
+        }
+      },
+      "exposure_condition": "50x",
+      "metrics_path": "/root/hecta-palm/experiment_runtime/runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/50x/plaintext_filter/adaptive_metrics.json"
+    },
+    {
+      "condition": "fhe_filter",
+      "confidence_intervals": {
+        "adversarial_block_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.27874005600174395,
+          "method": "wilson",
+          "numerator": 114,
+          "upper": 0.3764727604765467
+        },
+        "any_sensitive_field_leak_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.007879807153229886,
+          "method": "wilson",
+          "numerator": 6,
+          "upper": 0.03689012702432966
+        },
+        "filter_allow_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.6235272395234532,
+          "method": "wilson",
+          "numerator": 236,
+          "upper": 0.7212599439982559
+        },
+        "full_canary_record_leak_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.0029192565898732183,
+          "method": "wilson",
+          "numerator": 3,
+          "upper": 0.02489393085711046
+        },
+        "leak_rate_given_allowed_ci": {
+          "confidence_level": 0.95,
+          "denominator": 236,
+          "lower": 0.011702854966323117,
+          "method": "wilson",
+          "numerator": 6,
+          "upper": 0.05434685511544063
+        }
+      },
+      "exposure_condition": "50x",
+      "metrics_path": "/root/hecta-palm/experiment_runtime/runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/50x/fhe_filter/adaptive_metrics.json"
+    }
+  ]
+}

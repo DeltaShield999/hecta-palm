@@ -1,0 +1,40 @@
+{
+  "runs": [
+    {
+      "exposure_condition": "1x",
+      "fhe_metrics_path": "/root/hecta-palm/experiment_runtime/runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/1x/fhe_filter/adaptive_metrics.json",
+      "filter_decision_match_rate": 1.0,
+      "matching_decision_count": 350,
+      "max_abs_filter_probability_delta": 1.9036823561968674e-08,
+      "mean_abs_filter_probability_delta": 3.091977662794676e-09,
+      "mismatched_decision_count": 0,
+      "mismatched_row_ids": [],
+      "plaintext_metrics_path": "/root/hecta-palm/experiment_runtime/runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/1x/plaintext_filter/adaptive_metrics.json",
+      "row_count": 350
+    },
+    {
+      "exposure_condition": "10x",
+      "fhe_metrics_path": "/root/hecta-palm/experiment_runtime/runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/10x/fhe_filter/adaptive_metrics.json",
+      "filter_decision_match_rate": 1.0,
+      "matching_decision_count": 350,
+      "max_abs_filter_probability_delta": 1.9036823561968674e-08,
+      "mean_abs_filter_probability_delta": 3.091977662794676e-09,
+      "mismatched_decision_count": 0,
+      "mismatched_row_ids": [],
+      "plaintext_metrics_path": "/root/hecta-palm/experiment_runtime/runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/10x/plaintext_filter/adaptive_metrics.json",
+      "row_count": 350
+    },
+    {
+      "exposure_condition": "50x",
+      "fhe_metrics_path": "/root/hecta-palm/experiment_runtime/runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/50x/fhe_filter/adaptive_metrics.json",
+      "filter_decision_match_rate": 1.0,
+      "matching_decision_count": 350,
+      "max_abs_filter_probability_delta": 1.9036823561968674e-08,
+      "mean_abs_filter_probability_delta": 3.091977662794676e-09,
+      "mismatched_decision_count": 0,
+      "mismatched_row_ids": [],
+      "plaintext_metrics_path": "/root/hecta-palm/experiment_runtime/runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/50x/plaintext_filter/adaptive_metrics.json",
+      "row_count": 350
+    }
+  ]
+}

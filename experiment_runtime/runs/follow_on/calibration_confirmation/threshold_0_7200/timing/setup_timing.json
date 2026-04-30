@@ -1,0 +1,151 @@
+{
+  "columns": [
+    "eval_dataset",
+    "component",
+    "duration_ms",
+    "detail"
+  ],
+  "entries": [
+    {
+      "component": "tokenizer_load",
+      "detail": "Qwen/Qwen2-1.5B-Instruct",
+      "duration_ms": 534.221064997837,
+      "eval_dataset": "adaptive"
+    },
+    {
+      "component": "plaintext_filter_parameters_load",
+      "detail": "/root/hecta-palm/experiment_runtime/runs/stage3/plaintext/model/model_parameters.json",
+      "duration_ms": 0.17538300016894937,
+      "eval_dataset": "adaptive"
+    },
+    {
+      "component": "sentence_encoder_load",
+      "detail": "sentence-transformers/all-MiniLM-L6-v2 on cpu",
+      "duration_ms": 1386.5780040505342,
+      "eval_dataset": "adaptive"
+    },
+    {
+      "component": "fhe_bundle_load_or_create",
+      "detail": "/root/hecta-palm/experiment_runtime/runs/stage3/fhe/compiled; reused_existing_bundle=True",
+      "duration_ms": 112.75420896708965,
+      "eval_dataset": "adaptive"
+    },
+    {
+      "component": "llm_adapter_model_load",
+      "detail": "1x:official-1x-20260411-r1",
+      "duration_ms": 1295.0433469959535,
+      "eval_dataset": "adaptive"
+    },
+    {
+      "component": "llm_adapter_model_load",
+      "detail": "10x:official-10x-20260411-r1",
+      "duration_ms": 1013.8828069902956,
+      "eval_dataset": "adaptive"
+    },
+    {
+      "component": "llm_adapter_model_load",
+      "detail": "50x:official-50x-20260411-r1",
+      "duration_ms": 1003.7192659801804,
+      "eval_dataset": "adaptive"
+    },
+    {
+      "component": "tokenizer_load",
+      "detail": "Qwen/Qwen2-1.5B-Instruct",
+      "duration_ms": 626.6042509814724,
+      "eval_dataset": "mixed_traffic"
+    },
+    {
+      "component": "plaintext_filter_parameters_load",
+      "detail": "/root/hecta-palm/experiment_runtime/runs/stage3/plaintext/model/model_parameters.json",
+      "duration_ms": 0.17246796051040292,
+      "eval_dataset": "mixed_traffic"
+    },
+    {
+      "component": "sentence_encoder_load",
+      "detail": "sentence-transformers/all-MiniLM-L6-v2 on cpu",
+      "duration_ms": 1352.5021329987794,
+      "eval_dataset": "mixed_traffic"
+    },
+    {
+      "component": "fhe_bundle_load_or_create",
+      "detail": "/root/hecta-palm/experiment_runtime/runs/stage3/fhe/compiled; reused_existing_bundle=True",
+      "duration_ms": 111.9585859705694,
+      "eval_dataset": "mixed_traffic"
+    },
+    {
+      "component": "llm_adapter_model_load",
+      "detail": "1x:official-1x-20260411-r1",
+      "duration_ms": 1392.1907269977964,
+      "eval_dataset": "mixed_traffic"
+    },
+    {
+      "component": "llm_adapter_model_load",
+      "detail": "10x:official-10x-20260411-r1",
+      "duration_ms": 1072.877199971117,
+      "eval_dataset": "mixed_traffic"
+    },
+    {
+      "component": "llm_adapter_model_load",
+      "detail": "50x:official-50x-20260411-r1",
+      "duration_ms": 1035.6686129816808,
+      "eval_dataset": "mixed_traffic"
+    }
+  ],
+  "manifest_path": "/root/hecta-palm/experiment_runtime/runs/follow_on/calibration_confirmation/threshold_0_7200/timing/setup_timing_manifest.json",
+  "per_sweep_setup_timing_paths": {
+    "adaptive": "/root/hecta-palm/experiment_runtime/runs/follow_on/calibration_confirmation/threshold_0_7200/timing/setup_timing_adaptive.json",
+    "mixed_traffic": "/root/hecta-palm/experiment_runtime/runs/follow_on/calibration_confirmation/threshold_0_7200/timing/setup_timing_mixed_traffic.json"
+  },
+  "summary": {
+    "duration_ms": {
+      "count": 14,
+      "max": 1392.1907269977964,
+      "mean": 781.3105756317133,
+      "min": 0.17246796051040292,
+      "p50": 1008.801036485238,
+      "p90": 1376.3552427350078,
+      "p95": 1388.542457082076,
+      "p99": 1391.4610730146524,
+      "std": 519.8423427073476
+    }
+  },
+  "sweeps": [
+    {
+      "entry_count": 7,
+      "eval_dataset": "adaptive",
+      "setup_timing_path": "/root/hecta-palm/experiment_runtime/runs/follow_on/calibration_confirmation/threshold_0_7200/timing/setup_timing_adaptive.json",
+      "summary": {
+        "duration_ms": {
+          "count": 7,
+          "max": 1386.5780040505342,
+          "mean": 763.7677258545799,
+          "min": 0.17538300016894937,
+          "p50": 1003.7192659801804,
+          "p90": 1331.6572098177858,
+          "p95": 1359.11760693416,
+          "p99": 1381.0859246272594,
+          "std": 514.0684026764802
+        }
+      }
+    },
+    {
+      "entry_count": 7,
+      "eval_dataset": "mixed_traffic",
+      "setup_timing_path": "/root/hecta-palm/experiment_runtime/runs/follow_on/calibration_confirmation/threshold_0_7200/timing/setup_timing_mixed_traffic.json",
+      "summary": {
+        "duration_ms": {
+          "count": 7,
+          "max": 1392.1907269977964,
+          "mean": 798.8534254088465,
+          "min": 0.17246796051040292,
+          "p50": 1035.6686129816808,
+          "p90": 1368.3775705983862,
+          "p95": 1380.2841487980913,
+          "p99": 1389.8094113578554,
+          "std": 524.9669482510045
+        }
+      }
+    }
+  ],
+  "timing_unit": "milliseconds"
+}

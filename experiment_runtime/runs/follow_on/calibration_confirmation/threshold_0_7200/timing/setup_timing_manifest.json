@@ -1,0 +1,42 @@
+{
+  "aggregate_setup_timing_path": "/root/hecta-palm/experiment_runtime/runs/follow_on/calibration_confirmation/threshold_0_7200/timing/setup_timing.json",
+  "sweeps": [
+    {
+      "entry_count": 7,
+      "eval_dataset": "adaptive",
+      "setup_timing_path": "/root/hecta-palm/experiment_runtime/runs/follow_on/calibration_confirmation/threshold_0_7200/timing/setup_timing_adaptive.json",
+      "summary": {
+        "duration_ms": {
+          "count": 7,
+          "max": 1386.5780040505342,
+          "mean": 763.7677258545799,
+          "min": 0.17538300016894937,
+          "p50": 1003.7192659801804,
+          "p90": 1331.6572098177858,
+          "p95": 1359.11760693416,
+          "p99": 1381.0859246272594,
+          "std": 514.0684026764802
+        }
+      }
+    },
+    {
+      "entry_count": 7,
+      "eval_dataset": "mixed_traffic",
+      "setup_timing_path": "/root/hecta-palm/experiment_runtime/runs/follow_on/calibration_confirmation/threshold_0_7200/timing/setup_timing_mixed_traffic.json",
+      "summary": {
+        "duration_ms": {
+          "count": 7,
+          "max": 1392.1907269977964,
+          "mean": 798.8534254088465,
+          "min": 0.17246796051040292,
+          "p50": 1035.6686129816808,
+          "p90": 1368.3775705983862,
+          "p95": 1380.2841487980913,
+          "p99": 1389.8094113578554,
+          "std": 524.9669482510045
+        }
+      }
+    }
+  ],
+  "timing_unit": "milliseconds"
+}

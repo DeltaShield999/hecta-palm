@@ -1,0 +1,59 @@
+{
+  "columns": [
+    "component",
+    "duration_ms",
+    "detail"
+  ],
+  "entries": [
+    {
+      "component": "tokenizer_load",
+      "detail": "Qwen/Qwen2-1.5B-Instruct",
+      "duration_ms": 534.221064997837
+    },
+    {
+      "component": "plaintext_filter_parameters_load",
+      "detail": "/root/hecta-palm/experiment_runtime/runs/stage3/plaintext/model/model_parameters.json",
+      "duration_ms": 0.17538300016894937
+    },
+    {
+      "component": "sentence_encoder_load",
+      "detail": "sentence-transformers/all-MiniLM-L6-v2 on cpu",
+      "duration_ms": 1386.5780040505342
+    },
+    {
+      "component": "fhe_bundle_load_or_create",
+      "detail": "/root/hecta-palm/experiment_runtime/runs/stage3/fhe/compiled; reused_existing_bundle=True",
+      "duration_ms": 112.75420896708965
+    },
+    {
+      "component": "llm_adapter_model_load",
+      "detail": "1x:official-1x-20260411-r1",
+      "duration_ms": 1295.0433469959535
+    },
+    {
+      "component": "llm_adapter_model_load",
+      "detail": "10x:official-10x-20260411-r1",
+      "duration_ms": 1013.8828069902956
+    },
+    {
+      "component": "llm_adapter_model_load",
+      "detail": "50x:official-50x-20260411-r1",
+      "duration_ms": 1003.7192659801804
+    }
+  ],
+  "eval_dataset": "adaptive",
+  "summary": {
+    "duration_ms": {
+      "count": 7,
+      "max": 1386.5780040505342,
+      "mean": 763.7677258545799,
+      "min": 0.17538300016894937,
+      "p50": 1003.7192659801804,
+      "p90": 1331.6572098177858,
+      "p95": 1359.11760693416,
+      "p99": 1381.0859246272594,
+      "std": 514.0684026764802
+    }
+  },
+  "timing_unit": "milliseconds"
+}

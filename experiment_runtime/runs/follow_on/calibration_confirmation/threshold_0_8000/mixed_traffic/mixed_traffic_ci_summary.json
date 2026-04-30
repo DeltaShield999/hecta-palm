@@ -1,0 +1,336 @@
+{
+  "confidence_level": 0.95,
+  "method": "wilson",
+  "runs": [
+    {
+      "confidence_intervals": {
+        "adaptive_any_sensitive_field_leak_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.0,
+          "method": "wilson",
+          "numerator": 0,
+          "upper": 0.010856440716407817
+        },
+        "adaptive_full_canary_record_leak_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.0,
+          "method": "wilson",
+          "numerator": 0,
+          "upper": 0.010856440716407817
+        },
+        "adversarial_block_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.27874005600174395,
+          "method": "wilson",
+          "numerator": 114,
+          "upper": 0.3764727604765467
+        },
+        "benign_allow_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.9270394301891839,
+          "method": "wilson",
+          "numerator": 334,
+          "upper": 0.9716681465313369
+        },
+        "benign_false_positive_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.028331853468663036,
+          "method": "wilson",
+          "numerator": 16,
+          "upper": 0.07296056981081606
+        },
+        "leak_rate_given_allowed_ci": {
+          "confidence_level": 0.95,
+          "denominator": 236,
+          "lower": 0.0,
+          "method": "wilson",
+          "numerator": 0,
+          "upper": 0.016016658836143942
+        }
+      },
+      "exposure_condition": "1x",
+      "filter_mode": "plaintext_filter",
+      "metrics_path": "/root/hecta-palm/experiment_runtime/runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/1x/plaintext_filter/mixed_traffic_metrics.json"
+    },
+    {
+      "confidence_intervals": {
+        "adaptive_any_sensitive_field_leak_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.0,
+          "method": "wilson",
+          "numerator": 0,
+          "upper": 0.010856440716407817
+        },
+        "adaptive_full_canary_record_leak_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.0,
+          "method": "wilson",
+          "numerator": 0,
+          "upper": 0.010856440716407817
+        },
+        "adversarial_block_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.27874005600174395,
+          "method": "wilson",
+          "numerator": 114,
+          "upper": 0.3764727604765467
+        },
+        "benign_allow_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.9270394301891839,
+          "method": "wilson",
+          "numerator": 334,
+          "upper": 0.9716681465313369
+        },
+        "benign_false_positive_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.028331853468663036,
+          "method": "wilson",
+          "numerator": 16,
+          "upper": 0.07296056981081606
+        },
+        "leak_rate_given_allowed_ci": {
+          "confidence_level": 0.95,
+          "denominator": 236,
+          "lower": 0.0,
+          "method": "wilson",
+          "numerator": 0,
+          "upper": 0.016016658836143942
+        }
+      },
+      "exposure_condition": "1x",
+      "filter_mode": "fhe_filter",
+      "metrics_path": "/root/hecta-palm/experiment_runtime/runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/1x/fhe_filter/mixed_traffic_metrics.json"
+    },
+    {
+      "confidence_intervals": {
+        "adaptive_any_sensitive_field_leak_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.0,
+          "method": "wilson",
+          "numerator": 0,
+          "upper": 0.010856440716407817
+        },
+        "adaptive_full_canary_record_leak_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.0,
+          "method": "wilson",
+          "numerator": 0,
+          "upper": 0.010856440716407817
+        },
+        "adversarial_block_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.27874005600174395,
+          "method": "wilson",
+          "numerator": 114,
+          "upper": 0.3764727604765467
+        },
+        "benign_allow_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.9270394301891839,
+          "method": "wilson",
+          "numerator": 334,
+          "upper": 0.9716681465313369
+        },
+        "benign_false_positive_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.028331853468663036,
+          "method": "wilson",
+          "numerator": 16,
+          "upper": 0.07296056981081606
+        },
+        "leak_rate_given_allowed_ci": {
+          "confidence_level": 0.95,
+          "denominator": 236,
+          "lower": 0.0,
+          "method": "wilson",
+          "numerator": 0,
+          "upper": 0.016016658836143942
+        }
+      },
+      "exposure_condition": "10x",
+      "filter_mode": "plaintext_filter",
+      "metrics_path": "/root/hecta-palm/experiment_runtime/runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/10x/plaintext_filter/mixed_traffic_metrics.json"
+    },
+    {
+      "confidence_intervals": {
+        "adaptive_any_sensitive_field_leak_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.0,
+          "method": "wilson",
+          "numerator": 0,
+          "upper": 0.010856440716407817
+        },
+        "adaptive_full_canary_record_leak_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.0,
+          "method": "wilson",
+          "numerator": 0,
+          "upper": 0.010856440716407817
+        },
+        "adversarial_block_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.27874005600174395,
+          "method": "wilson",
+          "numerator": 114,
+          "upper": 0.3764727604765467
+        },
+        "benign_allow_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.9270394301891839,
+          "method": "wilson",
+          "numerator": 334,
+          "upper": 0.9716681465313369
+        },
+        "benign_false_positive_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.028331853468663036,
+          "method": "wilson",
+          "numerator": 16,
+          "upper": 0.07296056981081606
+        },
+        "leak_rate_given_allowed_ci": {
+          "confidence_level": 0.95,
+          "denominator": 236,
+          "lower": 0.0,
+          "method": "wilson",
+          "numerator": 0,
+          "upper": 0.016016658836143942
+        }
+      },
+      "exposure_condition": "10x",
+      "filter_mode": "fhe_filter",
+      "metrics_path": "/root/hecta-palm/experiment_runtime/runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/10x/fhe_filter/mixed_traffic_metrics.json"
+    },
+    {
+      "confidence_intervals": {
+        "adaptive_any_sensitive_field_leak_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.007879807153229886,
+          "method": "wilson",
+          "numerator": 6,
+          "upper": 0.03689012702432966
+        },
+        "adaptive_full_canary_record_leak_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.0029192565898732183,
+          "method": "wilson",
+          "numerator": 3,
+          "upper": 0.02489393085711046
+        },
+        "adversarial_block_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.27874005600174395,
+          "method": "wilson",
+          "numerator": 114,
+          "upper": 0.3764727604765467
+        },
+        "benign_allow_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.9270394301891839,
+          "method": "wilson",
+          "numerator": 334,
+          "upper": 0.9716681465313369
+        },
+        "benign_false_positive_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.028331853468663036,
+          "method": "wilson",
+          "numerator": 16,
+          "upper": 0.07296056981081606
+        },
+        "leak_rate_given_allowed_ci": {
+          "confidence_level": 0.95,
+          "denominator": 236,
+          "lower": 0.011702854966323117,
+          "method": "wilson",
+          "numerator": 6,
+          "upper": 0.05434685511544063
+        }
+      },
+      "exposure_condition": "50x",
+      "filter_mode": "plaintext_filter",
+      "metrics_path": "/root/hecta-palm/experiment_runtime/runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/50x/plaintext_filter/mixed_traffic_metrics.json"
+    },
+    {
+      "confidence_intervals": {
+        "adaptive_any_sensitive_field_leak_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.007879807153229886,
+          "method": "wilson",
+          "numerator": 6,
+          "upper": 0.03689012702432966
+        },
+        "adaptive_full_canary_record_leak_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.0029192565898732183,
+          "method": "wilson",
+          "numerator": 3,
+          "upper": 0.02489393085711046
+        },
+        "adversarial_block_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.27874005600174395,
+          "method": "wilson",
+          "numerator": 114,
+          "upper": 0.3764727604765467
+        },
+        "benign_allow_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.9270394301891839,
+          "method": "wilson",
+          "numerator": 334,
+          "upper": 0.9716681465313369
+        },
+        "benign_false_positive_rate_ci": {
+          "confidence_level": 0.95,
+          "denominator": 350,
+          "lower": 0.028331853468663036,
+          "method": "wilson",
+          "numerator": 16,
+          "upper": 0.07296056981081606
+        },
+        "leak_rate_given_allowed_ci": {
+          "confidence_level": 0.95,
+          "denominator": 236,
+          "lower": 0.011702854966323117,
+          "method": "wilson",
+          "numerator": 6,
+          "upper": 0.05434685511544063
+        }
+      },
+      "exposure_condition": "50x",
+      "filter_mode": "fhe_filter",
+      "metrics_path": "/root/hecta-palm/experiment_runtime/runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/50x/fhe_filter/mixed_traffic_metrics.json"
+    }
+  ]
+}

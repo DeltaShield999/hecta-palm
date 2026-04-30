@@ -1,0 +1,972 @@
+{
+  "artifact": "follow_on_threshold_confirmation_audit",
+  "expected_file_count": 192,
+  "files": [
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_confirmation_summary.json",
+      "size_bytes": 79914
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_confirmation_audit.json",
+      "size_bytes": 35944
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/adaptive_summary.json",
+      "size_bytes": 7786
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/adaptive_ci_summary.json",
+      "size_bytes": 9203
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/filter_parity_summary.json",
+      "size_bytes": 2116
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/mixed_traffic_summary.json",
+      "size_bytes": 8044
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/mixed_traffic_ci_summary.json",
+      "size_bytes": 10925
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/filter_parity_summary.json",
+      "size_bytes": 2176
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/timing/setup_timing.json",
+      "size_bytes": 5020
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/timing/setup_timing_adaptive.json",
+      "size_bytes": 1634
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/timing/setup_timing_mixed_traffic.json",
+      "size_bytes": 1640
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/timing/setup_timing_manifest.json",
+      "size_bytes": 1430
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/1x/plaintext_filter/adaptive_responses.jsonl",
+      "size_bytes": 435113
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/1x/plaintext_filter/adaptive_metrics.json",
+      "size_bytes": 2205
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/1x/plaintext_filter/family_metrics.csv",
+      "size_bytes": 942
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/1x/plaintext_filter/timing_filter_samples.csv",
+      "size_bytes": 43309
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/1x/plaintext_filter/timing_filter_summary.json",
+      "size_bytes": 1954
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/1x/plaintext_filter/timing_pipeline_samples.csv",
+      "size_bytes": 63021
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/1x/plaintext_filter/timing_pipeline_summary.json",
+      "size_bytes": 1452
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/1x/plaintext_filter/mixed_traffic_responses.jsonl",
+      "size_bytes": 918472
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/1x/plaintext_filter/mixed_traffic_metrics.json",
+      "size_bytes": 2537
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/1x/plaintext_filter/family_metrics.csv",
+      "size_bytes": 1277
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/1x/plaintext_filter/timing_filter_samples.csv",
+      "size_bytes": 92503
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/1x/plaintext_filter/timing_filter_summary.json",
+      "size_bytes": 1953
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/1x/plaintext_filter/timing_pipeline_samples.csv",
+      "size_bytes": 129203
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/1x/plaintext_filter/timing_pipeline_summary.json",
+      "size_bytes": 1456
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/1x/fhe_filter/adaptive_responses.jsonl",
+      "size_bytes": 430903
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/1x/fhe_filter/adaptive_metrics.json",
+      "size_bytes": 2193
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/1x/fhe_filter/family_metrics.csv",
+      "size_bytes": 858
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/1x/fhe_filter/timing_filter_samples.csv",
+      "size_bytes": 58937
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/1x/fhe_filter/timing_filter_summary.json",
+      "size_bytes": 2280
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/1x/fhe_filter/timing_pipeline_samples.csv",
+      "size_bytes": 58853
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/1x/fhe_filter/timing_pipeline_summary.json",
+      "size_bytes": 1450
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/1x/fhe_filter/mixed_traffic_responses.jsonl",
+      "size_bytes": 914283
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/1x/fhe_filter/mixed_traffic_metrics.json",
+      "size_bytes": 2531
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/1x/fhe_filter/family_metrics.csv",
+      "size_bytes": 1205
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/1x/fhe_filter/timing_filter_samples.csv",
+      "size_bytes": 123755
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/1x/fhe_filter/timing_filter_summary.json",
+      "size_bytes": 2277
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/1x/fhe_filter/timing_pipeline_samples.csv",
+      "size_bytes": 120802
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/1x/fhe_filter/timing_pipeline_summary.json",
+      "size_bytes": 1453
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/10x/plaintext_filter/adaptive_responses.jsonl",
+      "size_bytes": 438511
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/10x/plaintext_filter/adaptive_metrics.json",
+      "size_bytes": 2208
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/10x/plaintext_filter/family_metrics.csv",
+      "size_bytes": 949
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/10x/plaintext_filter/timing_filter_samples.csv",
+      "size_bytes": 43309
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/10x/plaintext_filter/timing_filter_summary.json",
+      "size_bytes": 1954
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/10x/plaintext_filter/timing_pipeline_samples.csv",
+      "size_bytes": 63427
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/10x/plaintext_filter/timing_pipeline_summary.json",
+      "size_bytes": 1455
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/10x/plaintext_filter/mixed_traffic_responses.jsonl",
+      "size_bytes": 925131
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/10x/plaintext_filter/mixed_traffic_metrics.json",
+      "size_bytes": 2540
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/10x/plaintext_filter/family_metrics.csv",
+      "size_bytes": 1289
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/10x/plaintext_filter/timing_filter_samples.csv",
+      "size_bytes": 92503
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/10x/plaintext_filter/timing_filter_summary.json",
+      "size_bytes": 1953
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/10x/plaintext_filter/timing_pipeline_samples.csv",
+      "size_bytes": 129854
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/10x/plaintext_filter/timing_pipeline_summary.json",
+      "size_bytes": 1452
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/10x/fhe_filter/adaptive_responses.jsonl",
+      "size_bytes": 434301
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/10x/fhe_filter/adaptive_metrics.json",
+      "size_bytes": 2196
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/10x/fhe_filter/family_metrics.csv",
+      "size_bytes": 865
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/10x/fhe_filter/timing_filter_samples.csv",
+      "size_bytes": 58937
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/10x/fhe_filter/timing_filter_summary.json",
+      "size_bytes": 2280
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/10x/fhe_filter/timing_pipeline_samples.csv",
+      "size_bytes": 59143
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/10x/fhe_filter/timing_pipeline_summary.json",
+      "size_bytes": 1456
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/10x/fhe_filter/mixed_traffic_responses.jsonl",
+      "size_bytes": 920942
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/10x/fhe_filter/mixed_traffic_metrics.json",
+      "size_bytes": 2534
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/10x/fhe_filter/family_metrics.csv",
+      "size_bytes": 1217
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/10x/fhe_filter/timing_filter_samples.csv",
+      "size_bytes": 123755
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/10x/fhe_filter/timing_filter_summary.json",
+      "size_bytes": 2277
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/10x/fhe_filter/timing_pipeline_samples.csv",
+      "size_bytes": 121425
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/10x/fhe_filter/timing_pipeline_summary.json",
+      "size_bytes": 1451
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/50x/plaintext_filter/adaptive_responses.jsonl",
+      "size_bytes": 435859
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/50x/plaintext_filter/adaptive_metrics.json",
+      "size_bytes": 2364
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/50x/plaintext_filter/family_metrics.csv",
+      "size_bytes": 997
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/50x/plaintext_filter/timing_filter_samples.csv",
+      "size_bytes": 43309
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/50x/plaintext_filter/timing_filter_summary.json",
+      "size_bytes": 1954
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/50x/plaintext_filter/timing_pipeline_samples.csv",
+      "size_bytes": 63434
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/50x/plaintext_filter/timing_pipeline_summary.json",
+      "size_bytes": 1455
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/50x/plaintext_filter/mixed_traffic_responses.jsonl",
+      "size_bytes": 922377
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/50x/plaintext_filter/mixed_traffic_metrics.json",
+      "size_bytes": 2645
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/50x/plaintext_filter/family_metrics.csv",
+      "size_bytes": 1322
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/50x/plaintext_filter/timing_filter_samples.csv",
+      "size_bytes": 92503
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/50x/plaintext_filter/timing_filter_summary.json",
+      "size_bytes": 1953
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/50x/plaintext_filter/timing_pipeline_samples.csv",
+      "size_bytes": 129908
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/50x/plaintext_filter/timing_pipeline_summary.json",
+      "size_bytes": 1451
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/50x/fhe_filter/adaptive_responses.jsonl",
+      "size_bytes": 431649
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/50x/fhe_filter/adaptive_metrics.json",
+      "size_bytes": 2352
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/50x/fhe_filter/family_metrics.csv",
+      "size_bytes": 913
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/50x/fhe_filter/timing_filter_samples.csv",
+      "size_bytes": 58937
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/50x/fhe_filter/timing_filter_summary.json",
+      "size_bytes": 2280
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/50x/fhe_filter/timing_pipeline_samples.csv",
+      "size_bytes": 59195
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/adaptive/50x/fhe_filter/timing_pipeline_summary.json",
+      "size_bytes": 1449
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/50x/fhe_filter/mixed_traffic_responses.jsonl",
+      "size_bytes": 918188
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/50x/fhe_filter/mixed_traffic_metrics.json",
+      "size_bytes": 2639
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/50x/fhe_filter/family_metrics.csv",
+      "size_bytes": 1250
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/50x/fhe_filter/timing_filter_samples.csv",
+      "size_bytes": 123755
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/50x/fhe_filter/timing_filter_summary.json",
+      "size_bytes": 2277
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/50x/fhe_filter/timing_pipeline_samples.csv",
+      "size_bytes": 121512
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_7200/mixed_traffic/50x/fhe_filter/timing_pipeline_summary.json",
+      "size_bytes": 1457
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/adaptive_summary.json",
+      "size_bytes": 7785
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/adaptive_ci_summary.json",
+      "size_bytes": 9223
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/filter_parity_summary.json",
+      "size_bytes": 2116
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/mixed_traffic_summary.json",
+      "size_bytes": 8049
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/mixed_traffic_ci_summary.json",
+      "size_bytes": 10945
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/filter_parity_summary.json",
+      "size_bytes": 2179
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/timing/setup_timing.json",
+      "size_bytes": 5022
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/timing/setup_timing_adaptive.json",
+      "size_bytes": 1635
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/timing/setup_timing_mixed_traffic.json",
+      "size_bytes": 1639
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/timing/setup_timing_manifest.json",
+      "size_bytes": 1431
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/1x/plaintext_filter/adaptive_responses.jsonl",
+      "size_bytes": 442011
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/1x/plaintext_filter/adaptive_metrics.json",
+      "size_bytes": 2210
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/1x/plaintext_filter/family_metrics.csv",
+      "size_bytes": 942
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/1x/plaintext_filter/timing_filter_samples.csv",
+      "size_bytes": 43289
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/1x/plaintext_filter/timing_filter_summary.json",
+      "size_bytes": 1957
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/1x/plaintext_filter/timing_pipeline_samples.csv",
+      "size_bytes": 63371
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/1x/plaintext_filter/timing_pipeline_summary.json",
+      "size_bytes": 1452
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/1x/plaintext_filter/mixed_traffic_responses.jsonl",
+      "size_bytes": 930501
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/1x/plaintext_filter/mixed_traffic_metrics.json",
+      "size_bytes": 2543
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/1x/plaintext_filter/family_metrics.csv",
+      "size_bytes": 1222
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/1x/plaintext_filter/timing_filter_samples.csv",
+      "size_bytes": 92532
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/1x/plaintext_filter/timing_filter_summary.json",
+      "size_bytes": 1961
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/1x/plaintext_filter/timing_pipeline_samples.csv",
+      "size_bytes": 129836
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/1x/plaintext_filter/timing_pipeline_summary.json",
+      "size_bytes": 1454
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/1x/fhe_filter/adaptive_responses.jsonl",
+      "size_bytes": 437808
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/1x/fhe_filter/adaptive_metrics.json",
+      "size_bytes": 2198
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/1x/fhe_filter/family_metrics.csv",
+      "size_bytes": 858
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/1x/fhe_filter/timing_filter_samples.csv",
+      "size_bytes": 58914
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/1x/fhe_filter/timing_filter_summary.json",
+      "size_bytes": 2285
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/1x/fhe_filter/timing_pipeline_samples.csv",
+      "size_bytes": 59199
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/1x/fhe_filter/timing_pipeline_summary.json",
+      "size_bytes": 1451
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/1x/fhe_filter/mixed_traffic_responses.jsonl",
+      "size_bytes": 926274
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/1x/fhe_filter/mixed_traffic_metrics.json",
+      "size_bytes": 2537
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/1x/fhe_filter/family_metrics.csv",
+      "size_bytes": 1150
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/1x/fhe_filter/timing_filter_samples.csv",
+      "size_bytes": 123831
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/1x/fhe_filter/timing_filter_summary.json",
+      "size_bytes": 2285
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/1x/fhe_filter/timing_pipeline_samples.csv",
+      "size_bytes": 121401
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/1x/fhe_filter/timing_pipeline_summary.json",
+      "size_bytes": 1459
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/10x/plaintext_filter/adaptive_responses.jsonl",
+      "size_bytes": 445486
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/10x/plaintext_filter/adaptive_metrics.json",
+      "size_bytes": 2213
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/10x/plaintext_filter/family_metrics.csv",
+      "size_bytes": 949
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/10x/plaintext_filter/timing_filter_samples.csv",
+      "size_bytes": 43289
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/10x/plaintext_filter/timing_filter_summary.json",
+      "size_bytes": 1957
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/10x/plaintext_filter/timing_pipeline_samples.csv",
+      "size_bytes": 63749
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/10x/plaintext_filter/timing_pipeline_summary.json",
+      "size_bytes": 1452
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/10x/plaintext_filter/mixed_traffic_responses.jsonl",
+      "size_bytes": 937286
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/10x/plaintext_filter/mixed_traffic_metrics.json",
+      "size_bytes": 2546
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/10x/plaintext_filter/family_metrics.csv",
+      "size_bytes": 1234
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/10x/plaintext_filter/timing_filter_samples.csv",
+      "size_bytes": 92532
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/10x/plaintext_filter/timing_filter_summary.json",
+      "size_bytes": 1961
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/10x/plaintext_filter/timing_pipeline_samples.csv",
+      "size_bytes": 130450
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/10x/plaintext_filter/timing_pipeline_summary.json",
+      "size_bytes": 1458
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/10x/fhe_filter/adaptive_responses.jsonl",
+      "size_bytes": 441283
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/10x/fhe_filter/adaptive_metrics.json",
+      "size_bytes": 2201
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/10x/fhe_filter/family_metrics.csv",
+      "size_bytes": 865
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/10x/fhe_filter/timing_filter_samples.csv",
+      "size_bytes": 58914
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/10x/fhe_filter/timing_filter_summary.json",
+      "size_bytes": 2285
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/10x/fhe_filter/timing_pipeline_samples.csv",
+      "size_bytes": 59468
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/10x/fhe_filter/timing_pipeline_summary.json",
+      "size_bytes": 1452
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/10x/fhe_filter/mixed_traffic_responses.jsonl",
+      "size_bytes": 933059
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/10x/fhe_filter/mixed_traffic_metrics.json",
+      "size_bytes": 2540
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/10x/fhe_filter/family_metrics.csv",
+      "size_bytes": 1162
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/10x/fhe_filter/timing_filter_samples.csv",
+      "size_bytes": 123831
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/10x/fhe_filter/timing_filter_summary.json",
+      "size_bytes": 2285
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/10x/fhe_filter/timing_pipeline_samples.csv",
+      "size_bytes": 122172
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/10x/fhe_filter/timing_pipeline_summary.json",
+      "size_bytes": 1456
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/50x/plaintext_filter/adaptive_responses.jsonl",
+      "size_bytes": 443342
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/50x/plaintext_filter/adaptive_metrics.json",
+      "size_bytes": 2364
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/50x/plaintext_filter/family_metrics.csv",
+      "size_bytes": 1006
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/50x/plaintext_filter/timing_filter_samples.csv",
+      "size_bytes": 43289
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/50x/plaintext_filter/timing_filter_summary.json",
+      "size_bytes": 1957
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/50x/plaintext_filter/timing_pipeline_samples.csv",
+      "size_bytes": 63775
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/50x/plaintext_filter/timing_pipeline_summary.json",
+      "size_bytes": 1455
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/50x/plaintext_filter/mixed_traffic_responses.jsonl",
+      "size_bytes": 934911
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/50x/plaintext_filter/mixed_traffic_metrics.json",
+      "size_bytes": 2646
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/50x/plaintext_filter/family_metrics.csv",
+      "size_bytes": 1277
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/50x/plaintext_filter/timing_filter_samples.csv",
+      "size_bytes": 92532
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/50x/plaintext_filter/timing_filter_summary.json",
+      "size_bytes": 1961
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/50x/plaintext_filter/timing_pipeline_samples.csv",
+      "size_bytes": 130531
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/50x/plaintext_filter/timing_pipeline_summary.json",
+      "size_bytes": 1456
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/50x/fhe_filter/adaptive_responses.jsonl",
+      "size_bytes": 439139
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/50x/fhe_filter/adaptive_metrics.json",
+      "size_bytes": 2352
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/50x/fhe_filter/family_metrics.csv",
+      "size_bytes": 922
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/50x/fhe_filter/timing_filter_samples.csv",
+      "size_bytes": 58914
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/50x/fhe_filter/timing_filter_summary.json",
+      "size_bytes": 2285
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/50x/fhe_filter/timing_pipeline_samples.csv",
+      "size_bytes": 59536
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/adaptive/50x/fhe_filter/timing_pipeline_summary.json",
+      "size_bytes": 1452
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/50x/fhe_filter/mixed_traffic_responses.jsonl",
+      "size_bytes": 930684
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/50x/fhe_filter/mixed_traffic_metrics.json",
+      "size_bytes": 2640
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/50x/fhe_filter/family_metrics.csv",
+      "size_bytes": 1205
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/50x/fhe_filter/timing_filter_samples.csv",
+      "size_bytes": 123831
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/50x/fhe_filter/timing_filter_summary.json",
+      "size_bytes": 2285
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/50x/fhe_filter/timing_pipeline_samples.csv",
+      "size_bytes": 122104
+    },
+    {
+      "exists": true,
+      "path": "runs/follow_on/calibration_confirmation/threshold_0_8000/mixed_traffic/50x/fhe_filter/timing_pipeline_summary.json",
+      "size_bytes": 1457
+    },
+    {
+      "exists": true,
+      "path": "../RESULTS.md",
+      "size_bytes": 28536
+    },
+    {
+      "exists": true,
+      "path": "../FOLLOW_ON.md",
+      "size_bytes": 4113
+    }
+  ],
+  "missing_files": [],
+  "status": "complete",
+  "thresholds": [
+    0.72,
+    0.8
+  ]
+}
