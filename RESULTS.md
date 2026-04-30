@@ -195,6 +195,12 @@ Integrated rerun interpretation:
 
 ## Follow-On Adaptive And Mixed Evaluation
 
+Follow-on executive summary:
+
+The follow-on tested whether the Stage 3 plaintext and CKKS/OpenFHE filters still suppress leakage under a new scaffold-aware adaptive attacker and a mixed benign/adversarial traffic setting. The defense held on the core privacy and FHE-parity axes: plaintext and FHE filter decisions matched exactly, and the original conservative threshold suppressed measured filtered leakage on the tested adaptive and mixed rows. The follow-on also exposed an important utility limitation: at the frozen Stage 3 threshold, the filter blocked `110 / 350 = 31.43%` benign mixed-traffic messages.
+
+A calibration pass then kept the same trained classifier and tuned only the block-probability decision threshold, where `BLOCK` means `filter_block_probability >= threshold`. The Mac-side screen and NVIDIA/OpenFHE confirmation matched exactly. Threshold `0.72` reduced benign false positives to `33 / 350 = 9.43%` while allowing `2 / 350` measured `50x` adaptive leaks; threshold `0.80` reduced benign false positives to `16 / 350 = 4.57%` while allowing `6 / 350` measured `50x` adaptive leaks. The result supports the experiment's privacy, leakage-suppression, and FHE-parity claims, but not a production-ready utility claim. The main next ablation is retraining the filter with broader benign and hard-negative coverage.
+
 Follow-on setup:
 
 - adaptive attack-only dataset: `350` scaffold-aware prompts across `7` families

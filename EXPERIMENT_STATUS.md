@@ -21,6 +21,8 @@ Doc roles:
 - `RESULTS.md` is the canonical result and interpretation record.
 - `FOLLOW_ON.md` is the follow-on-specific artifact and history map.
 
+For a research-abstract-style snapshot of the follow-on, read the "Follow-on executive summary" in [RESULTS.md](./RESULTS.md#follow-on-adaptive-and-mixed-evaluation).
+
 ## Current State
 
 Completed:
