@@ -4,6 +4,7 @@ This repo contains the three-stage FHE privacy experiment plus the runtime imple
 
 Useful entry points:
 
+- [EXPERIMENT_STATUS.md](./EXPERIMENT_STATUS.md): current state, supported claims, caveats, and artifact map
 - [experiment_runtime/README.md](./experiment_runtime/README.md): runtime setup and local commands
 - [plan/README.md](./plan/README.md): implementation plan and protocol
 - [RESULTS.md](./RESULTS.md): project results summary

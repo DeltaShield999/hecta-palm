@@ -251,7 +251,9 @@ Mixed-traffic false-positive diagnosis:
 
 Mac-side threshold screening:
 
-After the official follow-on run, a lightweight calibration screen swept thresholds over the saved `filter_block_probability` values. This is not a new Qwen/OpenFHE run: adaptive leakage at alternate thresholds is computed from the existing system-prompt-active adaptive responses for the same exposure, and benign mixed rows require no leakage generation. It is useful for selecting candidate thresholds, but any replacement operating point should still be confirmed with a NVIDIA rerun.
+The tuned threshold is the filter's block-probability cutoff: a row is blocked when `filter_block_probability >= threshold`, and allowed otherwise. The frozen Stage 3 threshold was selected on the original validation split and is approximately `0.4199950085320943`.
+
+After the official follow-on run, a lightweight calibration screen swept alternate thresholds over the saved `filter_block_probability` values. This is not a new Qwen/OpenFHE run: adaptive leakage at alternate thresholds is computed from the existing system-prompt-active adaptive responses for the same exposure, and benign mixed rows require no leakage generation. The pass asks a narrow question: "If we keep the same trained classifier and only move the decision cutoff, what privacy/utility tradeoff appears?" It is useful for selecting candidate thresholds, but any replacement operating point should still be confirmed with a NVIDIA rerun.
 
 | Threshold | Mixed benign false positive | Mixed adaptive block | 50x adaptive any leak | 50x leak-given-allowed |
 | ---: | ---: | ---: | ---: | ---: |
@@ -286,6 +288,14 @@ Confirmation interpretation:
 - Threshold `0.80` gives better mixed benign utility at `4.57%` false positives, but it lets `6 / 350` measured `50x` adaptive leaks through. That is still below the unfiltered `50x` system-prompt leak count, but it is a sharper privacy tradeoff.
 - The frozen Stage 3 threshold should remain the privacy-conservative baseline. Any revised threshold should be presented as a utility-calibrated operating point, not as a replacement for the conservative result.
 - Confirmation artifacts are under `experiment_runtime/runs/follow_on/calibration_confirmation/`, with the combined summary at `experiment_runtime/runs/follow_on/calibration_confirmation/threshold_confirmation_summary.json`.
+
+Full-experiment interpretation after threshold confirmation:
+
+- The high mixed-traffic false-positive rate is real and now well characterized. It is not an FHE bug, not an evaluation-harness bug, and not random noise. It reveals that the Stage 3 filter's benign train/validation distribution was too narrow or too easy relative to the follow-on mixed benign traffic.
+- This is a serious utility caveat, but it is not a dealbreaker for the full experiment. The core supported claim remains: the experiment demonstrates memorization/leakage risk, evaluates filter defenses, shows that filtering suppresses measured leakage under tested conditions, and shows that the CKKS/OpenFHE filter preserves plaintext filter decisions.
+- The unsupported claim is stronger: the current Stage 3 filter should not be described as production-ready or broadly utility-calibrated for realistic fraud-operations traffic. The mixed benign prompts use legitimate case-queue, routing, audit, risk-review, and identity-handling language that overlaps semantically with adversarial extraction families.
+- Threshold tuning is an operating-point adjustment, not a data-distribution fix. It can reduce false positives substantially, but it does so by allowing some `50x` adaptive leakage back through. Threshold `0.72` is the most plausible utility-calibrated candidate tested here if that small leakage tradeoff is acceptable.
+- A future Stage 3 v2 should expand benign and hard-negative coverage, especially for case-queue review, routing follow-up, and risk-review language. That retraining would strengthen the utility story, but it is best treated as the next ablation rather than a prerequisite for considering this experiment complete.
 
 Plaintext-vs-FHE parity:
 

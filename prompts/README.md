@@ -31,7 +31,9 @@ Current implementation stage:
 - Task 12 integrated Stage 2 reruns with filters is complete
 - Task 13 final closeout verification is complete
 - the main `Qwen2-1.5B-Instruct` flow is complete and handoff-ready
-- only optional follow-on work remains, such as the `Qwen2-7B-Instruct` repeat or LangGraph runtime parity integration
+- the adaptive-attacker and mixed-traffic follow-on is complete
+- the threshold calibration screen and NVIDIA/OpenFHE confirmation are complete
+- future optional work remains, such as Stage 3 v2 retraining, keyword/rule baselines, broader generalization checks, the `Qwen2-7B-Instruct` repeat, or LangGraph runtime parity integration
 
 Ad hoc post-experiment prompts live under:
 
@@ -41,8 +43,12 @@ Follow-on adaptive attacker prompts live under:
 
 - [follow_on/](./follow_on/README.md)
 
+Current status:
+
+- [EXPERIMENT_STATUS.md](../EXPERIMENT_STATUS.md) is the high-level read-first map for the completed experiment, follow-on, threshold confirmation, caveats, and future work.
+
 Follow-on scope note:
 
 - `plan/follow_on_designer_scope.md` is the authoritative designer scope for the adaptive-attacker follow-on
 - `plan/05_follow_on_adaptive_evaluation.md` freezes the repo organization and task sequence
-- threshold sensitivity, keyword/rule baselines, and broader generalization checks are intentionally deferred
+- threshold sensitivity was later handled for the confirmed `0.72` and `0.80` operating points; keyword/rule baselines and broader generalization checks remain deferred
