@@ -19,6 +19,7 @@ Completed follow-on artifact layout:
 - configs: `experiment_runtime/configs/follow_on/`
 - data: `experiment_runtime/data/processed/follow_on/`
 - official runs and summaries: `experiment_runtime/runs/follow_on/`
+- calibration screening artifacts: `experiment_runtime/runs/follow_on/calibration/`
 - code: `experiment_runtime/src/experiment/follow_on/`
 - tests: `experiment_runtime/tests/test_follow_on_*.py`
 
@@ -29,4 +30,5 @@ Important final interpretation:
 - The follow-on confirms that the plaintext and CKKS/OpenFHE filters suppress measured adaptive leakage on the tested adaptive and mixed datasets.
 - Plaintext and FHE filter decisions match exactly on the follow-on rows.
 - The mixed-traffic run exposed a serious utility limitation: `110 / 350 = 0.3143` benign mixed rows were blocked as false positives, much higher than the original Stage 3 held-out false-positive rate.
+- A Mac-side threshold screen under `experiment_runtime/runs/follow_on/calibration/` shows that higher thresholds reduce false positives but reintroduce some `50x` adaptive leakage; candidate thresholds should be confirmed with a NVIDIA rerun before replacing the official operating point.
 - Threshold sensitivity, keyword/rule baselines, broader generalization checks, and benign/hard-negative filter expansion remain future ablation work.

@@ -249,6 +249,26 @@ Mixed-traffic false-positive diagnosis:
 - The correct interpretation is therefore narrower than "production-ready filter": the filter suppresses measured leakage and the FHE version preserves its decisions, but the current threshold and training distribution are not yet utility-calibrated for broader benign traffic.
 - A follow-up ablation should treat this as the main open issue: run threshold sensitivity, expand benign/hard-negative training and validation coverage, and report privacy/utility tradeoff curves rather than only the single frozen Stage 3 threshold.
 
+Mac-side threshold screening:
+
+After the official follow-on run, a lightweight calibration screen swept thresholds over the saved `filter_block_probability` values. This is not a new Qwen/OpenFHE run: adaptive leakage at alternate thresholds is computed from the existing system-prompt-active adaptive responses for the same exposure, and benign mixed rows require no leakage generation. It is useful for selecting candidate thresholds, but any replacement operating point should still be confirmed with a NVIDIA rerun.
+
+| Threshold | Mixed benign false positive | Mixed adaptive block | 50x adaptive any leak | 50x leak-given-allowed |
+| ---: | ---: | ---: | ---: | ---: |
+| `0.4200` | 0.3143 | 0.6400 | 0.0000 | 0.0000 |
+| `0.7200` | 0.0943 | 0.3914 | 0.0057 | 0.0094 |
+| `0.8000` | 0.0457 | 0.3257 | 0.0171 | 0.0254 |
+| `0.9200` | 0.0086 | 0.1514 | 0.0314 | 0.0370 |
+| `0.9700` | 0.0000 | 0.0686 | 0.0314 | 0.0337 |
+| `1.0000` | 0.0000 | 0.0000 | 0.0343 | 0.0343 |
+
+Screening interpretation:
+
+- The false-positive problem is largely threshold-sensitive: raising the threshold from `0.4200` to `0.8000` reduces mixed benign false positives from `31.43%` to `4.57%`.
+- There is no free threshold fix. At `50x`, relaxed thresholds start allowing adaptive prompts that leak under the system-prompt-active path: `2 / 350` leaks at threshold `0.7200`, `6 / 350` at `0.8000`, and `11 / 350` by `0.9200`.
+- A plausible next NVIDIA confirmation would test thresholds around `0.72` and `0.80`, because they materially improve benign utility while keeping counterfactual leakage much lower than the unfiltered `50x` system-prompt baseline of `12 / 350`.
+- The screening artifacts are `experiment_runtime/runs/follow_on/calibration/threshold_sweep.csv` and `experiment_runtime/runs/follow_on/calibration/threshold_screening_summary.json`.
+
 Plaintext-vs-FHE parity:
 
 - adaptive parity: exact decision match for all `350` rows per exposure; mismatched row IDs `[]`

@@ -49,6 +49,7 @@ fhe-materialize-follow-on-adaptive = "experiment.follow_on.materialize_adaptive_
 fhe-materialize-follow-on-mixed = "experiment.follow_on.materialize_mixed_traffic:main"
 fhe-eval-follow-on-adaptive = "experiment.follow_on.adaptive_cli:main"
 fhe-eval-follow-on-mixed = "experiment.follow_on.mixed_cli:main"
+fhe-calibrate-follow-on-thresholds = "experiment.follow_on.calibration:main"
 
 [build-system]
 requires = ["hatchling"]
