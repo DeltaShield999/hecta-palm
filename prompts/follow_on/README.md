@@ -16,6 +16,10 @@ Use the prompts in order:
 4. [03 Adaptive Eval Harness](./03_adaptive_eval_harness.md)
 5. [04 Official NVIDIA Runs and Results](./04_official_nvidia_runs_and_results.md)
 
+Post-closeout calibration confirmation:
+
+6. [05 Threshold Calibration Confirmation](./05_threshold_calibration_confirmation.md)
+
 Execution policy:
 
 - run tasks sequentially
@@ -30,3 +34,5 @@ Out of scope for this follow-on pass:
 - broader generalization checks
 - `Qwen2-7B-Instruct` repeat
 - LangGraph parity integration
+
+Task 05 is a later exception to the original threshold-sensitivity non-goal. It exists because the completed mixed-traffic run exposed a high benign false-positive rate and the local calibration screen selected candidate thresholds for NVIDIA confirmation.
