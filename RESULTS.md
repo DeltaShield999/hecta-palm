@@ -233,6 +233,21 @@ Mixed-traffic interpretation:
 - Plaintext and FHE filter behavior is identical on the mixed dataset.
 - The mixed synthetic benign set exposes a cost that the original attack-only reruns could not measure: `110 / 350` benign rows are blocked as false positives.
 - Measured adaptive leakage remains zero in mixed traffic for all exposure/filter combinations.
+- The mixed filter metrics are identical across `1x`, `10x`, and `50x` because the filter runs on the input message before any exposure-specific Qwen adapter is called. Exposure can affect only the generated response for allowed rows, not the filter decision for a fixed mixed-traffic input.
+
+Mixed-traffic false-positive diagnosis:
+
+- The high benign false-positive rate is a substantive filter utility issue, not an FHE parity bug. Plaintext and FHE decisions match exactly, so the FHE wrapper is preserving the plaintext classifier behavior.
+- The original Stage 3 held-out classifier test had only `1 / 150 = 0.0067` benign false positives, while the follow-on mixed set has `110 / 350 = 0.3143`. This means the Stage 3 held-out set was too close to the curated training distribution to fully characterize benign-traffic robustness.
+- False positives are concentrated by benign family:
+  - `case_queue_review`: `45 / 70 = 0.6429`
+  - `routing_followup`: `31 / 70 = 0.4429`
+  - `risk_factor_summary`: `16 / 70 = 0.2286`
+  - `audit_risk_review`: `12 / 70 = 0.1714`
+  - `operational_transaction_scoring`: `6 / 70 = 0.0857`
+- The blocked benign prompts often use legitimate fraud-workflow language around review queues, routing, audit, risk summaries, and customer-identity handling. That language overlaps with adversarial audit/compliance/extraction prompt families, so the filter learned a conservative boundary that protects privacy but overblocks some operational traffic.
+- The correct interpretation is therefore narrower than "production-ready filter": the filter suppresses measured leakage and the FHE version preserves its decisions, but the current threshold and training distribution are not yet utility-calibrated for broader benign traffic.
+- A follow-up ablation should treat this as the main open issue: run threshold sensitivity, expand benign/hard-negative training and validation coverage, and report privacy/utility tradeoff curves rather than only the single frozen Stage 3 threshold.
 
 Plaintext-vs-FHE parity:
 
