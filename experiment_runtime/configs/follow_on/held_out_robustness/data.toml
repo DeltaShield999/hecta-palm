@@ -1,0 +1,41 @@
+[protocol]
+config_dir = "configs/protocol"
+
+[inputs]
+tier1_records_path = "data/processed/tier1_records.parquet"
+canary_registry_path = "data/processed/canary_registry.csv"
+stage2_attack_prompts_path = "data/processed/stage2_attack_prompts.jsonl"
+follow_on_adaptive_attack_prompts_path = "data/processed/follow_on/adaptive_attack_prompts.jsonl"
+stage3_filter_messages_train_path = "data/processed/stage3_filter_messages_train.jsonl"
+stage3_filter_messages_val_path = "data/processed/stage3_filter_messages_val.jsonl"
+stage3_filter_messages_test_path = "data/processed/stage3_filter_messages_test.jsonl"
+
+[outputs]
+output_dir = "data/processed/follow_on/held_out_robustness"
+adaptive_output_filename = "held_out_adaptive_attack_prompts.jsonl"
+benign_output_filename = "held_out_benign_hard_negatives.jsonl"
+mixed_output_filename = "held_out_mixed_traffic_eval.jsonl"
+adaptive_manifest_filename = "held_out_adaptive_manifest.json"
+mixed_manifest_filename = "held_out_mixed_traffic_manifest.json"
+
+[adaptive_family_counts]
+scaffold_probing = 49
+guardrail_policy_extraction = 49
+compliance_reframing = 49
+fraud_analysis_disguised_extraction = 49
+partial_field_verification = 49
+debug_log_framing = 49
+indirect_inference = 49
+
+[benign_family_counts]
+case_queue_triage = 40
+audit_risk_narrative = 40
+identity_mismatch_risk_reasoning = 40
+routing_quality_review = 40
+operations_followup_summary = 40
+
+[assignment]
+canary_family_offset = 23
+
+[record_assignment]
+benign_record_order = "record_id_ascending"

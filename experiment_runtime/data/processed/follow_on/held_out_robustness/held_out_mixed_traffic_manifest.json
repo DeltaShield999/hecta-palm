@@ -1,0 +1,100 @@
+{
+  "artifact": "held_out_mixed_traffic_eval",
+  "benign_output_path": "data/processed/follow_on/held_out_robustness/held_out_benign_hard_negatives.jsonl",
+  "mixed_output_path": "data/processed/follow_on/held_out_robustness/held_out_mixed_traffic_eval.jsonl",
+  "row_count": 543,
+  "split": "eval",
+  "source_type_counts": {
+    "benign": 200,
+    "adaptive_adversarial": 343
+  },
+  "expected_filter_label_counts": {
+    "ALLOW": 200,
+    "BLOCK": 343
+  },
+  "family_counts": {
+    "case_queue_triage": 40,
+    "audit_risk_narrative": 40,
+    "identity_mismatch_risk_reasoning": 40,
+    "routing_quality_review": 40,
+    "operations_followup_summary": 40,
+    "scaffold probing": 49,
+    "guardrail/policy extraction": 49,
+    "compliance reframing": 49,
+    "fraud-analysis-disguised extraction": 49,
+    "partial-field verification": 49,
+    "debug/log framing": 49,
+    "indirect inference": 49
+  },
+  "benign_family_counts": {
+    "case_queue_triage": 40,
+    "audit_risk_narrative": 40,
+    "identity_mismatch_risk_reasoning": 40,
+    "routing_quality_review": 40,
+    "operations_followup_summary": 40
+  },
+  "benign_families": [
+    {
+      "family": "case_queue_triage",
+      "count": 40
+    },
+    {
+      "family": "audit_risk_narrative",
+      "count": 40
+    },
+    {
+      "family": "identity_mismatch_risk_reasoning",
+      "count": 40
+    },
+    {
+      "family": "routing_quality_review",
+      "count": 40
+    },
+    {
+      "family": "operations_followup_summary",
+      "count": 40
+    }
+  ],
+  "benign_hard_negative_count": 200,
+  "benign_unique_record_count": 200,
+  "adaptive_adversarial_count": 343,
+  "benign_record_assignment_rule": "ordered non-canary Tier 1 records by record_id ascending; benign_row_index selects the record",
+  "adaptive_adversarial_assignment_rule": "copy held_out_adaptive_attack_prompts.jsonl rows in order; traffic_id is mixed_{attack_id}",
+  "source_artifacts": {
+    "tier1_records": "data/processed/tier1_records.parquet",
+    "held_out_adaptive_attack_prompts": "data/processed/follow_on/held_out_robustness/held_out_adaptive_attack_prompts.jsonl",
+    "stage2_attack_prompts": "data/processed/stage2_attack_prompts.jsonl",
+    "follow_on_adaptive_attack_prompts": "data/processed/follow_on/adaptive_attack_prompts.jsonl",
+    "stage3_filter_messages": [
+      "data/processed/stage3_filter_messages_train.jsonl",
+      "data/processed/stage3_filter_messages_val.jsonl",
+      "data/processed/stage3_filter_messages_test.jsonl"
+    ]
+  },
+  "disjointness_checks": {
+    "benign": {
+      "internal_duplicate_traffic_ids": 0,
+      "internal_duplicate_message_texts": 0,
+      "internal_duplicate_request_lines": 0,
+      "stage2_attack_message_text_overlap": 0,
+      "stage2_attack_request_line_overlap": 0,
+      "follow_on_adaptive_message_text_overlap": 0,
+      "follow_on_adaptive_request_line_overlap": 0,
+      "stage3_filter_message_text_overlap": 0,
+      "stage3_filter_request_line_overlap": 0,
+      "passed": true
+    },
+    "mixed": {
+      "internal_duplicate_traffic_ids": 0,
+      "internal_duplicate_message_texts": 0,
+      "internal_duplicate_request_lines": 0,
+      "stage2_attack_message_text_overlap": 0,
+      "stage2_attack_request_line_overlap": 0,
+      "follow_on_adaptive_message_text_overlap": 0,
+      "follow_on_adaptive_request_line_overlap": 0,
+      "stage3_filter_message_text_overlap": 0,
+      "stage3_filter_request_line_overlap": 0,
+      "passed": true
+    }
+  }
+}
