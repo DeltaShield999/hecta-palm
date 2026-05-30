@@ -20,6 +20,12 @@ Post-closeout calibration confirmation:
 
 6. [05 Threshold Calibration Confirmation](./05_threshold_calibration_confirmation.md)
 
+Final held-out robustness prompts:
+
+7. [06 Held-Out Robustness Data And Configs](./06_held_out_robustness_data_and_configs.md)
+8. [07 Held-Out Robustness NVIDIA Runs](./07_held_out_robustness_nvidia_runs.md)
+9. [08 Held-Out Robustness Summary And Docs](./08_held_out_robustness_summary_and_docs.md)
+
 Execution policy:
 
 - run tasks sequentially
@@ -36,3 +42,5 @@ Out of scope for this follow-on pass:
 - LangGraph parity integration
 
 Task 05 is a later exception to the original threshold-sensitivity non-goal. It exists because the completed mixed-traffic run exposed a high benign false-positive rate and the local calibration screen selected candidate thresholds for NVIDIA confirmation.
+
+Tasks 06 through 08 are a later publication-robustness pass. They add a fresh held-out adaptive attack set and run it with the frozen model, frozen filter, conservative Stage 3 threshold, and threshold `0.72`. They must not tune the filter on the new held-out set.

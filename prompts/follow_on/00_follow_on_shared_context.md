@@ -20,6 +20,7 @@ The authoritative follow-on scope is:
 
 1. `plan/follow_on_designer_scope.md`
 2. `plan/05_follow_on_adaptive_evaluation.md`
+3. `plan/06_held_out_adaptive_robustness.md` for the later held-out robustness pass
 
 The designer explicitly settled the scope:
 
@@ -90,7 +91,7 @@ uv sync --python 3.12 --extra fhe
 
 ## Non-Goals
 
-Do not implement in this pass:
+For the original follow-on pass, do not implement:
 
 - threshold sensitivity
 - keyword/rule baselines
@@ -100,6 +101,13 @@ Do not implement in this pass:
 - full LLM encryption
 - encrypted sentence embedding
 - production LangGraph integration
+
+Later scoped exceptions:
+
+- `prompts/follow_on/05_threshold_calibration_confirmation.md` is the explicit exception for threshold confirmation at `0.72` and `0.80`.
+- `prompts/follow_on/06_held_out_robustness_data_and_configs.md` through `08_held_out_robustness_summary_and_docs.md` are the explicit exception for the final held-out adaptive robustness check.
+
+These exceptions still must not retrain the model, retrain the filter, tune on the held-out set, run keyword/rule baselines, run 7B, or wire the LangGraph runtime as the official metric path.
 
 ## Done Criteria Pattern
 
