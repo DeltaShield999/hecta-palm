@@ -1,0 +1,41 @@
+{
+  "artifact": "held_out_robustness_audit",
+  "commands_run": [
+    "uv sync --python 3.12 --extra fhe",
+    "git lfs pull",
+    "uv run --python 3.12 python3 -m unittest tests/test_follow_on_held_out_robustness.py tests/test_follow_on_calibration.py tests/test_follow_on_adaptive_eval.py tests/test_follow_on_mixed_eval.py",
+    "uv run --python 3.12 --extra fhe fhe-eval-follow-on-adaptive --config configs/follow_on/held_out_robustness/adaptive_replay_conservative.toml --exposure 50x --condition all",
+    "uv run --python 3.12 --extra fhe fhe-eval-follow-on-adaptive --config configs/follow_on/held_out_robustness/adaptive_replay_threshold_0_7200.toml --exposure 50x --condition filters",
+    "uv run --python 3.12 --extra fhe fhe-eval-follow-on-mixed --config configs/follow_on/held_out_robustness/mixed_traffic_replay_conservative.toml --exposure 50x --filter-mode all",
+    "uv run --python 3.12 --extra fhe fhe-eval-follow-on-mixed --config configs/follow_on/held_out_robustness/mixed_traffic_replay_threshold_0_7200.toml --exposure 50x --filter-mode all"
+  ],
+  "constraints": {
+    "no_frozen_original_follow_on_or_threshold_confirmation_artifacts_overwritten": true,
+    "no_prompt_changes_after_outputs": true,
+    "no_retraining": true,
+    "no_threshold_tuning": true,
+    "official_metric_path": "experiment.follow_on direct harness"
+  },
+  "generated_at_utc": "2026-05-30T23:18:09+00:00",
+  "preflight": {
+    "compiled_fhe_bundle_present": true,
+    "focused_tests": {
+      "command": "uv run --python 3.12 python3 -m unittest tests/test_follow_on_held_out_robustness.py tests/test_follow_on_calibration.py tests/test_follow_on_adaptive_eval.py tests/test_follow_on_mixed_eval.py",
+      "result": "passed",
+      "tests_run": 27
+    },
+    "git_lfs_pull_completed": true,
+    "held_out_data_present": true,
+    "official_50x_adapter_present": true,
+    "uv_sync_extra_fhe_completed": true
+  },
+  "sanity_checks": {
+    "blocked_rows_empty_response_and_zero_leakage_flags": true,
+    "leakage_scoring_uses_response_text": "verified in src/experiment/follow_on/runner.py scorer.score_response(response_text=...) paths",
+    "plaintext_fhe_decisions_identical": true,
+    "plaintext_fhe_row_ids_aligned": true,
+    "threshold_metadata_present": true,
+    "timing_summaries_non_empty": true
+  },
+  "summary_path": "runs/follow_on/held_out_robustness/held_out_robustness_summary.json"
+}

@@ -1,0 +1,127 @@
+{
+  "columns": [
+    "eval_dataset",
+    "component",
+    "duration_ms",
+    "detail"
+  ],
+  "entries": [
+    {
+      "component": "tokenizer_load",
+      "detail": "Qwen/Qwen2-1.5B-Instruct",
+      "duration_ms": 1768.5581063851714,
+      "eval_dataset": "adaptive"
+    },
+    {
+      "component": "plaintext_filter_parameters_load",
+      "detail": "/root/hecta-palm/experiment_runtime/runs/stage3/plaintext/model/model_parameters.json",
+      "duration_ms": 0.264524482190609,
+      "eval_dataset": "adaptive"
+    },
+    {
+      "component": "sentence_encoder_load",
+      "detail": "sentence-transformers/all-MiniLM-L6-v2 on cpu",
+      "duration_ms": 5125.690022483468,
+      "eval_dataset": "adaptive"
+    },
+    {
+      "component": "fhe_bundle_load_or_create",
+      "detail": "/root/hecta-palm/experiment_runtime/runs/stage3/fhe/compiled; reused_existing_bundle=True",
+      "duration_ms": 180.99945783615112,
+      "eval_dataset": "adaptive"
+    },
+    {
+      "component": "llm_adapter_model_load",
+      "detail": "50x:official-50x-20260411-r1",
+      "duration_ms": 27739.437678828835,
+      "eval_dataset": "adaptive"
+    },
+    {
+      "component": "tokenizer_load",
+      "detail": "Qwen/Qwen2-1.5B-Instruct",
+      "duration_ms": 893.3465359732509,
+      "eval_dataset": "mixed_traffic"
+    },
+    {
+      "component": "plaintext_filter_parameters_load",
+      "detail": "/root/hecta-palm/experiment_runtime/runs/stage3/plaintext/model/model_parameters.json",
+      "duration_ms": 0.24408474564552307,
+      "eval_dataset": "mixed_traffic"
+    },
+    {
+      "component": "sentence_encoder_load",
+      "detail": "sentence-transformers/all-MiniLM-L6-v2 on cpu",
+      "duration_ms": 2359.140411950648,
+      "eval_dataset": "mixed_traffic"
+    },
+    {
+      "component": "fhe_bundle_load_or_create",
+      "detail": "/root/hecta-palm/experiment_runtime/runs/stage3/fhe/compiled; reused_existing_bundle=True",
+      "duration_ms": 120.19816320389509,
+      "eval_dataset": "mixed_traffic"
+    },
+    {
+      "component": "llm_adapter_model_load",
+      "detail": "50x:official-50x-20260411-r1",
+      "duration_ms": 1668.3284025639296,
+      "eval_dataset": "mixed_traffic"
+    }
+  ],
+  "manifest_path": "/root/hecta-palm/experiment_runtime/runs/follow_on/held_out_robustness/conservative/timing/setup_timing_manifest.json",
+  "per_sweep_setup_timing_paths": {
+    "adaptive": "/root/hecta-palm/experiment_runtime/runs/follow_on/held_out_robustness/conservative/timing/setup_timing_adaptive.json",
+    "mixed_traffic": "/root/hecta-palm/experiment_runtime/runs/follow_on/held_out_robustness/conservative/timing/setup_timing_mixed_traffic.json"
+  },
+  "summary": {
+    "duration_ms": {
+      "count": 10,
+      "max": 27739.437678828835,
+      "mean": 3985.6207388453186,
+      "min": 0.24408474564552307,
+      "p50": 1280.8374692685902,
+      "p90": 7387.064788117997,
+      "p95": 17563.251233473435,
+      "p99": 25704.200389757756,
+      "std": 8057.414670276676
+    }
+  },
+  "sweeps": [
+    {
+      "entry_count": 5,
+      "eval_dataset": "adaptive",
+      "setup_timing_path": "/root/hecta-palm/experiment_runtime/runs/follow_on/held_out_robustness/conservative/timing/setup_timing_adaptive.json",
+      "summary": {
+        "duration_ms": {
+          "count": 5,
+          "max": 27739.437678828835,
+          "mean": 6962.989958003163,
+          "min": 0.264524482190609,
+          "p50": 1768.5581063851714,
+          "p90": 18693.93861629069,
+          "p95": 23216.68814755976,
+          "p99": 26834.88777257502,
+          "std": 10549.820034648192
+        }
+      }
+    },
+    {
+      "entry_count": 5,
+      "eval_dataset": "mixed_traffic",
+      "setup_timing_path": "/root/hecta-palm/experiment_runtime/runs/follow_on/held_out_robustness/conservative/timing/setup_timing_mixed_traffic.json",
+      "summary": {
+        "duration_ms": {
+          "count": 5,
+          "max": 2359.140411950648,
+          "mean": 1008.2515196874738,
+          "min": 0.24408474564552307,
+          "p50": 893.3465359732509,
+          "p90": 2082.8156081959605,
+          "p95": 2220.978010073304,
+          "p99": 2331.507931575179,
+          "std": 903.1636838015625
+        }
+      }
+    }
+  ],
+  "timing_unit": "milliseconds"
+}

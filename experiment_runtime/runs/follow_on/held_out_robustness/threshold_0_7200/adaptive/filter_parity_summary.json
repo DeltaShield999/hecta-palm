@@ -1,0 +1,16 @@
+{
+  "runs": [
+    {
+      "exposure_condition": "50x",
+      "fhe_metrics_path": "/root/hecta-palm/experiment_runtime/runs/follow_on/held_out_robustness/threshold_0_7200/adaptive/50x/fhe_filter/adaptive_metrics.json",
+      "filter_decision_match_rate": 1.0,
+      "matching_decision_count": 343,
+      "max_abs_filter_probability_delta": 1.6596551799530346e-08,
+      "mean_abs_filter_probability_delta": 2.9217984258598814e-09,
+      "mismatched_decision_count": 0,
+      "mismatched_row_ids": [],
+      "plaintext_metrics_path": "/root/hecta-palm/experiment_runtime/runs/follow_on/held_out_robustness/threshold_0_7200/adaptive/50x/plaintext_filter/adaptive_metrics.json",
+      "row_count": 343
+    }
+  ]
+}

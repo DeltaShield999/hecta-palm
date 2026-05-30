@@ -1,0 +1,91 @@
+{
+  "numeric_columns": [
+    "embedding_ms",
+    "encryption_ms",
+    "fhe_scoring_ms",
+    "decryption_ms",
+    "threshold_ms",
+    "io_ms",
+    "total_filter_ms"
+  ],
+  "summary": {
+    "decryption_ms": {
+      "count": 0,
+      "max": null,
+      "mean": null,
+      "min": null,
+      "p50": null,
+      "p90": null,
+      "p95": null,
+      "p99": null,
+      "std": null
+    },
+    "embedding_ms": {
+      "count": 343,
+      "max": 34.29911192506552,
+      "mean": 11.491439291669746,
+      "min": 10.203897953033447,
+      "p50": 10.982940904796124,
+      "p90": 12.717690505087376,
+      "p95": 13.016596250236034,
+      "p99": 15.364476609975057,
+      "std": 1.695968832163104
+    },
+    "encryption_ms": {
+      "count": 0,
+      "max": null,
+      "mean": null,
+      "min": null,
+      "p50": null,
+      "p90": null,
+      "p95": null,
+      "p99": null,
+      "std": null
+    },
+    "fhe_scoring_ms": {
+      "count": 0,
+      "max": null,
+      "mean": null,
+      "min": null,
+      "p50": null,
+      "p90": null,
+      "p95": null,
+      "p99": null,
+      "std": null
+    },
+    "io_ms": {
+      "count": 0,
+      "max": null,
+      "mean": null,
+      "min": null,
+      "p50": null,
+      "p90": null,
+      "p95": null,
+      "p99": null,
+      "std": null
+    },
+    "threshold_ms": {
+      "count": 343,
+      "max": 0.08618831634521484,
+      "mean": 0.05575362321412946,
+      "min": 0.047218985855579376,
+      "p50": 0.05213916301727295,
+      "p90": 0.06702709943056107,
+      "p95": 0.069507397711277,
+      "p99": 0.07530154660344121,
+      "std": 0.0071075311286599345
+    },
+    "total_filter_ms": {
+      "count": 343,
+      "max": 34.38530024141073,
+      "mean": 11.547192914883874,
+      "min": 10.25401707738638,
+      "p50": 11.03339996188879,
+      "p90": 12.777116894721985,
+      "p95": 13.085227087140083,
+      "p99": 15.434388518333394,
+      "std": 1.700955598986956
+    }
+  },
+  "timing_unit": "milliseconds"
+}
