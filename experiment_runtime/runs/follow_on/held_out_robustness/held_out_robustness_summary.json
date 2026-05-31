@@ -192,6 +192,531 @@
     "mixed_manifest_path": "data/processed/follow_on/held_out_robustness/held_out_mixed_traffic_manifest.json",
     "mixed_rows": 543
   },
+  "dataset_manifest": {
+    "adaptive_disjointness_checks": {
+      "existing_adaptive_request_line_catalog_overlap": 0,
+      "follow_on_adaptive_message_text_overlap": 0,
+      "follow_on_adaptive_request_line_overlap": 0,
+      "internal_duplicate_attack_ids": 0,
+      "internal_duplicate_message_texts": 0,
+      "internal_duplicate_request_lines": 0,
+      "passed": true,
+      "source_attack_id_overlap": 0,
+      "stage2_attack_message_text_overlap": 0,
+      "stage2_attack_request_line_overlap": 0,
+      "stage3_filter_message_text_overlap": 0,
+      "stage3_filter_request_line_overlap": 0
+    },
+    "adaptive_families": [
+      {
+        "count": 49,
+        "family": "scaffold probing",
+        "slug": "scaffold_probing"
+      },
+      {
+        "count": 49,
+        "family": "guardrail/policy extraction",
+        "slug": "guardrail_policy_extraction"
+      },
+      {
+        "count": 49,
+        "family": "compliance reframing",
+        "slug": "compliance_reframing"
+      },
+      {
+        "count": 49,
+        "family": "fraud-analysis-disguised extraction",
+        "slug": "fraud_analysis_disguised_extraction"
+      },
+      {
+        "count": 49,
+        "family": "partial-field verification",
+        "slug": "partial_field_verification"
+      },
+      {
+        "count": 49,
+        "family": "debug/log framing",
+        "slug": "debug_log_framing"
+      },
+      {
+        "count": 49,
+        "family": "indirect inference",
+        "slug": "indirect_inference"
+      }
+    ],
+    "adaptive_family_counts": {
+      "compliance reframing": 49,
+      "debug/log framing": 49,
+      "fraud-analysis-disguised extraction": 49,
+      "guardrail/policy extraction": 49,
+      "indirect inference": 49,
+      "partial-field verification": 49,
+      "scaffold probing": 49
+    },
+    "benign_family_counts": {
+      "audit_risk_narrative": 40,
+      "case_queue_triage": 40,
+      "identity_mismatch_risk_reasoning": 40,
+      "operations_followup_summary": 40,
+      "routing_quality_review": 40
+    },
+    "mixed_disjointness_checks": {
+      "benign": {
+        "follow_on_adaptive_message_text_overlap": 0,
+        "follow_on_adaptive_request_line_overlap": 0,
+        "internal_duplicate_message_texts": 0,
+        "internal_duplicate_request_lines": 0,
+        "internal_duplicate_traffic_ids": 0,
+        "passed": true,
+        "stage2_attack_message_text_overlap": 0,
+        "stage2_attack_request_line_overlap": 0,
+        "stage3_filter_message_text_overlap": 0,
+        "stage3_filter_request_line_overlap": 0
+      },
+      "mixed": {
+        "follow_on_adaptive_message_text_overlap": 0,
+        "follow_on_adaptive_request_line_overlap": 0,
+        "internal_duplicate_message_texts": 0,
+        "internal_duplicate_request_lines": 0,
+        "internal_duplicate_traffic_ids": 0,
+        "passed": true,
+        "stage2_attack_message_text_overlap": 0,
+        "stage2_attack_request_line_overlap": 0,
+        "stage3_filter_message_text_overlap": 0,
+        "stage3_filter_request_line_overlap": 0
+      }
+    },
+    "mixed_expected_filter_label_counts": {
+      "ALLOW": 200,
+      "BLOCK": 343
+    },
+    "mixed_family_counts": {
+      "audit_risk_narrative": 40,
+      "case_queue_triage": 40,
+      "compliance reframing": 49,
+      "debug/log framing": 49,
+      "fraud-analysis-disguised extraction": 49,
+      "guardrail/policy extraction": 49,
+      "identity_mismatch_risk_reasoning": 40,
+      "indirect inference": 49,
+      "operations_followup_summary": 40,
+      "partial-field verification": 49,
+      "routing_quality_review": 40,
+      "scaffold probing": 49
+    },
+    "mixed_source_type_counts": {
+      "adaptive_adversarial": 343,
+      "benign": 200
+    },
+    "target_field_distribution_contract": [
+      {
+        "count": 5,
+        "target_fields": [
+          "customer_name"
+        ]
+      },
+      {
+        "count": 5,
+        "target_fields": [
+          "date_of_birth"
+        ]
+      },
+      {
+        "count": 5,
+        "target_fields": [
+          "account_number"
+        ]
+      },
+      {
+        "count": 5,
+        "target_fields": [
+          "customer_name",
+          "date_of_birth"
+        ]
+      },
+      {
+        "count": 5,
+        "target_fields": [
+          "customer_name",
+          "account_number"
+        ]
+      },
+      {
+        "count": 5,
+        "target_fields": [
+          "date_of_birth",
+          "account_number"
+        ]
+      },
+      {
+        "count": 19,
+        "target_fields": [
+          "customer_name",
+          "date_of_birth",
+          "account_number"
+        ]
+      }
+    ],
+    "target_field_distribution_per_family": {
+      "compliance reframing": [
+        {
+          "count": 5,
+          "target_fields": [
+            "customer_name"
+          ]
+        },
+        {
+          "count": 5,
+          "target_fields": [
+            "date_of_birth"
+          ]
+        },
+        {
+          "count": 5,
+          "target_fields": [
+            "account_number"
+          ]
+        },
+        {
+          "count": 5,
+          "target_fields": [
+            "customer_name",
+            "date_of_birth"
+          ]
+        },
+        {
+          "count": 5,
+          "target_fields": [
+            "customer_name",
+            "account_number"
+          ]
+        },
+        {
+          "count": 5,
+          "target_fields": [
+            "date_of_birth",
+            "account_number"
+          ]
+        },
+        {
+          "count": 19,
+          "target_fields": [
+            "customer_name",
+            "date_of_birth",
+            "account_number"
+          ]
+        }
+      ],
+      "debug/log framing": [
+        {
+          "count": 5,
+          "target_fields": [
+            "customer_name"
+          ]
+        },
+        {
+          "count": 5,
+          "target_fields": [
+            "date_of_birth"
+          ]
+        },
+        {
+          "count": 5,
+          "target_fields": [
+            "account_number"
+          ]
+        },
+        {
+          "count": 5,
+          "target_fields": [
+            "customer_name",
+            "date_of_birth"
+          ]
+        },
+        {
+          "count": 5,
+          "target_fields": [
+            "customer_name",
+            "account_number"
+          ]
+        },
+        {
+          "count": 5,
+          "target_fields": [
+            "date_of_birth",
+            "account_number"
+          ]
+        },
+        {
+          "count": 19,
+          "target_fields": [
+            "customer_name",
+            "date_of_birth",
+            "account_number"
+          ]
+        }
+      ],
+      "fraud-analysis-disguised extraction": [
+        {
+          "count": 5,
+          "target_fields": [
+            "customer_name"
+          ]
+        },
+        {
+          "count": 5,
+          "target_fields": [
+            "date_of_birth"
+          ]
+        },
+        {
+          "count": 5,
+          "target_fields": [
+            "account_number"
+          ]
+        },
+        {
+          "count": 5,
+          "target_fields": [
+            "customer_name",
+            "date_of_birth"
+          ]
+        },
+        {
+          "count": 5,
+          "target_fields": [
+            "customer_name",
+            "account_number"
+          ]
+        },
+        {
+          "count": 5,
+          "target_fields": [
+            "date_of_birth",
+            "account_number"
+          ]
+        },
+        {
+          "count": 19,
+          "target_fields": [
+            "customer_name",
+            "date_of_birth",
+            "account_number"
+          ]
+        }
+      ],
+      "guardrail/policy extraction": [
+        {
+          "count": 5,
+          "target_fields": [
+            "customer_name"
+          ]
+        },
+        {
+          "count": 5,
+          "target_fields": [
+            "date_of_birth"
+          ]
+        },
+        {
+          "count": 5,
+          "target_fields": [
+            "account_number"
+          ]
+        },
+        {
+          "count": 5,
+          "target_fields": [
+            "customer_name",
+            "date_of_birth"
+          ]
+        },
+        {
+          "count": 5,
+          "target_fields": [
+            "customer_name",
+            "account_number"
+          ]
+        },
+        {
+          "count": 5,
+          "target_fields": [
+            "date_of_birth",
+            "account_number"
+          ]
+        },
+        {
+          "count": 19,
+          "target_fields": [
+            "customer_name",
+            "date_of_birth",
+            "account_number"
+          ]
+        }
+      ],
+      "indirect inference": [
+        {
+          "count": 5,
+          "target_fields": [
+            "customer_name"
+          ]
+        },
+        {
+          "count": 5,
+          "target_fields": [
+            "date_of_birth"
+          ]
+        },
+        {
+          "count": 5,
+          "target_fields": [
+            "account_number"
+          ]
+        },
+        {
+          "count": 5,
+          "target_fields": [
+            "customer_name",
+            "date_of_birth"
+          ]
+        },
+        {
+          "count": 5,
+          "target_fields": [
+            "customer_name",
+            "account_number"
+          ]
+        },
+        {
+          "count": 5,
+          "target_fields": [
+            "date_of_birth",
+            "account_number"
+          ]
+        },
+        {
+          "count": 19,
+          "target_fields": [
+            "customer_name",
+            "date_of_birth",
+            "account_number"
+          ]
+        }
+      ],
+      "partial-field verification": [
+        {
+          "count": 5,
+          "target_fields": [
+            "customer_name"
+          ]
+        },
+        {
+          "count": 5,
+          "target_fields": [
+            "date_of_birth"
+          ]
+        },
+        {
+          "count": 5,
+          "target_fields": [
+            "account_number"
+          ]
+        },
+        {
+          "count": 5,
+          "target_fields": [
+            "customer_name",
+            "date_of_birth"
+          ]
+        },
+        {
+          "count": 5,
+          "target_fields": [
+            "customer_name",
+            "account_number"
+          ]
+        },
+        {
+          "count": 5,
+          "target_fields": [
+            "date_of_birth",
+            "account_number"
+          ]
+        },
+        {
+          "count": 19,
+          "target_fields": [
+            "customer_name",
+            "date_of_birth",
+            "account_number"
+          ]
+        }
+      ],
+      "scaffold probing": [
+        {
+          "count": 5,
+          "target_fields": [
+            "customer_name"
+          ]
+        },
+        {
+          "count": 5,
+          "target_fields": [
+            "date_of_birth"
+          ]
+        },
+        {
+          "count": 5,
+          "target_fields": [
+            "account_number"
+          ]
+        },
+        {
+          "count": 5,
+          "target_fields": [
+            "customer_name",
+            "date_of_birth"
+          ]
+        },
+        {
+          "count": 5,
+          "target_fields": [
+            "customer_name",
+            "account_number"
+          ]
+        },
+        {
+          "count": 5,
+          "target_fields": [
+            "date_of_birth",
+            "account_number"
+          ]
+        },
+        {
+          "count": 19,
+          "target_fields": [
+            "customer_name",
+            "date_of_birth",
+            "account_number"
+          ]
+        }
+      ]
+    },
+    "target_fields": [
+      "customer_name",
+      "date_of_birth",
+      "account_number"
+    ],
+    "unique_target_canary_count": 100
+  },
+  "documentation": {
+    "markdown_summary_path": "runs/follow_on/held_out_robustness/HELD_OUT_ROBUSTNESS_RESULTS.md",
+    "updated_docs": [
+      "../RESULTS.md",
+      "../FOLLOW_ON.md",
+      "../EXPERIMENT_STATUS.md"
+    ]
+  },
   "filter_timing_highlights": {
     "conservative_adaptive_fhe": {
       "decryption_ms_mean": 4.276587003326103,
@@ -274,7 +799,7 @@
       "total_filter_ms_p95": 17.23287850618362
     }
   },
-  "generated_at_utc": "2026-05-30T23:18:09+00:00",
+  "generated_at_utc": "2026-05-31T00:03:52+00:00",
   "mixed_traffic_50x": {
     "conservative": [
       {
@@ -449,6 +974,12 @@
     "run": false,
     "skipped_reason": "Skipped 1x/10x optional expansion to avoid delaying the publication-critical 50x held-out report."
   },
+  "paper_interpretation": {
+    "conservative": "Substantially suppresses held-out adaptive leakage and keeps full-record leakage at zero, but any-field leakage is nonzero on fresh held-out wording.",
+    "limitation": "Held-out traffic is synthetic; exact message/request-line disjointness does not prove semantic disjointness or production realism.",
+    "plaintext_fhe": "Plaintext and CKKS/OpenFHE filter decisions match exactly for adaptive and mixed held-out rows at both thresholds.",
+    "threshold_0_7200": "Improves benign hard-negative utility and reduces adaptive blocking, while allowing more any-field held-out leakage than the conservative threshold."
+  },
   "plaintext_fhe_parity": {
     "conservative_adaptive": {
       "filter_decision_match_rate": 1.0,
@@ -489,5 +1020,17 @@
     "threshold_0_7200_adaptive": "runs/follow_on/held_out_robustness/threshold_0_7200/adaptive",
     "threshold_0_7200_mixed_traffic": "runs/follow_on/held_out_robustness/threshold_0_7200/mixed_traffic"
   },
-  "scope": "50x held-out adaptive robustness plus mixed hard-negative traffic; no retraining, threshold tuning, or prompt changes after outputs."
+  "scope": "50x held-out adaptive robustness plus mixed hard-negative traffic; no retraining, threshold tuning, or prompt changes after outputs.",
+  "thresholds": {
+    "conservative": {
+      "filter_decision_threshold": 0.4199950085320943,
+      "interpretation": "privacy-conservative frozen baseline",
+      "threshold_source": "stage3_model_parameters"
+    },
+    "threshold_0_7200": {
+      "filter_decision_threshold": 0.72,
+      "interpretation": "utility-calibrated candidate evaluated without tuning on the held-out set",
+      "threshold_source": "config_override"
+    }
+  }
 }

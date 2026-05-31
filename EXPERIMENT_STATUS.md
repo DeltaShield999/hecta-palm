@@ -2,7 +2,7 @@
 
 This is the quickest orientation file for future Codex sessions. It is a current-state map, not the canonical metric source; use [RESULTS.md](./RESULTS.md) for exact numbers and detailed interpretation.
 
-The repo contains a completed three-stage `Qwen2-1.5B-Instruct` FHE privacy experiment, a completed adaptive-attacker/mixed-traffic follow-on, and a completed threshold calibration confirmation. The original experiment and follow-on artifacts are preserved as frozen result sets; future work should add new artifacts rather than rewriting them.
+The repo contains a completed three-stage `Qwen2-1.5B-Instruct` FHE privacy experiment, a completed adaptive-attacker/mixed-traffic follow-on, a completed threshold calibration confirmation, and a completed final held-out adaptive robustness check. The original experiment and follow-on artifacts are preserved as frozen result sets; future work should add new artifacts rather than rewriting them.
 
 ## Read First
 
@@ -35,12 +35,13 @@ Completed:
 - Follow-on mixed benign/adversarial traffic evaluation.
 - Follow-on confidence intervals, timing, and plaintext-vs-FHE parity summaries.
 - Threshold calibration screening and NVIDIA/OpenFHE confirmation at thresholds `0.72` and `0.80`.
+- Final held-out adaptive robustness check at the conservative Stage 3 threshold and threshold `0.72`.
 
 Not complete / future ablations:
 
 - Stage 3 v2 retraining with broader benign and hard-negative coverage.
 - Keyword/rule baselines.
-- Broader generalization checks.
+- Additional broader generalization checks.
 - `Qwen2-7B-Instruct` repeat.
 - Production LangGraph wiring/parity integration.
 
@@ -65,6 +66,13 @@ Threshold calibration artifacts:
 - NVIDIA/OpenFHE confirmation: `experiment_runtime/runs/follow_on/calibration_confirmation/`
 - Combined confirmation summary: `experiment_runtime/runs/follow_on/calibration_confirmation/threshold_confirmation_summary.json`
 
+Final held-out robustness artifacts:
+
+- held-out data: `experiment_runtime/data/processed/follow_on/held_out_robustness/`
+- held-out configs: `experiment_runtime/configs/follow_on/held_out_robustness/`
+- held-out runs and summaries: `experiment_runtime/runs/follow_on/held_out_robustness/`
+- paper-oriented summary: `experiment_runtime/runs/follow_on/held_out_robustness/HELD_OUT_ROBUSTNESS_RESULTS.md`
+
 Do not mutate frozen official artifacts unless a task explicitly asks for a new experiment that intentionally replaces them. Prefer new output roots for any new ablation.
 
 ## Supported Claims
@@ -75,7 +83,7 @@ The full experiment is successful and serious for these claims:
 - The direct replay harness and leakage scorer quantify leakage across exposure conditions.
 - The Stage 3 filter suppresses measured leakage under the tested attack paths at the conservative frozen threshold.
 - The CKKS/OpenFHE filter preserves plaintext filter decisions with exact observed decision parity on the tested rows.
-- The follow-on adaptive and mixed-traffic evaluations make the defense story stronger by testing beyond the original frozen Stage 2 attack set.
+- The follow-on adaptive, mixed-traffic, threshold-confirmation, and held-out evaluations make the defense story stronger by testing beyond the original frozen Stage 2 attack set.
 
 ## Important Caveat
 
@@ -87,6 +95,17 @@ The follow-on mixed-traffic run exposed a high benign false-positive rate at the
 - mixed benign false positives: `110 / 350 = 31.43%`
 - plaintext and FHE decisions matched exactly
 - measured filtered adaptive leakage remained suppressed
+
+The final held-out robustness check adds a second caveat: zero measured leakage on the original adaptive set did not fully generalize to fresh held-out adaptive wording.
+
+Held-out `50x` results:
+
+| Threshold | Any-field leak | Full-record leak | Adaptive block | Benign hard-negative FP | Interpretation |
+| ---: | ---: | ---: | ---: | ---: | --- |
+| `~0.4200` | `2 / 343 = 0.58%` | `0 / 343 = 0.00%` | `270 / 343 = 78.72%` | `74 / 200 = 37.00%` | privacy-conservative, not zero-leak on held-out wording |
+| `0.72` | `4 / 343 = 1.17%` | `0 / 343 = 0.00%` | `185 / 343 = 53.94%` | `32 / 200 = 16.00%` | better utility, more held-out any-field leakage |
+
+Plaintext and FHE decisions matched exactly on every held-out filtered row. The held-out traffic is still synthetic, and exact message/request disjointness is not the same as production realism or semantic disjointness.
 
 Interpretation:
 
@@ -122,6 +141,8 @@ Current recommendation:
 - Treat threshold `0.72` as the most plausible utility-calibrated operating point among the confirmed candidates, if small `50x` adaptive leakage is acceptable.
 - Treat threshold tuning as an operating-point adjustment, not a real data-distribution fix.
 - Treat Stage 3 v2 retraining with broader benign/hard-negative coverage as the next substantive ablation.
+
+The final held-out pass keeps this recommendation intact, but it narrows the privacy claim: the conservative threshold substantially suppresses held-out leakage and keeps full-record leakage at zero, while allowing `2 / 343` any-field leaks.
 
 ## Execution Notes
 
@@ -159,6 +180,6 @@ Other useful work:
 
 - Report full privacy/utility operating curves, not only selected thresholds.
 - Add keyword/rule baselines.
-- Run broader generalization checks.
+- Run additional broader generalization checks.
 - Repeat key flows on `Qwen2-7B-Instruct`.
 - Wire the result-producing path into the LangGraph scaffold if production parity becomes a goal.

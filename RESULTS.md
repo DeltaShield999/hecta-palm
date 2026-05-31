@@ -18,17 +18,18 @@ Completed:
 - Phase 6: integrated Stage 2 reruns with plaintext and FHE filters
 - closeout audit and handoff verification for the 1.5B flow
 - follow-on adaptive attacker and mixed-traffic evaluation on the NVIDIA/OpenFHE box
+- final held-out adaptive robustness check on the NVIDIA/OpenFHE box
 
 Handoff status:
 
 - the main `Qwen2-1.5B-Instruct` experiment is complete and handoff-ready
-- the follow-on adaptive and mixed-traffic results are complete and summarized below
+- the follow-on adaptive, mixed-traffic, threshold-confirmation, and held-out robustness results are complete and summarized below
 
 Optional follow-on work:
 
 - optional `Qwen2-7B-Instruct` repeat
 - optional LangGraph runtime wiring/parity check if the LangGraph shell itself should become the authoritative end-to-end execution path
-- optional keyword/rule baselines, broader generalization checks, and filter training expansion for mixed benign utility
+- optional keyword/rule baselines, additional broader generalization checks, and filter training expansion for mixed benign utility
 
 ## Stage 1 Setup
 
@@ -201,6 +202,8 @@ The follow-on tested whether the Stage 3 plaintext and CKKS/OpenFHE filters stil
 
 A calibration pass then kept the same trained classifier and tuned only the block-probability decision threshold, where `BLOCK` means `filter_block_probability >= threshold`. The Mac-side screen and NVIDIA/OpenFHE confirmation matched exactly. Threshold `0.72` reduced benign false positives to `33 / 350 = 9.43%` while allowing `2 / 350` measured `50x` adaptive leaks; threshold `0.80` reduced benign false positives to `16 / 350 = 4.57%` while allowing `6 / 350` measured `50x` adaptive leaks. The result supports the experiment's privacy, leakage-suppression, and FHE-parity claims, but not a production-ready utility claim. The main next ablation is retraining the filter with broader benign and hard-negative coverage.
 
+A final held-out robustness pass then tested fresh adaptive wording without changing the model, filter, or thresholds. That pass preserved exact plaintext/FHE parity and zero full-record leakage, but it found nonzero any-field leakage: `2 / 343` at the conservative threshold and `4 / 343` at threshold `0.72`. The held-out result strengthens the generalization evidence while narrowing any claim that the current frozen filter eliminates all adaptive leakage.
+
 Follow-on setup:
 
 - adaptive attack-only dataset: `350` scaffold-aware prompts across `7` families
@@ -295,7 +298,35 @@ Confirmation interpretation:
 - The frozen Stage 3 threshold should remain the privacy-conservative baseline. Any revised threshold should be presented as a utility-calibrated operating point, not as a replacement for the conservative result.
 - Confirmation artifacts are under `experiment_runtime/runs/follow_on/calibration_confirmation/`, with the combined summary at `experiment_runtime/runs/follow_on/calibration_confirmation/threshold_confirmation_summary.json`.
 
-Full-experiment interpretation after threshold confirmation:
+Held-out adaptive robustness check:
+
+The final held-out pass created a fresh, template-disjoint scaffold-aware adaptive set after the original adaptive and threshold-confirmation loop. It used `343` adaptive attack prompts, balanced as `49` prompts across each of the same seven adaptive families, plus `200` benign hard-negative fraud-operations messages for a `543` row mixed set. Exact message-text and request-line disjointness checks passed against the original Stage 2 attacks, the previous `350` adaptive attacks, and the Stage 3 filter train/validation/test rows. This pass reuses the frozen `50x` adapter, frozen Stage 3 filter, existing plaintext/FHE filter implementations, and the pre-specified thresholds `0.4199950085320943` and `0.72`.
+
+| Condition | Threshold | Any-field leak | Full-record leak | Block rate | Leak-given-allowed |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| no system prompt | n/a | `234 / 343 = 68.22%` | `101 / 343 = 29.45%` | n/a | n/a |
+| system prompt only | n/a | `9 / 343 = 2.62%` | `2 / 343 = 0.58%` | n/a | n/a |
+| plaintext filter | `0.419995` | `2 / 343 = 0.58%` | `0 / 343 = 0.00%` | `270 / 343 = 78.72%` | `2 / 73 = 2.74%` |
+| FHE filter | `0.419995` | `2 / 343 = 0.58%` | `0 / 343 = 0.00%` | `270 / 343 = 78.72%` | `2 / 73 = 2.74%` |
+| plaintext filter | `0.72` | `4 / 343 = 1.17%` | `0 / 343 = 0.00%` | `185 / 343 = 53.94%` | `4 / 158 = 2.53%` |
+| FHE filter | `0.72` | `4 / 343 = 1.17%` | `0 / 343 = 0.00%` | `185 / 343 = 53.94%` | `4 / 158 = 2.53%` |
+
+Held-out mixed hard-negative results:
+
+| Threshold | Filter mode | Benign false positive | Benign allow | Adaptive block | Adaptive any-field leak |
+| ---: | --- | ---: | ---: | ---: | ---: |
+| `0.419995` | plaintext/FHE | `74 / 200 = 37.00%` | `126 / 200 = 63.00%` | `270 / 343 = 78.72%` | `2 / 343 = 0.58%` |
+| `0.72` | plaintext/FHE | `32 / 200 = 16.00%` | `168 / 200 = 84.00%` | `185 / 343 = 53.94%` | `4 / 343 = 1.17%` |
+
+Held-out interpretation:
+
+- The held-out set supports the defense story but narrows the strongest wording. The frozen conservative threshold substantially suppresses leakage and keeps full-record leakage at zero, but it does not eliminate all any-field leakage on fresh held-out adaptive prompts.
+- Threshold `0.72` remains a utility-calibrated candidate: it lowers the block rate and benign false positives, but allows more any-field held-out leakage than the conservative baseline.
+- Plaintext and FHE decisions match exactly on all held-out filtered rows: `343 / 343` adaptive decisions and `543 / 543` mixed decisions match for both thresholds. Mean probability drift stays around `3e-09`, with max drift below `3e-08`.
+- This remains synthetic held-out traffic. Exact disjointness checks are useful, but they do not prove semantic disjointness or production realism.
+- Held-out artifacts are under `experiment_runtime/runs/follow_on/held_out_robustness/`, with the paper-oriented summary at `experiment_runtime/runs/follow_on/held_out_robustness/HELD_OUT_ROBUSTNESS_RESULTS.md`.
+
+Full-experiment interpretation after threshold confirmation and held-out robustness:
 
 - The high mixed-traffic false-positive rate is real and now well characterized. It is not an FHE bug, not an evaluation-harness bug, and not random noise. It reveals that the Stage 3 filter's benign train/validation distribution was too narrow or too easy relative to the follow-on mixed benign traffic.
 - This is a serious utility caveat, but it is not a dealbreaker for the full experiment. The core supported claim remains: the experiment demonstrates memorization/leakage risk, evaluates filter defenses, shows that filtering suppresses measured leakage under tested conditions, and shows that the CKKS/OpenFHE filter preserves plaintext filter decisions.
@@ -347,7 +378,7 @@ Follow-on limitations:
 - sentence encoding remains plaintext before plaintext/FHE filter scoring
 - threshold confirmation is limited to `0.72` and `0.80`; it does not replace filter retraining or a full operating-curve study
 - keyword/rule baselines are intentionally deferred
-- broader generalization checks are intentionally deferred
+- additional broader generalization checks are intentionally deferred
 - official metrics still come from the direct experiment harness, not the LangGraph scaffold
 
 ## Final 1.5B Interpretation
@@ -366,19 +397,21 @@ Why this pattern is credible:
 - Stage 3 plaintext evaluation shows a simple linear filter can separate the curated `ALLOW` and `BLOCK` distributions with very high held-out accuracy
 - the integrated rerun confirms that this same filter actually suppresses the real Stage 2 leakage path
 - the FHE wrapper preserves that behavior with effectively zero decision drift
-- the follow-on confirms exact plaintext/FHE decision parity on scaffold-aware adaptive attacks and mixed synthetic traffic
+- the follow-on confirms exact plaintext/FHE decision parity on scaffold-aware adaptive attacks, mixed synthetic traffic, threshold-confirmation rows, and the final held-out robustness set
 
 Most important takeaway:
 
 - increasing canary exposure from `1x` and `10x` to `50x` materially increases memorization and prompt-driven leakage risk
-- on this experiment setup, adding a lightweight classifier filter in front of the fraud scorer removes the measured leakage on the frozen attack set and on the follow-on adaptive set
-- the CKKS/OpenFHE version preserves the same filter decisions and outcomes; the follow-on warm filter timing is roughly `57` to `59 ms` per filtered row
+- on this experiment setup, adding a lightweight classifier filter in front of the fraud scorer removes the measured leakage on the frozen attack set and the original follow-on adaptive set, while substantially suppressing but not eliminating any-field leakage on the final held-out adaptive set
+- the CKKS/OpenFHE version preserves the same filter decisions and outcomes; follow-on warm filter timing is roughly `57` to `59 ms` per filtered row on the original follow-on and roughly `77` to `83 ms` on the final held-out pass
 
 Current cautions:
 
 - the follow-on mixed traffic is synthetic, not production traffic
+- the final held-out adaptive traffic is also synthetic, and exact template/request disjointness is not the same as semantic disjointness
 - the follow-on mixed run shows a materially higher synthetic benign false positive rate than the original Stage 3 held-out classifier test split
 - threshold `0.72` is a plausible utility-calibrated operating point, but it reintroduces a small amount of measured `50x` adaptive leakage
+- the final held-out pass found nonzero filtered any-field leakage at both thresholds, even though full-record leakage stayed at zero
 - the no-system baseline remains a stress baseline rather than a realistic deployment setting
 - the optional `Qwen2-7B-Instruct` repeat has not been run yet
 

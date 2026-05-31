@@ -23,6 +23,7 @@ Completed follow-on artifact layout:
 - official runs and summaries: `experiment_runtime/runs/follow_on/`
 - calibration screening artifacts: `experiment_runtime/runs/follow_on/calibration/`
 - NVIDIA threshold confirmation artifacts: `experiment_runtime/runs/follow_on/calibration_confirmation/`
+- final held-out robustness artifacts: `experiment_runtime/runs/follow_on/held_out_robustness/`
 - code: `experiment_runtime/src/experiment/follow_on/`
 - tests: `experiment_runtime/tests/test_follow_on_*.py`
 
@@ -40,8 +41,10 @@ Important final interpretation:
 - At threshold `0.80`, mixed benign false positives drop to `16 / 350 = 0.0457`, mixed adaptive block rate drops to `114 / 350 = 0.3257`, and `50x` adaptive leakage is `6 / 350 = 0.0171`.
 - Plaintext and FHE filter decisions match exactly in the threshold confirmation runs.
 - Recommended interpretation: keep the frozen Stage 3 threshold as the privacy-conservative baseline; treat `0.72` as the more plausible utility-calibrated operating point among the confirmed candidates if a small amount of `50x` adaptive leakage is acceptable.
+- The final held-out robustness pass reused the frozen model, filter, and thresholds on a fresh `343` row scaffold-aware adaptive set plus `200` benign hard negatives. At the conservative threshold, filtered `50x` any-field leakage was `2 / 343 = 0.0058`, full-record leakage was `0 / 343`, and benign hard-negative false positives were `74 / 200 = 0.3700`. At threshold `0.72`, any-field leakage was `4 / 343 = 0.0117`, full-record leakage was `0 / 343`, and benign hard-negative false positives were `32 / 200 = 0.1600`.
+- The held-out pass confirms exact plaintext/FHE decision parity, but it also shows that the zero-leakage result on the original adaptive set does not fully generalize to fresh held-out adaptive wording.
 - Full-experiment judgment: successful and serious for the privacy/leakage-suppression/FHE-parity claims, but not evidence of a production-ready, broadly utility-calibrated filter. The false positives point to narrow Stage 3 benign coverage and motivate a future benign/hard-negative retraining ablation.
-- Keyword/rule baselines, broader generalization checks, and benign/hard-negative filter expansion remain future ablation work.
+- Keyword/rule baselines, additional broader generalization checks, and benign/hard-negative filter expansion remain future ablation work.
 
 Threshold confirmation pointers:
 
@@ -54,3 +57,17 @@ Threshold confirmation pointers:
   - `experiment_runtime/configs/follow_on/mixed_traffic_replay_threshold_0_7200.toml`
   - `experiment_runtime/configs/follow_on/adaptive_replay_threshold_0_8000.toml`
   - `experiment_runtime/configs/follow_on/mixed_traffic_replay_threshold_0_8000.toml`
+
+Held-out robustness pointers:
+
+- held-out artifact root: `experiment_runtime/runs/follow_on/held_out_robustness/`
+- held-out data root: `experiment_runtime/data/processed/follow_on/held_out_robustness/`
+- held-out configs: `experiment_runtime/configs/follow_on/held_out_robustness/`
+- adaptive data: `experiment_runtime/data/processed/follow_on/held_out_robustness/held_out_adaptive_attack_prompts.jsonl`
+- benign hard negatives: `experiment_runtime/data/processed/follow_on/held_out_robustness/held_out_benign_hard_negatives.jsonl`
+- mixed held-out data: `experiment_runtime/data/processed/follow_on/held_out_robustness/held_out_mixed_traffic_eval.jsonl`
+- conservative run root: `experiment_runtime/runs/follow_on/held_out_robustness/conservative/`
+- threshold `0.72` run root: `experiment_runtime/runs/follow_on/held_out_robustness/threshold_0_7200/`
+- machine-readable summary: `experiment_runtime/runs/follow_on/held_out_robustness/held_out_robustness_summary.json`
+- audit: `experiment_runtime/runs/follow_on/held_out_robustness/held_out_robustness_audit.json`
+- paper-oriented summary: `experiment_runtime/runs/follow_on/held_out_robustness/HELD_OUT_ROBUSTNESS_RESULTS.md`
